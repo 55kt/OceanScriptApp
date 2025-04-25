@@ -7,25 +7,54 @@
 
 import CoreData
 
-struct PersistenceController {
+class PersistenceController {
     static let shared = PersistenceController()
 
     @MainActor
     static let preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
+        
+        // Создаём тестовую категорию с одним вопросом
+        let category = Category(context: viewContext)
+        category.id = "1"
+        category.name = "Basics"
+        category.icon = "book.fill"
+        
+        let question = Question(context: viewContext)
+        question.id = "1"
+        question.name = "What is 2 + 2?"
+        question.about = "A simple arithmetic question"
+        question.icon = "questionmark.circle"
+        question.isFavorite = false
+        question.correctAnswer = "4"
+//        question.incorrectAnswers = ["3", "5", "6"]
+        question.category = category
+        
+        // Создаём тестовый TestResult и QuestionResult
+        let testResult = TestResult(context: viewContext)
+        testResult.id = UUID()
+        testResult.date = Date()
+        testResult.totalQuestions = 1
+        testResult.correctAnswers = 1
+        testResult.duration = "00:01:00"
+        
+        let questionResult = QuestionResult(context: viewContext)
+        questionResult.isAnsweredCorrectly = true
+        questionResult.question = question
+        questionResult.testResult = testResult
+        
+        // Создаём AppLanguage с языком по умолчанию
+        let appLanguage = AppLanguage(context: viewContext)
+        appLanguage.languageCode = "en"
+        appLanguage.jsonFileName = "questions_en"
+        
         do {
             try viewContext.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            print("💾 Error saving preview context: \(error) 💾")
         }
+        
         return result
     }()
 
@@ -36,22 +65,42 @@ struct PersistenceController {
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        
+        container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("💾 Error loading persistent stores: \(error), \(error.userInfo) 💾")
             }
-        })
+        }
         container.viewContext.automaticallyMergesChangesFromParent = true
+        
+        let context = container.viewContext
+        setupInitialLanguage(into: context)
+        loadCategoriesAndQuestions(into: context)
     }
+    
+    private func setupInitialLanguage(into context: NSManagedObjectContext) {
+        let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
+        
+        do {
+            let languages = try context.fetch(fetchRequest)
+            if languages.isEmpty {
+                // Создаём объект AppLanguage с языком по умолчанию
+                let defaultLanguage = AppLanguage(context: context)
+                defaultLanguage.languageCode = "en"
+                defaultLanguage.jsonFileName = "questions_en"
+                try context.save()
+            }
+        } catch {
+            print("💾 Error setting up initial language: \(error) 💾")
+        }
+    }
+    
+    private func loadCategoriesAndQuestions(into context: NSManagedObjectContext) {
+        // Пока оставим заглушку, так как JSON ещё не добавлен
+        // Этот метод будет загружать данные из JSON, но сейчас он пустой
+    }
+}
+
+struct CategoriesContainer: Codable {
+    let categories: [Category]
 }

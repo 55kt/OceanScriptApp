@@ -4,29 +4,29 @@
         <attribute name="jsonFileName" attributeType="String"/>
         <attribute name="languageCode" attributeType="String"/>
     </entity>
-    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+    <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="icon" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="questions" toMany="YES" deletionRule="Cascade" destinationEntity="Question" inverseName="category" inverseEntity="Question"/>
     </entity>
-    <entity name="Question" representedClassName="Question" syncable="YES" codeGenerationType="class">
+    <entity name="Question" representedClassName="Question" syncable="YES">
         <attribute name="about" attributeType="String"/>
         <attribute name="correctAnswer" attributeType="String"/>
         <attribute name="icon" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
-        <attribute name="incorrectAnswers" optional="YES" attributeType="Transformable" customClassName="NSArray"/>
+        <attribute name="incorrectAnswers" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="NSArray"/>
         <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="questions" inverseEntity="Category"/>
         <relationship name="questionResults" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="QuestionResult" inverseName="question" inverseEntity="QuestionResult"/>
     </entity>
-    <entity name="QuestionResult" representedClassName="QuestionResult" syncable="YES" codeGenerationType="class">
+    <entity name="QuestionResult" representedClassName="QuestionResult" syncable="YES">
         <attribute name="isAnsweredCorrectly" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="question" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="questionResults" inverseEntity="Question"/>
         <relationship name="testResult" maxCount="1" deletionRule="Nullify" destinationEntity="TestResult" inverseName="questionResults" inverseEntity="TestResult"/>
     </entity>
-    <entity name="TestResult" representedClassName="TestResult" syncable="YES" codeGenerationType="class">
+    <entity name="TestResult" representedClassName="TestResult" syncable="YES">
         <attribute name="correctAnswers" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="duration" attributeType="String"/>
