@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4B8F808C2DBBD5A500512F5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80862DBBD5A500512F5B /* ContentView.swift */; };
+		4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */; };
+		4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */; };
+		4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80892DBBD5A500512F5B /* Persistence.swift */; };
+		4B8F80902DBBD5A500512F5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B8F80852DBBD5A500512F5B /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4B8F80692DBBD58100512F5B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,14 +35,14 @@
 		4B8F80562DBBD57F00512F5B /* OceanScript.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanScript.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80682DBBD58100512F5B /* OceanScriptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80722DBBD58100512F5B /* OceanScriptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B8F80852DBBD5A500512F5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B8F80862DBBD5A500512F5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanScriptApp.swift; sourceTree = "<group>"; };
+		4B8F80892DBBD5A500512F5B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		4B8F808B2DBBD5A500512F5B /* OceanScript.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OceanScript.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4B8F80582DBBD57F00512F5B /* OceanScript */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = OceanScript;
-			sourceTree = "<group>";
-		};
 		4B8F806B2DBBD58100512F5B /* OceanScriptTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = OceanScriptTests;
@@ -75,7 +83,7 @@
 		4B8F804D2DBBD57F00512F5B = {
 			isa = PBXGroup;
 			children = (
-				4B8F80582DBBD57F00512F5B /* OceanScript */,
+				4B8F808A2DBBD5A500512F5B /* OceanScript */,
 				4B8F806B2DBBD58100512F5B /* OceanScriptTests */,
 				4B8F80752DBBD58100512F5B /* OceanScriptUITests */,
 				4B8F80572DBBD57F00512F5B /* Products */,
@@ -92,6 +100,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4B8F808A2DBBD5A500512F5B /* OceanScript */ = {
+			isa = PBXGroup;
+			children = (
+				4B8F80862DBBD5A500512F5B /* ContentView.swift */,
+				4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */,
+				4B8F80892DBBD5A500512F5B /* Persistence.swift */,
+				4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */,
+				4B8F80852DBBD5A500512F5B /* Assets.xcassets */,
+			);
+			path = OceanScript;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +126,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				4B8F80582DBBD57F00512F5B /* OceanScript */,
 			);
 			name = OceanScript;
 			packageProductDependencies = (
@@ -212,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8F80902DBBD5A500512F5B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +254,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8F808C2DBBD5A500512F5B /* ContentView.swift in Sources */,
+				4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */,
+				4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */,
+				4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +580,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4B8F808B2DBBD5A500512F5B /* OceanScript.xcdatamodel */,
+			);
+			currentVersion = 4B8F808B2DBBD5A500512F5B /* OceanScript.xcdatamodel */;
+			path = OceanScript.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4B8F804E2DBBD57F00512F5B /* Project object */;
 }
