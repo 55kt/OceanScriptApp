@@ -1,0 +1,212 @@
+{
+  "categories": [
+    {
+      "id": "c1",
+      "name": "Основы Python",
+      "icon": "book.fill",
+      "questions": [
+        {
+          "id": "q1c1",
+          "name": "Какое ключевое слово используется для объявления переменной в Python?",
+          "about": "Python использует динамическую типизацию для переменных.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Ключевое слово не требуется",
+          "incorrectAnswers": ["var", "let", "const"]
+        },
+        {
+          "id": "q2c1",
+          "name": "Как написать однострочный комментарий в Python?",
+          "about": "Комментарии в Python используются для документирования.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "#",
+          "incorrectAnswers": ["//", "/*", "--"]
+        },
+        {
+          "id": "q3c1",
+          "name": "Какой будет вывод print(type(42))?",
+          "about": "Python имеет встроенные функции для проверки типов.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "<class 'int'>",
+          "incorrectAnswers": ["<class 'float'>", "<class 'str'>", "<class 'bool'>"]
+        },
+        {
+          "id": "q4c1",
+          "name": "Как создать список в Python?",
+          "about": "Списки — это фундаментальная структура данных в Python.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "[]",
+          "incorrectAnswers": ["{}", "()", "<>"]
+        },
+        {
+          "id": "q5c1",
+          "name": "Что такое None в Python?",
+          "about": "None представляет отсутствие значения в Python.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Нулевое значение",
+          "incorrectAnswers": ["Булево значение", "Пустая строка", "Ноль"]
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "name": "Функции в Python",
+      "icon": "function",
+      "questions": [
+        {
+          "id": "q1c2",
+          "name": "Какое ключевое слово определяет функцию в Python?",
+          "about": "Функции в Python определяются с помощью определённого ключевого слова.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "def",
+          "incorrectAnswers": ["func", "function", "method"]
+        },
+        {
+          "id": "q2c2",
+          "name": "Что означает *args в определении функции?",
+          "about": "*args позволяет функции принимать несколько аргументов.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Переменное число позиционных аргументов",
+          "incorrectAnswers": ["Именованные аргументы", "Аргументы по умолчанию", "Возвращаемые значения"]
+        },
+        {
+          "id": "q3c2",
+          "name": "Для чего используется return в Python?",
+          "about": "Оператор return используется для выхода из функции и возврата значения.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Для возврата значения из функции",
+          "incorrectAnswers": ["Для прерывания цикла", "Для вызова исключения", "Для вывода значения"]
+        },
+        {
+          "id": "q4c2",
+          "name": "Может ли функция в Python иметь аргументы по умолчанию?",
+          "about": "Аргументы по умолчанию предоставляют значения по умолчанию для параметров функции.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Да",
+          "incorrectAnswers": ["Нет", "Только в классах", "Только в модулях"]
+        },
+        {
+          "id": "q5c2",
+          "name": "Что такое лямбда-функция в Python?",
+          "about": "Лямбда-функции — это анонимные функции в Python.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Анонимная функция",
+          "incorrectAnswers": ["Метод класса", "Цикл", "Модуль"]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "name": "Классы в Python",
+      "icon": "square.stack",
+      "questions": [
+        {
+          "id": "q1c3",
+          "name": "Какое ключевое слово определяет класс в Python?",
+          "about": "Классы в Python определяются с помощью определённого ключевого слова.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "class",
+          "incorrectAnswers": ["struct", "object", "type"]
+        },
+        {
+          "id": "q2c3",
+          "name": "Для чего используется __init__ в Python?",
+          "about": "__init__ используется для инициализации экземпляров класса.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Для инициализации экземпляра класса",
+          "incorrectAnswers": ["Для уничтожения экземпляра класса", "Для копирования экземпляра класса", "Для изменения экземпляра класса"]
+        },
+        {
+          "id": "q3c3",
+          "name": "Что такое self в Python?",
+          "about": "self ссылается на экземпляр класса в Python.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Экземпляр класса",
+          "incorrectAnswers": ["Ключевое слово", "Глобальная переменная", "Статический метод"]
+        },
+        {
+          "id": "q4c3",
+          "name": "Что такое метод класса в Python?",
+          "about": "Методы класса определяются с помощью определённого декоратора.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Метод, привязанный к классу",
+          "incorrectAnswers": ["Метод, привязанный к экземпляру", "Статический метод", "Лямбда-функция"]
+        },
+        {
+          "id": "q5c3",
+          "name": "Что такое наследование в Python?",
+          "about": "Наследование позволяет одному классу наследовать от другого.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Класс наследует от другого класса",
+          "incorrectAnswers": ["Функция наследует от другой функции", "Импорт модуля", "Цикл"]
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "name": "Списки в Python",
+      "icon": "list.bullet",
+      "questions": [
+        {
+          "id": "q1c4",
+          "name": "Как добавить элемент в список в Python?",
+          "about": "Списки в Python имеют методы для изменения их содержимого.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "append()",
+          "incorrectAnswers": ["add()", "push()", "insert()"]
+        },
+        {
+          "id": "q2c4",
+          "name": "Что делает pop() со списком в Python?",
+          "about": "pop() — это метод для удаления элементов из списка.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Удаляет и возвращает последний элемент",
+          "incorrectAnswers": ["Удаляет первый элемент", "Добавляет элемент", "Очищает список"]
+        },
+        {
+          "id": "q3c4",
+          "name": "Как получить длину списка в Python?",
+          "about": "Python предоставляет встроенную функцию для получения длины списка.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "len()",
+          "incorrectAnswers": ["length()", "size()", "count()"]
+        },
+        {
+          "id": "q4c4",
+          "name": "Что делает нарезка списка в Python?",
+          "about": "Нарезка списка позволяет извлечь часть списка.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Извлекает часть списка",
+          "incorrectAnswers": ["Сортирует список", "Переворачивает список", "Очищает список"]
+        },
+        {
+          "id": "q5c4",
+          "name": "Как перевернуть список в Python?",
+          "about": "Списки в Python имеют метод для изменения порядка элементов.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "reverse()",
+          "incorrectAnswers": ["sort()", "flip()", "invert()"]
+        }
+      ]
+    }
+  ]
+}

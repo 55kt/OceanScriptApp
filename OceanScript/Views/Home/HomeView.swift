@@ -1,14 +1,14 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  OceanScript
 //
-//  Created by Vlad on 25/4/25.
+//  Created by Vlad on 26/4/25.
 //
 
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -46,6 +46,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

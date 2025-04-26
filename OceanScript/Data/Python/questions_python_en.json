@@ -1,0 +1,212 @@
+{
+  "categories": [
+    {
+      "id": "c1",
+      "name": "Python Basics",
+      "icon": "book.fill",
+      "questions": [
+        {
+          "id": "q1c1",
+          "name": "What is the keyword to define a variable in Python?",
+          "about": "Python uses dynamic typing for variables.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "No keyword needed",
+          "incorrectAnswers": ["var", "let", "const"]
+        },
+        {
+          "id": "q2c1",
+          "name": "How do you write a single-line comment in Python?",
+          "about": "Comments in Python are used for documentation.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "#",
+          "incorrectAnswers": ["//", "/*", "--"]
+        },
+        {
+          "id": "q3c1",
+          "name": "What is the output of print(type(42))?",
+          "about": "Python has built-in functions to check types.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "<class 'int'>",
+          "incorrectAnswers": ["<class 'float'>", "<class 'str'>", "<class 'bool'>"]
+        },
+        {
+          "id": "q4c1",
+          "name": "How do you create a list in Python?",
+          "about": "Lists are a fundamental data structure in Python.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "[]",
+          "incorrectAnswers": ["{}", "()", "<>"]
+        },
+        {
+          "id": "q5c1",
+          "name": "What is None in Python?",
+          "about": "None represents the absence of a value in Python.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "The null value",
+          "incorrectAnswers": ["A boolean value", "An empty string", "Zero"]
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "name": "Python Functions",
+      "icon": "function",
+      "questions": [
+        {
+          "id": "q1c2",
+          "name": "What keyword defines a function in Python?",
+          "about": "Functions in Python are defined using a specific keyword.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "def",
+          "incorrectAnswers": ["func", "function", "method"]
+        },
+        {
+          "id": "q2c2",
+          "name": "What does *args mean in a function definition?",
+          "about": "*args allows a function to accept multiple arguments.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Variable number of positional arguments",
+          "incorrectAnswers": ["Keyword arguments", "Default arguments", "Return values"]
+        },
+        {
+          "id": "q3c2",
+          "name": "What is the purpose of return in Python?",
+          "about": "return statements are used to exit a function and return a value.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "To return a value from a function",
+          "incorrectAnswers": ["To break a loop", "To raise an exception", "To print a value"]
+        },
+        {
+          "id": "q4c2",
+          "name": "Can a Python function have default arguments?",
+          "about": "Default arguments provide fallback values for function parameters.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Yes",
+          "incorrectAnswers": ["No", "Only in classes", "Only in modules"]
+        },
+        {
+          "id": "q5c2",
+          "name": "What is a lambda function in Python?",
+          "about": "Lambda functions are anonymous functions in Python.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "An anonymous function",
+          "incorrectAnswers": ["A class method", "A loop", "A module"]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "name": "Python Classes",
+      "icon": "square.stack",
+      "questions": [
+        {
+          "id": "q1c3",
+          "name": "What keyword defines a class in Python?",
+          "about": "Classes in Python are defined using a specific keyword.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "class",
+          "incorrectAnswers": ["struct", "object", "type"]
+        },
+        {
+          "id": "q2c3",
+          "name": "What is the purpose of __init__ in Python?",
+          "about": "__init__ is used to initialize class instances.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "To initialize a class instance",
+          "incorrectAnswers": ["To destroy a class instance", "To copy a class instance", "To modify a class instance"]
+        },
+        {
+          "id": "q3c3",
+          "name": "What is self in Python?",
+          "about": "self refers to the instance of the class in Python.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "The instance of the class",
+          "incorrectAnswers": ["A keyword", "A global variable", "A static method"]
+        },
+        {
+          "id": "q4c3",
+          "name": "What is a class method in Python?",
+          "about": "Class methods are defined using a specific decorator.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A method bound to the class",
+          "incorrectAnswers": ["A method bound to an instance", "A static method", "A lambda function"]
+        },
+        {
+          "id": "q5c3",
+          "name": "What is inheritance in Python?",
+          "about": "Inheritance allows one class to inherit from another.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A class inheriting from another class",
+          "incorrectAnswers": ["A function inheriting from another function", "A module import", "A loop"]
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "name": "Python Lists",
+      "icon": "list.bullet",
+      "questions": [
+        {
+          "id": "q1c4",
+          "name": "How do you append an item to a list in Python?",
+          "about": "Lists in Python have methods to modify their contents.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "append()",
+          "incorrectAnswers": ["add()", "push()", "insert()"]
+        },
+        {
+          "id": "q2c4",
+          "name": "What does pop() do to a list in Python?",
+          "about": "pop() is a method to remove items from a list.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Removes and returns the last item",
+          "incorrectAnswers": ["Removes the first item", "Adds an item", "Clears the list"]
+        },
+        {
+          "id": "q3c4",
+          "name": "How do you get the length of a list in Python?",
+          "about": "Python provides a built-in function to get the length of a list.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "len()",
+          "incorrectAnswers": ["length()", "size()", "count()"]
+        },
+        {
+          "id": "q4c4",
+          "name": "What does list slicing do in Python?",
+          "about": "List slicing allows you to extract a portion of a list.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Extracts a portion of the list",
+          "incorrectAnswers": ["Sorts the list", "Reverses the list", "Clears the list"]
+        },
+        {
+          "id": "q5c4",
+          "name": "How do you reverse a list in Python?",
+          "about": "Lists in Python have a method to reverse their order.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "reverse()",
+          "incorrectAnswers": ["sort()", "flip()", "invert()"]
+        }
+      ]
+    }
+  ]
+}

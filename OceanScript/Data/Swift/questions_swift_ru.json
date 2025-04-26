@@ -1,0 +1,212 @@
+{
+  "categories": [
+    {
+      "id": "c1",
+      "name": "Основы Swift",
+      "icon": "book.fill",
+      "questions": [
+        {
+          "id": "q1c1",
+          "name": "Какое ключевое слово используется для определения константы в Swift?",
+          "about": "Swift использует определённые ключевые слова для констант и переменных.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "let",
+          "incorrectAnswers": ["var", "const", "static"]
+        },
+        {
+          "id": "q2c1",
+          "name": "Какой уровень доступа по умолчанию у переменной в Swift?",
+          "about": "Swift имеет уровни контроля доступа для переменных и функций.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "internal",
+          "incorrectAnswers": ["public", "private", "open"]
+        },
+        {
+          "id": "q3c1",
+          "name": "Как объявить опционал в Swift?",
+          "about": "Опционалы используются для обработки отсутствия значения в Swift.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "С помощью знака вопроса (?)",
+          "incorrectAnswers": ["С помощью звёздочки (*)", "С помощью восклицательного знака (!)", "С помощью двоеточия (:)"]
+        },
+        {
+          "id": "q4c1",
+          "name": "Для чего используется guard в Swift?",
+          "about": "Оператор guard используется для раннего выхода из функции в Swift.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Ранний выход из функции",
+          "incorrectAnswers": ["Управление циклами", "Обработка ошибок", "Объявление переменных"]
+        },
+        {
+          "id": "q5c1",
+          "name": "Что такое замыкание в Swift?",
+          "about": "Замыкания — это самодостаточные блоки кода в Swift.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Самодостаточный блок кода",
+          "incorrectAnswers": ["Экземпляр класса", "Протокол", "Структура"]
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "name": "Функции в Swift",
+      "icon": "function",
+      "questions": [
+        {
+          "id": "q1c2",
+          "name": "Как объявить функцию в Swift?",
+          "about": "Функции в Swift используют определённое ключевое слово.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "func",
+          "incorrectAnswers": ["function", "def", "method"]
+        },
+        {
+          "id": "q2c2",
+          "name": "Что означает inout в параметрах функции?",
+          "about": "Параметры inout позволяют функциям изменять внешние переменные.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Позволяет изменять значение параметра",
+          "incorrectAnswers": ["Только для чтения", "Опциональный параметр", "Возвращаемое значение"]
+        },
+        {
+          "id": "q3c2",
+          "name": "Что такое стрелка возврата в функциях Swift?",
+          "about": "Swift использует определённый синтаксис для типов возврата функции.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "->",
+          "incorrectAnswers": [":", "=>", "=="]
+        },
+        {
+          "id": "q4c2",
+          "name": "Может ли функция в Swift возвращать несколько значений?",
+          "about": "Swift поддерживает возврат нескольких значений с помощью кортежей.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Да, с помощью кортежа",
+          "incorrectAnswers": ["Нет", "Да, с помощью массива", "Да, с помощью структуры"]
+        },
+        {
+          "id": "q5c2",
+          "name": "Что такое параметр по умолчанию в Swift?",
+          "about": "Параметры по умолчанию предоставляют значение по умолчанию для аргументов функции.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Параметр с заданным значением по умолчанию",
+          "incorrectAnswers": ["Обязательный параметр", "Опциональный параметр", "Возвращаемое значение"]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "name": "Классы в Swift",
+      "icon": "square.stack",
+      "questions": [
+        {
+          "id": "q1c3",
+          "name": "Какое ключевое слово используется для определения класса в Swift?",
+          "about": "Классы в Swift определяются с помощью определённого ключевого слова.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "class",
+          "incorrectAnswers": ["struct", "object", "type"]
+        },
+        {
+          "id": "q2c3",
+          "name": "Что такое наследование в Swift?",
+          "about": "Наследование позволяет одному классу наследовать от другого.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Класс наследует от другого класса",
+          "incorrectAnswers": ["Структура наследует от другой структуры", "Реализация протокола", "Замыкание"]
+        },
+        {
+          "id": "q3c3",
+          "name": "Для чего используется init в Swift?",
+          "about": "init используется для инициализации экземпляров класса.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Для инициализации экземпляра класса",
+          "incorrectAnswers": ["Для уничтожения экземпляра класса", "Для копирования экземпляра класса", "Для изменения экземпляра класса"]
+        },
+        {
+          "id": "q4c3",
+          "name": "Что такое вычисляемое свойство в Swift?",
+          "about": "Вычисляемые свойства вычисляют своё значение по запросу.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Свойство, которое вычисляет своё значение",
+          "incorrectAnswers": ["Сохранённое свойство", "Статическое свойство", "Константное свойство"]
+        },
+        {
+          "id": "q5c3",
+          "name": "Что такое deinit в Swift?",
+          "about": "deinit вызывается при освобождении экземпляра класса.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Деинициализатор для класса",
+          "incorrectAnswers": ["Конструктор для класса", "Метод для копирования класса", "Метод для изменения класса"]
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "name": "Основы SwiftUI",
+      "icon": "rectangle.stack",
+      "questions": [
+        {
+          "id": "q1c4",
+          "name": "Какой основной строительный блок SwiftUI?",
+          "about": "SwiftUI использует декларативный синтаксис для построения UI.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "View",
+          "incorrectAnswers": ["Controller", "Model", "Component"]
+        },
+        {
+          "id": "q2c4",
+          "name": "Как создать кнопку в SwiftUI?",
+          "about": "SwiftUI предоставляет специальный view для кнопок.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Button",
+          "incorrectAnswers": ["Text", "Image", "VStack"]
+        },
+        {
+          "id": "q3c4",
+          "name": "Какой модификатор добавляет отступы в SwiftUI?",
+          "about": "Модификаторы в SwiftUI изменяют внешний вид view.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": ".padding()",
+          "incorrectAnswers": [".spacing()", ".margin()", ".frame()"]
+        },
+        {
+          "id": "q4c4",
+          "name": "Что такое @State в SwiftUI?",
+          "about": "@State используется для управления локальным состоянием в SwiftUI.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Обёртка свойства для состояния",
+          "incorrectAnswers": ["Модификатор view", "Свойство навигации", "Модель данных"]
+        },
+        {
+          "id": "q5c4",
+          "name": "Что такое NavigationView в SwiftUI?",
+          "about": "NavigationView предоставляет стек навигации в SwiftUI.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "View для навигации",
+          "incorrectAnswers": ["View для вкладок", "View для модальных окон", "View для списков"]
+        }
+      ]
+    }
+  ]
+}

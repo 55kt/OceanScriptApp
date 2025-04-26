@@ -1,0 +1,212 @@
+{
+  "categories": [
+    {
+      "id": "c1",
+      "name": "Swift Basics",
+      "icon": "book.fill",
+      "questions": [
+        {
+          "id": "q1c1",
+          "name": "What is the keyword to define a constant in Swift?",
+          "about": "Swift uses specific keywords for constants and variables.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "let",
+          "incorrectAnswers": ["var", "const", "static"]
+        },
+        {
+          "id": "q2c1",
+          "name": "What is the default access level for a Swift variable?",
+          "about": "Swift has access control levels for variables and functions.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "internal",
+          "incorrectAnswers": ["public", "private", "open"]
+        },
+        {
+          "id": "q3c1",
+          "name": "How do you declare an optional in Swift?",
+          "about": "Optionals handle the absence of a value in Swift.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Using a question mark (?)",
+          "incorrectAnswers": ["Using an asterisk (*)", "Using an exclamation mark (!)", "Using a colon (:)"]
+        },
+        {
+          "id": "q4c1",
+          "name": "What is the purpose of guard in Swift?",
+          "about": "Guard statements are used for early exit in Swift.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Early exit from a function",
+          "incorrectAnswers": ["Loop control", "Error handling", "Variable declaration"]
+        },
+        {
+          "id": "q5c1",
+          "name": "What is a closure in Swift?",
+          "about": "Closures are self-contained blocks of functionality in Swift.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A self-contained block of code",
+          "incorrectAnswers": ["A class instance", "A protocol", "A struct"]
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "name": "Swift Functions",
+      "icon": "function",
+      "questions": [
+        {
+          "id": "q1c2",
+          "name": "How do you define a function in Swift?",
+          "about": "Functions in Swift use a specific keyword.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "func",
+          "incorrectAnswers": ["function", "def", "method"]
+        },
+        {
+          "id": "q2c2",
+          "name": "What does inout mean in a function parameter?",
+          "about": "inout parameters allow functions to modify external variables.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Allows modifying the parameter value",
+          "incorrectAnswers": ["Read-only parameter", "Optional parameter", "Return value"]
+        },
+        {
+          "id": "q3c2",
+          "name": "What is the return arrow in Swift functions?",
+          "about": "Swift uses a specific syntax for function return types.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "->",
+          "incorrectAnswers": [":", "=>", "=="]
+        },
+        {
+          "id": "q4c2",
+          "name": "Can a Swift function have multiple return values?",
+          "about": "Swift supports returning multiple values using tuples.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Yes, using a tuple",
+          "incorrectAnswers": ["No", "Yes, using an array", "Yes, using a struct"]
+        },
+        {
+          "id": "q5c2",
+          "name": "What is a default parameter in Swift?",
+          "about": "Default parameters provide a fallback value for function arguments.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A parameter with a default value",
+          "incorrectAnswers": ["A required parameter", "An optional parameter", "A return value"]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "name": "Swift Classes",
+      "icon": "square.stack",
+      "questions": [
+        {
+          "id": "q1c3",
+          "name": "What is the keyword to define a class in Swift?",
+          "about": "Classes in Swift are defined using a specific keyword.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "class",
+          "incorrectAnswers": ["struct", "object", "type"]
+        },
+        {
+          "id": "q2c3",
+          "name": "What is inheritance in Swift?",
+          "about": "Inheritance allows one class to inherit from another.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A class inheriting from another class",
+          "incorrectAnswers": ["A struct inheriting from another struct", "A protocol implementation", "A closure"]
+        },
+        {
+          "id": "q3c3",
+          "name": "What is the purpose of init in Swift?",
+          "about": "init is used for initializing class instances.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "To initialize a class instance",
+          "incorrectAnswers": ["To destroy a class instance", "To copy a class instance", "To modify a class instance"]
+        },
+        {
+          "id": "q4c3",
+          "name": "What is a computed property in Swift?",
+          "about": "Computed properties calculate their value on demand.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A property that calculates its value",
+          "incorrectAnswers": ["A stored property", "A static property", "A constant property"]
+        },
+        {
+          "id": "q5c3",
+          "name": "What is deinit in Swift?",
+          "about": "deinit is called when a class instance is deallocated.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A deinitializer for a class",
+          "incorrectAnswers": ["A constructor for a class", "A method to copy a class", "A method to modify a class"]
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "name": "SwiftUI Basics",
+      "icon": "rectangle.stack",
+      "questions": [
+        {
+          "id": "q1c4",
+          "name": "What is the main building block of SwiftUI?",
+          "about": "SwiftUI uses a declarative syntax for building UI.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "View",
+          "incorrectAnswers": ["Controller", "Model", "Component"]
+        },
+        {
+          "id": "q2c4",
+          "name": "How do you create a button in SwiftUI?",
+          "about": "SwiftUI provides a specific view for buttons.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "Button",
+          "incorrectAnswers": ["Text", "Image", "VStack"]
+        },
+        {
+          "id": "q3c4",
+          "name": "What modifier adds padding in SwiftUI?",
+          "about": "Modifiers in SwiftUI change внешний вид views.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": ".padding()",
+          "incorrectAnswers": [".spacing()", ".margin()", ".frame()"]
+        },
+        {
+          "id": "q4c4",
+          "name": "What is @State in SwiftUI?",
+          "about": "@State is used for managing local state in SwiftUI.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A property wrapper for state",
+          "incorrectAnswers": ["A view modifier", "A navigation property", "A data model"]
+        },
+        {
+          "id": "q5c4",
+          "name": "What is NavigationView in SwiftUI?",
+          "about": "NavigationView provides a navigation stack in SwiftUI.",
+          "icon": "questionmark.circle",
+          "isFavorite": false,
+          "correctAnswer": "A view for navigation",
+          "incorrectAnswers": ["A view for tabs", "A view for modals", "A view for lists"]
+        }
+      ]
+    }
+  ]
+}

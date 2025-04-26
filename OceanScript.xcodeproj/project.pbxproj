@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B8F808C2DBBD5A500512F5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80862DBBD5A500512F5B /* ContentView.swift */; };
 		4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */; };
 		4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */; };
 		4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80892DBBD5A500512F5B /* Persistence.swift */; };
@@ -29,6 +28,12 @@
 		4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */; };
 		4B8F80D82DBD358B00512F5B /* QuestionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D72DBD358B00512F5B /* QuestionsList.swift */; };
 		4B8F80DA2DBD384000512F5B /* PreviewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */; };
+		4BB090192DBD4EF900142DF9 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090182DBD4EF900142DF9 /* MainTabView.swift */; };
+		4BB0901C2DBD50EB00142DF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0901B2DBD50EB00142DF9 /* HomeView.swift */; };
+		4BB0901F2DBD581000142DF9 /* questions_swift_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BB0901E2DBD581000142DF9 /* questions_swift_en.json */; };
+		4BB090212DBD587000142DF9 /* questions_swift_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090202DBD587000142DF9 /* questions_swift_ru.json */; };
+		4BB090252DBD591100142DF9 /* questions_python_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090242DBD591100142DF9 /* questions_python_en.json */; };
+		4BB090272DBD5A0000142DF9 /* questions_python_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090262DBD5A0000142DF9 /* questions_python_ru.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +58,6 @@
 		4B8F80682DBBD58100512F5B /* OceanScriptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80722DBBD58100512F5B /* OceanScriptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80852DBBD5A500512F5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4B8F80862DBBD5A500512F5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanScriptApp.swift; sourceTree = "<group>"; };
 		4B8F80892DBBD5A500512F5B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4B8F808B2DBBD5A500512F5B /* OceanScript.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OceanScript.xcdatamodel; sourceTree = "<group>"; };
@@ -74,6 +78,12 @@
 		4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailView.swift; sourceTree = "<group>"; };
 		4B8F80D72DBD358B00512F5B /* QuestionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsList.swift; sourceTree = "<group>"; };
 		4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPlaceholder.swift; sourceTree = "<group>"; };
+		4BB090182DBD4EF900142DF9 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		4BB0901B2DBD50EB00142DF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4BB0901E2DBD581000142DF9 /* questions_swift_en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions_swift_en.json; sourceTree = "<group>"; };
+		4BB090202DBD587000142DF9 /* questions_swift_ru.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions_swift_ru.json; sourceTree = "<group>"; };
+		4BB090242DBD591100142DF9 /* questions_python_en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions_python_en.json; sourceTree = "<group>"; };
+		4BB090262DBD5A0000142DF9 /* questions_python_ru.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions_python_ru.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -144,6 +154,7 @@
 				4BB090172DBD4E7300142DF9 /* Utilites */,
 				4B8F80CD2DBC0FD600512F5B /* Transformers */,
 				4B8F80BA2DBC033E00512F5B /* Extensions */,
+				4BB0901D2DBD57CC00142DF9 /* Data */,
 				4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */,
 				4B8F80852DBBD5A500512F5B /* Assets.xcassets */,
 			);
@@ -206,7 +217,8 @@
 		4BB090162DBD4E4D00142DF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4B8F80862DBBD5A500512F5B /* ContentView.swift */,
+				4BB090182DBD4EF900142DF9 /* MainTabView.swift */,
+				4BB0901A2DBD50BE00142DF9 /* Home */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +229,41 @@
 				4B8F80892DBBD5A500512F5B /* Persistence.swift */,
 			);
 			path = Utilites;
+			sourceTree = "<group>";
+		};
+		4BB0901A2DBD50BE00142DF9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4BB0901B2DBD50EB00142DF9 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4BB0901D2DBD57CC00142DF9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4BB090222DBD58A000142DF9 /* Swift */,
+				4BB090232DBD58B900142DF9 /* Python */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4BB090222DBD58A000142DF9 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				4BB0901E2DBD581000142DF9 /* questions_swift_en.json */,
+				4BB090202DBD587000142DF9 /* questions_swift_ru.json */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		4BB090232DBD58B900142DF9 /* Python */ = {
+			isa = PBXGroup;
+			children = (
+				4BB090242DBD591100142DF9 /* questions_python_en.json */,
+				4BB090262DBD5A0000142DF9 /* questions_python_ru.json */,
+			);
+			path = Python;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +383,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB0901F2DBD581000142DF9 /* questions_swift_en.json in Resources */,
+				4BB090212DBD587000142DF9 /* questions_swift_ru.json in Resources */,
+				4BB090252DBD591100142DF9 /* questions_python_en.json in Resources */,
+				4BB090272DBD5A0000142DF9 /* questions_python_ru.json in Resources */,
 				4B8F80902DBBD5A500512F5B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,10 +417,10 @@
 				4B8F80CA2DBC0BCC00512F5B /* TestResult+CoreDataClass.swift in Sources */,
 				4B8F80D42DBD266000512F5B /* QuestionListItem.swift in Sources */,
 				4B8F80BC2DBC038C00512F5B /* CodingUserInfoKey+Extensions.swift in Sources */,
+				4BB090192DBD4EF900142DF9 /* MainTabView.swift in Sources */,
 				4B8F80C02DBC071100512F5B /* Category+CoreDataProperties.swift in Sources */,
 				4B8F80BE2DBC06D200512F5B /* Category+CoreDataClass.swift in Sources */,
 				4B8F80CF2DBC0FEE00512F5B /* ArrayValueTransformer.swift in Sources */,
-				4B8F808C2DBBD5A500512F5B /* ContentView.swift in Sources */,
 				4B8F80C62DBC0B2C00512F5B /* QuestionResult+CoreDataClass.swift in Sources */,
 				4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */,
 				4B8F80C42DBC091100512F5B /* Question+CoreDataProperties.swift in Sources */,
@@ -381,6 +432,7 @@
 				4B8F80B92DBC023400512F5B /* AppLanguage+CoreDataProperties.swift in Sources */,
 				4B8F80C22DBC08E700512F5B /* Question+CoreDataClass.swift in Sources */,
 				4B8F80C82DBC0B5B00512F5B /* QuestionResult+CoreDataProperties.swift in Sources */,
+				4BB0901C2DBD50EB00142DF9 /* HomeView.swift in Sources */,
 				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
