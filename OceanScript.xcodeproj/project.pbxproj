@@ -24,6 +24,11 @@
 		4B8F80CA2DBC0BCC00512F5B /* TestResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80C92DBC0BCC00512F5B /* TestResult+CoreDataClass.swift */; };
 		4B8F80CC2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80CB2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift */; };
 		4B8F80CF2DBC0FEE00512F5B /* ArrayValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80CE2DBC0FEE00512F5B /* ArrayValueTransformer.swift */; };
+		4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D12DBD259800512F5B /* CategoryItem.swift */; };
+		4B8F80D42DBD266000512F5B /* QuestionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D32DBD266000512F5B /* QuestionListItem.swift */; };
+		4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */; };
+		4B8F80D82DBD358B00512F5B /* QuestionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D72DBD358B00512F5B /* QuestionsList.swift */; };
+		4B8F80DA2DBD384000512F5B /* PreviewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,11 @@
 		4B8F80C92DBC0BCC00512F5B /* TestResult+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestResult+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4B8F80CB2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestResult+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4B8F80CE2DBC0FEE00512F5B /* ArrayValueTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayValueTransformer.swift; sourceTree = "<group>"; };
+		4B8F80D12DBD259800512F5B /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		4B8F80D32DBD266000512F5B /* QuestionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListItem.swift; sourceTree = "<group>"; };
+		4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailView.swift; sourceTree = "<group>"; };
+		4B8F80D72DBD358B00512F5B /* QuestionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsList.swift; sourceTree = "<group>"; };
+		4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPlaceholder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -127,10 +137,11 @@
 		4B8F808A2DBBD5A500512F5B /* OceanScript */ = {
 			isa = PBXGroup;
 			children = (
-				4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */,
-				4B8F80862DBBD5A500512F5B /* ContentView.swift */,
+				4BB090152DBD4E3100142DF9 /* App */,
 				4B8F80B52DBC015200512F5B /* Models */,
-				4B8F80892DBBD5A500512F5B /* Persistence.swift */,
+				4BB090162DBD4E4D00142DF9 /* Views */,
+				4B8F80D02DBD251600512F5B /* Components */,
+				4BB090172DBD4E7300142DF9 /* Utilites */,
 				4B8F80CD2DBC0FD600512F5B /* Transformers */,
 				4B8F80BA2DBC033E00512F5B /* Extensions */,
 				4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */,
@@ -170,6 +181,42 @@
 				4B8F80CE2DBC0FEE00512F5B /* ArrayValueTransformer.swift */,
 			);
 			path = Transformers;
+			sourceTree = "<group>";
+		};
+		4B8F80D02DBD251600512F5B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4B8F80D72DBD358B00512F5B /* QuestionsList.swift */,
+				4B8F80D12DBD259800512F5B /* CategoryItem.swift */,
+				4B8F80D32DBD266000512F5B /* QuestionListItem.swift */,
+				4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */,
+				4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4BB090152DBD4E3100142DF9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4BB090162DBD4E4D00142DF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B8F80862DBBD5A500512F5B /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4BB090172DBD4E7300142DF9 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				4B8F80892DBBD5A500512F5B /* Persistence.swift */,
+			);
+			path = Utilites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,8 +361,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8F80D82DBD358B00512F5B /* QuestionsList.swift in Sources */,
 				4B8F80CC2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift in Sources */,
 				4B8F80CA2DBC0BCC00512F5B /* TestResult+CoreDataClass.swift in Sources */,
+				4B8F80D42DBD266000512F5B /* QuestionListItem.swift in Sources */,
 				4B8F80BC2DBC038C00512F5B /* CodingUserInfoKey+Extensions.swift in Sources */,
 				4B8F80C02DBC071100512F5B /* Category+CoreDataProperties.swift in Sources */,
 				4B8F80BE2DBC06D200512F5B /* Category+CoreDataClass.swift in Sources */,
@@ -325,11 +374,14 @@
 				4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */,
 				4B8F80C42DBC091100512F5B /* Question+CoreDataProperties.swift in Sources */,
 				4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */,
+				4B8F80DA2DBD384000512F5B /* PreviewPlaceholder.swift in Sources */,
 				4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */,
+				4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */,
 				4B8F80B72DBC020300512F5B /* AppLanguage+CoreDataClass.swift in Sources */,
 				4B8F80B92DBC023400512F5B /* AppLanguage+CoreDataProperties.swift in Sources */,
 				4B8F80C22DBC08E700512F5B /* Question+CoreDataClass.swift in Sources */,
 				4B8F80C82DBC0B5B00512F5B /* QuestionResult+CoreDataProperties.swift in Sources */,
+				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
