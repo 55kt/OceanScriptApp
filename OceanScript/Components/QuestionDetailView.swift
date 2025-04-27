@@ -47,9 +47,5 @@ struct QuestionDetailView: View {
 }
 
 #Preview {
-    let context = PersistenceController.preview.container.viewContext
-    let category = PreviewPlaceholder.createCategory(in: context)
-    let question = PreviewPlaceholder.createQuestion(in: context, category: category)
-    return QuestionDetailView(question: question)
-        .environment(\.managedObjectContext, context)
+    QuestionDetailView(question: Question())
 }

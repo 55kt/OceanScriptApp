@@ -25,6 +25,7 @@ struct PreviewPlaceholder {
         question.icon = "questionmark.circle"
         question.isFavorite = false
         question.correctAnswer = "4"
+        question.incorrectAnswers = ["3", "5", "6"]
         question.category = category
         return question
     }
@@ -48,11 +49,36 @@ struct PreviewPlaceholder {
     static func createAppLanguage(in context: NSManagedObjectContext) -> AppLanguage {
         let appLanguage = AppLanguage(context: context)
         appLanguage.languageCode = "en"
-        appLanguage.jsonFileName = "questions_en"
+        appLanguage.jsonFileName = "questions_swift_en"
+        appLanguage.programmingLanguage = "Swift"
         return appLanguage
     }
     
     static func setupPreviewData(in context: NSManagedObjectContext) {
+        // Clearing existing data before creating new data
+        let categoryFetchRequest: NSFetchRequest<NSFetchRequestResult> = Category.fetchRequest()
+        let categoryDeleteRequest = NSBatchDeleteRequest(fetchRequest: categoryFetchRequest)
+        let questionFetchRequest: NSFetchRequest<NSFetchRequestResult> = Question.fetchRequest()
+        let questionDeleteRequest = NSBatchDeleteRequest(fetchRequest: questionFetchRequest)
+        let appLanguageFetchRequest: NSFetchRequest<NSFetchRequestResult> = AppLanguage.fetchRequest()
+        let appLanguageDeleteRequest = NSBatchDeleteRequest(fetchRequest: appLanguageFetchRequest)
+        let testResultFetchRequest: NSFetchRequest<NSFetchRequestResult> = TestResult.fetchRequest()
+        let testResultDeleteRequest = NSBatchDeleteRequest(fetchRequest: testResultFetchRequest)
+        let questionResultFetchRequest: NSFetchRequest<NSFetchRequestResult> = QuestionResult.fetchRequest()
+        let questionResultDeleteRequest = NSBatchDeleteRequest(fetchRequest: questionResultFetchRequest)
+        
+        do {
+            try context.execute(categoryDeleteRequest)
+            try context.execute(questionDeleteRequest)
+            try context.execute(appLanguageDeleteRequest)
+            try context.execute(testResultDeleteRequest)
+            try context.execute(questionResultDeleteRequest)
+            try context.save()
+        } catch {
+            print("💾 Error clearing preview data: \(error) 💾")
+        }
+        
+        // Create new test data
         let category = createCategory(in: context)
         let question = createQuestion(in: context, category: category)
         let _ = createTestResult(in: context, question: question)

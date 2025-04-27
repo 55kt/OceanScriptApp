@@ -15,4 +15,5 @@ extension AppLanguage {
 
     @NSManaged public var languageCode: String
     @NSManaged public var jsonFileName: String
+    @NSManaged public var programmingLanguage: String
 }

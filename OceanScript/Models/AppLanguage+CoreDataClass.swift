@@ -11,7 +11,7 @@ import CoreData
 @objc(AppLanguage)
 public class AppLanguage: NSManagedObject, Identifiable, Codable {
     enum CodingKeys: String, CodingKey {
-        case languageCode, jsonFileName
+        case languageCode, jsonFileName, programmingLanguage
     }
     
     public required convenience init(from decoder: Decoder) throws {
@@ -24,11 +24,13 @@ public class AppLanguage: NSManagedObject, Identifiable, Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.languageCode = try container.decode(String.self, forKey: .languageCode)
         self.jsonFileName = try container.decode(String.self, forKey: .jsonFileName)
+        self.programmingLanguage = try container.decodeIfPresent(String.self, forKey: .programmingLanguage) ?? ""
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(languageCode, forKey: .languageCode)
         try container.encode(jsonFileName, forKey: .jsonFileName)
+        try container.encode(programmingLanguage, forKey: .programmingLanguage)
     }
 }

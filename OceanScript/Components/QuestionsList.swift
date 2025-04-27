@@ -2,7 +2,7 @@
 //  QuestionsListView.swift
 //  OceanScript
 //
-//  Created by Vlad on 26/4/25.
+//  Created by Vlad on 25/4/25.
 //
 
 import SwiftUI
@@ -42,11 +42,5 @@ struct QuestionsList: View {
 }
 
 #Preview {
-    let context = PersistenceController.preview.container.viewContext
-    PreviewPlaceholder.setupPreviewData(in: context)
-    let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-    let categories = try! context.fetch(fetchRequest)
-    let category = categories.first!
-    return QuestionsList(category: category)
-        .environment(\.managedObjectContext, context)
+    QuestionsList(category: .init())
 }

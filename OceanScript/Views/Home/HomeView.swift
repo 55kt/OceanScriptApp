@@ -17,35 +17,36 @@ struct HomeView: View {
     ) private var categories: FetchedResults<Category>
     
     var body: some View {
-        NavigationView {
-            VStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 20) {
-                        ForEach(categories) { category in
-                            NavigationLink(destination: QuestionsList(category: category)) {
-                                CategoryItem(categoryName: category.name, categoryIcon: category.icon)
-                            }
-                            .foregroundColor(.primary)
+        VStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    ForEach(categories) { category in
+                        NavigationLink(destination: QuestionsList(category: category)) {
+                            CategoryItem(categoryName: category.name, categoryIcon: category.icon)
                         }
+                        .foregroundColor(.primary)
                     }
-                    .padding(.horizontal)
                 }
-                .frame(height: 170)
-                
-                Spacer()
-                Text("Select a category to view questions")
-                    .font(.title3)
-                    .foregroundColor(.gray)
-                    .padding()
-                Spacer()
+                .padding(.horizontal)
             }
-            .navigationTitle("Categories")
-            .navigationBarTitleDisplayMode(.inline)
+            .frame(height: 170)
+            
+            Spacer()
+            Text("Select a category to view questions")
+                .font(.title3)
+                .foregroundColor(.gray)
+                .padding()
+            Spacer()
+        }
+        .navigationTitle("Categories")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            // Обновляем контекст при появлении представления
+            viewContext.refreshAllObjects()
         }
     }
 }
 
 #Preview {
     HomeView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

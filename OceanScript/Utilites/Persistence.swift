@@ -1,5 +1,5 @@
 //
-//  Persistence.swift
+//  PersistenceController.swift
 //  OceanScript
 //
 //  Created by Vlad on 25/4/25.
@@ -12,19 +12,17 @@ class PersistenceController {
 
     @MainActor
     static let preview: PersistenceController = {
+        print("🔍 Initializing PersistenceController.preview")
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        
-        PreviewPlaceholder.setupPreviewData(in: viewContext)
-        
         return result
     }()
 
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        // Register a custom Value Transformer
-        ArrayValueTransformer.register()
+        // Register a custom String Array Transformer for incorrectAnswers
+        StringArrayTransformer.register()
         
         container = NSPersistentContainer(name: "OceanScript")
         if inMemory {
@@ -34,13 +32,14 @@ class PersistenceController {
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
                 print("💾 Error loading persistent stores: \(error), \(error.userInfo) 💾")
+            } else {
+                print("🔍 Persistent stores loaded successfully")
             }
         }
         container.viewContext.automaticallyMergesChangesFromParent = true
         
         let context = container.viewContext
         setupInitialLanguage(into: context)
-        loadCategoriesAndQuestions(into: context)
     }
     
     private func setupInitialLanguage(into context: NSManagedObjectContext) {
@@ -52,20 +51,17 @@ class PersistenceController {
                 // Create an AppLanguage object with the default language
                 let defaultLanguage = AppLanguage(context: context)
                 defaultLanguage.languageCode = "en"
-                defaultLanguage.jsonFileName = "questions_en"
+                defaultLanguage.jsonFileName = "questions_swift_en"
+                defaultLanguage.programmingLanguage = ""
                 try context.save()
+                print("🔍 Initial AppLanguage setup completed")
             }
         } catch {
             print("💾 Error setting up initial language: \(error) 💾")
         }
     }
     
-    private func loadCategoriesAndQuestions(into context: NSManagedObjectContext) {
-        // Leave the stub for now since the JSON hasn't been added yet
-        // This method will load data from the JSON, but it's empty right now
+    func loadCategoriesAndQuestions(into context: NSManagedObjectContext) {
+        JSONManager.shared.loadCategoriesAndQuestions(into: context)
     }
-}
-
-struct CategoriesContainer: Codable {
-    let categories: [Category]
 }

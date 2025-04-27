@@ -3,6 +3,7 @@
     <entity name="AppLanguage" representedClassName="AppLanguage" syncable="YES">
         <attribute name="jsonFileName" attributeType="String"/>
         <attribute name="languageCode" attributeType="String"/>
+        <attribute name="programmingLanguage" attributeType="String"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="icon" attributeType="String"/>
@@ -15,7 +16,7 @@
         <attribute name="correctAnswer" attributeType="String"/>
         <attribute name="icon" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
-        <attribute name="incorrectAnswers" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="NSArray"/>
+        <attribute name="incorrectAnswersRaw" optional="YES" attributeType="Transformable" valueTransformerName="StringArrayTransformer" customClassName="NSArray"/>
         <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="questions" inverseEntity="Category"/>
