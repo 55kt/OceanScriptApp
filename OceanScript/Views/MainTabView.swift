@@ -27,5 +27,8 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    NavigationStack {
+        MainTabView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
 }

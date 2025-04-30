@@ -41,7 +41,6 @@ struct HomeView: View {
         .navigationTitle("Categories")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            // Обновляем контекст при появлении представления
             viewContext.refreshAllObjects()
         }
     }
@@ -49,4 +48,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

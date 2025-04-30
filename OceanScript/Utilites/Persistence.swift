@@ -12,9 +12,14 @@ class PersistenceController {
 
     @MainActor
     static let preview: PersistenceController = {
-        print("🔍 Initializing PersistenceController.preview")
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
+        result.loadCategoriesAndQuestions(into: viewContext)
+        do {
+            try viewContext.save()
+        } catch {
+            print("❌ Error saving preview context: \(error)")
+        }
         return result
     }()
 
@@ -51,7 +56,7 @@ class PersistenceController {
                 // Create an AppLanguage object with the default language
                 let defaultLanguage = AppLanguage(context: context)
                 defaultLanguage.languageCode = "en"
-                defaultLanguage.jsonFileName = "questions_swift_en"
+                defaultLanguage.jsonFileName = ""
                 defaultLanguage.programmingLanguage = ""
                 try context.save()
                 print("🔍 Initial AppLanguage setup completed")
