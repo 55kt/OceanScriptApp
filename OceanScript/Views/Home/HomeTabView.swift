@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct HomeView: View {
+struct HomeTabView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -40,13 +40,12 @@ struct HomeView: View {
         }
         .navigationTitle("Categories")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            viewContext.refreshAllObjects()
-        }
     }
 }
 
 #Preview {
-    HomeView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    NavigationStack {
+        HomeTabView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
 }

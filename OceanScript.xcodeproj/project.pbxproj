@@ -28,7 +28,7 @@
 		4B8F80D82DBD358B00512F5B /* QuestionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D72DBD358B00512F5B /* QuestionsList.swift */; };
 		4B8F80DA2DBD384000512F5B /* PreviewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */; };
 		4BB090192DBD4EF900142DF9 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090182DBD4EF900142DF9 /* MainTabView.swift */; };
-		4BB0901C2DBD50EB00142DF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0901B2DBD50EB00142DF9 /* HomeView.swift */; };
+		4BB0901C2DBD50EB00142DF9 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0901B2DBD50EB00142DF9 /* HomeTabView.swift */; };
 		4BB0901F2DBD581000142DF9 /* questions_swift_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BB0901E2DBD581000142DF9 /* questions_swift_en.json */; };
 		4BB090212DBD587000142DF9 /* questions_swift_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090202DBD587000142DF9 /* questions_swift_ru.json */; };
 		4BB090252DBD591100142DF9 /* questions_python_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090242DBD591100142DF9 /* questions_python_en.json */; };
@@ -36,6 +36,8 @@
 		4BB090292DBD5CD400142DF9 /* ProgrammingLanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090282DBD5CD400142DF9 /* ProgrammingLanguageSelectionView.swift */; };
 		4BB0902C2DBD5F6200142DF9 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0902B2DBD5F6200142DF9 /* JSONManager.swift */; };
 		4BB0903A2DBE379D00142DF9 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090392DBE379D00142DF9 /* StringArrayTransformer.swift */; };
+		4BB090572DC3EB9200142DF9 /* FavoritesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090562DC3EB9200142DF9 /* FavoritesTabView.swift */; };
+		4BB0905A2DC3EC0100142DF9 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090592DC3EC0100142DF9 /* FavoritesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +82,7 @@
 		4B8F80D72DBD358B00512F5B /* QuestionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsList.swift; sourceTree = "<group>"; };
 		4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPlaceholder.swift; sourceTree = "<group>"; };
 		4BB090182DBD4EF900142DF9 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		4BB0901B2DBD50EB00142DF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4BB0901B2DBD50EB00142DF9 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		4BB0901E2DBD581000142DF9 /* questions_swift_en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions_swift_en.json; sourceTree = "<group>"; };
 		4BB090202DBD587000142DF9 /* questions_swift_ru.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions_swift_ru.json; sourceTree = "<group>"; };
 		4BB090242DBD591100142DF9 /* questions_python_en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions_python_en.json; sourceTree = "<group>"; };
@@ -88,6 +90,8 @@
 		4BB090282DBD5CD400142DF9 /* ProgrammingLanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingLanguageSelectionView.swift; sourceTree = "<group>"; };
 		4BB0902B2DBD5F6200142DF9 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
 		4BB090392DBE379D00142DF9 /* StringArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringArrayTransformer.swift; sourceTree = "<group>"; };
+		4BB090562DC3EB9200142DF9 /* FavoritesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTabView.swift; sourceTree = "<group>"; };
+		4BB090592DC3EC0100142DF9 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -154,6 +158,7 @@
 				4BB090152DBD4E3100142DF9 /* App */,
 				4B8F80B52DBC015200512F5B /* Models */,
 				4BB090162DBD4E4D00142DF9 /* Views */,
+				4BB090582DC3EBE900142DF9 /* ViewModels */,
 				4B8F80D02DBD251600512F5B /* Components */,
 				4BB0902A2DBD5F4700142DF9 /* Managers */,
 				4BB090172DBD4E7300142DF9 /* Utilites */,
@@ -225,6 +230,7 @@
 			children = (
 				4BB090182DBD4EF900142DF9 /* MainTabView.swift */,
 				4BB0901A2DBD50BE00142DF9 /* Home */,
+				4BB090552DC3EB7800142DF9 /* Favorites */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,7 +246,7 @@
 		4BB0901A2DBD50BE00142DF9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				4BB0901B2DBD50EB00142DF9 /* HomeView.swift */,
+				4BB0901B2DBD50EB00142DF9 /* HomeTabView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -278,6 +284,22 @@
 				4BB0902B2DBD5F6200142DF9 /* JSONManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		4BB090552DC3EB7800142DF9 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				4BB090562DC3EB9200142DF9 /* FavoritesTabView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		4BB090582DC3EBE900142DF9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4BB090592DC3EC0100142DF9 /* FavoritesViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +460,7 @@
 				4BB090292DBD5CD400142DF9 /* ProgrammingLanguageSelectionView.swift in Sources */,
 				4B8F80BE2DBC06D200512F5B /* Category+CoreDataClass.swift in Sources */,
 				4B8F80C62DBC0B2C00512F5B /* QuestionResult+CoreDataClass.swift in Sources */,
+				4BB0905A2DC3EC0100142DF9 /* FavoritesViewModel.swift in Sources */,
 				4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */,
 				4B8F80C42DBC091100512F5B /* Question+CoreDataProperties.swift in Sources */,
 				4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */,
@@ -445,10 +468,11 @@
 				4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */,
 				4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */,
 				4B8F80B72DBC020300512F5B /* AppLanguage+CoreDataClass.swift in Sources */,
+				4BB090572DC3EB9200142DF9 /* FavoritesTabView.swift in Sources */,
 				4B8F80B92DBC023400512F5B /* AppLanguage+CoreDataProperties.swift in Sources */,
 				4B8F80C22DBC08E700512F5B /* Question+CoreDataClass.swift in Sources */,
 				4B8F80C82DBC0B5B00512F5B /* QuestionResult+CoreDataProperties.swift in Sources */,
-				4BB0901C2DBD50EB00142DF9 /* HomeView.swift in Sources */,
+				4BB0901C2DBD50EB00142DF9 /* HomeTabView.swift in Sources */,
 				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

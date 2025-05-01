@@ -15,11 +15,11 @@ struct MainTabView: View {
         NavigationStack {
             TabView {
                 Tab("Home", systemImage: "house") {
-                    HomeView()
+                    HomeTabView()
                 }// Home
                 
                 Tab("Favorites", systemImage: "heart") {
-                    //
+                    FavoritesTabView()
                 }// Favorites
             }
         }
