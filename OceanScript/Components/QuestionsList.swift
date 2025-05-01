@@ -21,7 +21,7 @@ struct QuestionsList: View {
     var body: some View {
         List {
             if let questions = category.questions?.allObjects as? [Question], !questions.isEmpty {
-                ForEach(questions) { question in
+                ForEach(questions.sorted(by: { $0.name < $1.name })) { question in
                     NavigationLink(destination: QuestionDetailView(question: question)) {
                         QuestionListItem(
                             questionIcon: question.icon,
@@ -39,8 +39,4 @@ struct QuestionsList: View {
         .navigationTitle(category.name)
         .navigationBarTitleDisplayMode(.inline)
     }
-}
-
-#Preview {
-    QuestionsList(category: .init())
 }
