@@ -8,19 +8,50 @@
 import SwiftUI
 
 struct MainTabView: View {
-    
     @Environment(\.managedObjectContext) private var viewContext
     
+    @State private var testPath = NavigationPath() // Путь навигации для вкладки Test
+    
     var body: some View {
-        NavigationStack {
-            TabView {
-                Tab("Home", systemImage: "house") {
+        TabView {
+            // Вкладка Home
+            Tab("Home", systemImage: "house") {
+                NavigationStack {
                     HomeTabView()
-                }// Home
-                
-                Tab("Favorites", systemImage: "heart") {
+                        .environment(\.managedObjectContext, viewContext)
+                }
+            }
+            
+            // Вкладка Favorites
+            Tab("Favorites", systemImage: "heart") {
+                NavigationStack {
                     FavoritesTabView()
-                }// Favorites
+                        .environment(\.managedObjectContext, viewContext)
+                }
+            }
+            
+            // Вкладка Test
+            Tab("Test", systemImage: "book") {
+                NavigationStack(path: $testPath) {
+                    StartTestView(testPath: $testPath)
+                        .environment(\.managedObjectContext, viewContext)
+                        .navigationDestination(for: TestNavigation.self) { destination in
+                            switch destination {
+                            case .test(let numberOfQuestions):
+                                TestView(numberOfQuestions: numberOfQuestions, testPath: $testPath)
+                                    .environment(\.managedObjectContext, viewContext)
+                            case .result(let testTime, let totalQuestions, let correctAnswers, let incorrectAnswers, let testResults):
+                                TestResultView(
+                                    testTime: testTime,
+                                    totalQuestions: totalQuestions,
+                                    correctAnswers: correctAnswers,
+                                    incorrectAnswers: incorrectAnswers,
+                                    testResults: testResults,
+                                    testPath: $testPath
+                                )
+                            }
+                        }
+                }
             }
         }
     }
