@@ -19,17 +19,14 @@ struct TestResultView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            // Заголовок
             Text("Test Results")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
-            // Общее время
             Text("Time: \(formatTime(testTime))")
                 .font(.title2)
                 .foregroundColor(.gray)
             
-            // Статистика
             VStack(spacing: 10) {
                 Text("Total Questions: \(totalQuestions)")
                     .font(.title3)
@@ -41,7 +38,6 @@ struct TestResultView: View {
                     .foregroundColor(.red)
             }
             
-            // Похвала
             let percentage = totalQuestions > 0 ? Double(correctAnswers) / Double(totalQuestions) * 100 : 0
             Text(TestResultMessage.message(forCorrectPercentage: percentage).rawValue)
                 .font(.title2)
@@ -50,7 +46,6 @@ struct TestResultView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            // Кнопка для просмотра списка вопросов
             Button(action: {
                 showQuestionList = true
             }) {
@@ -64,9 +59,7 @@ struct TestResultView: View {
                     .padding(.horizontal)
             }
             
-            // Кнопка для возврата в StartTestView
             Button(action: {
-                // Очищаем стек навигации и возвращаемся в StartTestView
                 testPath.removeLast(testPath.count)
             }) {
                 Text("Try Again")
@@ -106,7 +99,6 @@ struct TestResultView: View {
         }
     }
     
-    // Форматирует время в MM:SS
     private func formatTime(_ time: TimeInterval) -> String {
         let minutes = Int(time) / 60
         let seconds = Int(time) % 60

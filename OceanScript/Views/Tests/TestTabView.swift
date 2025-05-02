@@ -1,5 +1,5 @@
 //
-//  StartTestView.swift
+//  TestTabView.swift
 //  OceanScript
 //
 //  Created by Vlad on 2/5/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StartTestView: View {
+struct TestTabView: View {
     @State private var numberOfQuestions: Int = 10
     @Binding var testPath: NavigationPath
     
@@ -54,6 +54,6 @@ struct StartTestView: View {
 
 #Preview {
     NavigationStack {
-        StartTestView(testPath: .constant(NavigationPath()))
+        TestTabView(testPath: .constant(NavigationPath()))
     }
 }

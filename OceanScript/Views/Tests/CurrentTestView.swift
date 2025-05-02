@@ -1,5 +1,5 @@
 //
-//  TestView.swift
+//  CurrentTestView.swift
 //  OceanScript
 //
 //  Created by Vlad on 2/5/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TestView: View {
+struct CurrentTestView: View {
     @StateObject private var viewModel: TestViewModel
     @Environment(\.dismiss) private var dismiss
     @Binding var testPath: NavigationPath
@@ -28,15 +28,16 @@ struct TestView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            // Таймер
+            
+            // MARK: - Timer
             TimerView(formattedTime: viewModel.formattedTime())
             
-            // Прогресс
+            // MARK: - Progress
             Text("Question \(viewModel.currentQuestionIndex + 1)/\(viewModel.testQuestions.count)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
-            // Текущий вопрос
+            // MARK: - Current Question
             if let question = viewModel.getCurrentQuestion() {
                 VStack(spacing: 10) {
                     Image(systemName: question.icon)
@@ -52,7 +53,7 @@ struct TestView: View {
                         .padding(.horizontal)
                 }
                 
-                // Варианты ответа
+                // MARK: - Answer Options
                 ForEach(viewModel.answerOptions, id: \.text) { option in
                     AnswerButtonView(
                         option: option,
@@ -62,7 +63,7 @@ struct TestView: View {
                             viewModel.selectAnswer(option)
                             isAnswerSelected = true
                             
-                            // Задержка перед переходом к следующему вопросу
+                            // MARK: - Delay before moving to the next question
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if viewModel.moveToNextQuestion() {
                                     isAnswerSelected = false
@@ -88,12 +89,12 @@ struct TestView: View {
                     .font(.caption)
                     .foregroundColor(.gray)
             }
-            
             Spacer()
         }
         .padding(.vertical)
         .navigationTitle("Test")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
@@ -125,7 +126,7 @@ struct TestView: View {
 
 #Preview {
     NavigationStack {
-        TestView(numberOfQuestions: 10, testPath: .constant(NavigationPath()))
+        CurrentTestView(numberOfQuestions: 10, testPath: .constant(NavigationPath()))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

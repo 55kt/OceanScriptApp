@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 class TestViewModel: ObservableObject {
+    
     // MARK: - Published Properties
     @Published var testQuestions: [Question] = []
     @Published var currentQuestionIndex: Int = 0
@@ -31,9 +32,8 @@ class TestViewModel: ObservableObject {
     
     // MARK: - Public Methods
     
-    /// Запускает тест с заданным количеством вопросов
+    /// Runs a test with a given number of questions
     func startTest(numberOfQuestions: Int) {
-        // Очищаем предыдущее состояние
         resetTest()
         
         // Загружаем вопросы

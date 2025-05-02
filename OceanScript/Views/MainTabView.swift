@@ -33,12 +33,12 @@ struct MainTabView: View {
             // Вкладка Test
             Tab("Test", systemImage: "book") {
                 NavigationStack(path: $testPath) {
-                    StartTestView(testPath: $testPath)
+                    TestTabView(testPath: $testPath)
                         .environment(\.managedObjectContext, viewContext)
                         .navigationDestination(for: TestNavigation.self) { destination in
                             switch destination {
                             case .test(let numberOfQuestions):
-                                TestView(numberOfQuestions: numberOfQuestions, testPath: $testPath)
+                                CurrentTestView(numberOfQuestions: numberOfQuestions, testPath: $testPath)
                                     .environment(\.managedObjectContext, viewContext)
                             case .result(let testTime, let totalQuestions, let correctAnswers, let incorrectAnswers, let testResults):
                                 TestResultView(

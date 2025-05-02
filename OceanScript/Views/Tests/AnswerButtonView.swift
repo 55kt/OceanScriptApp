@@ -22,7 +22,6 @@ struct AnswerButtonView: View {
                 .frame(maxWidth: .infinity)
                 .background(buttonColor)
                 .cornerRadius(10)
-                // Добавляем эффект "выпуклости" и обводку для выбранного ответа
                 .shadow(
                     color: isSelected ? Color.black.opacity(0.3) : Color.clear,
                     radius: 5,
@@ -41,13 +40,11 @@ struct AnswerButtonView: View {
         .disabled(isAnswerSelected)
     }
     
-    // Определяет цвет кнопки в зависимости от состояния
     private var buttonColor: Color {
         guard isAnswerSelected else {
             return .blue
         }
         
-        // После выбора ответа: зелёный для правильного, красный для всех неправильных
         return option.isCorrect ? .green : .red
     }
 }

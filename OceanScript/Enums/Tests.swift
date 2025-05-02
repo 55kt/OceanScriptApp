@@ -11,7 +11,6 @@ enum AnswerOption: Equatable {
     case correct(String)
     case incorrect(String)
     
-    // Извлекает текст ответа
     var text: String {
         switch self {
         case .correct(let text), .incorrect(let text):
@@ -19,7 +18,6 @@ enum AnswerOption: Equatable {
         }
     }
     
-    // Проверяет, является ли вариант правильным
     var isCorrect: Bool {
         switch self {
         case .correct:
@@ -36,7 +34,6 @@ enum TestResultMessage: String {
     case average = "Nice effort! Try again to improve! 😊"
     case tryAgain = "Try Again! You'll get it next time! 💪"
     
-    // Возвращает сообщение в зависимости от процента правильных ответов
     static func message(forCorrectPercentage percentage: Double) -> TestResultMessage {
         switch percentage {
         case 90...100:
@@ -49,4 +46,9 @@ enum TestResultMessage: String {
             return .tryAgain
         }
     }
+}
+
+enum TestNavigation: Hashable {
+    case test(numberOfQuestions: Int)
+    case result(testTime: TimeInterval, totalQuestions: Int, correctAnswers: Int, incorrectAnswers: Int, testResults: [QuestionResult])
 }

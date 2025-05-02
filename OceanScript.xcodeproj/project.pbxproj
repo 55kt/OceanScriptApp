@@ -38,12 +38,11 @@
 		4BB0903A2DBE379D00142DF9 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090392DBE379D00142DF9 /* StringArrayTransformer.swift */; };
 		4BB090572DC3EB9200142DF9 /* FavoritesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090562DC3EB9200142DF9 /* FavoritesTabView.swift */; };
 		4BB0905A2DC3EC0100142DF9 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090592DC3EC0100142DF9 /* FavoritesViewModel.swift */; };
-		4BB0905D2DC51EA100142DF9 /* StartTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0905C2DC51EA100142DF9 /* StartTestView.swift */; };
+		4BB0905D2DC51EA100142DF9 /* TestTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0905C2DC51EA100142DF9 /* TestTabView.swift */; };
 		4BB0905F2DC51F2700142DF9 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0905E2DC51F2700142DF9 /* TestViewModel.swift */; };
 		4BB090622DC51FC100142DF9 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090612DC51FC100142DF9 /* Tests.swift */; };
-		4BB090642DC51FF300142DF9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090632DC51FF300142DF9 /* TestView.swift */; };
+		4BB090642DC51FF300142DF9 /* CurrentTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090632DC51FF300142DF9 /* CurrentTestView.swift */; };
 		4BB090662DC520A400142DF9 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090652DC520A400142DF9 /* TestResultView.swift */; };
-		4BB090682DC5283800142DF9 /* TestNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090672DC5283800142DF9 /* TestNavigation.swift */; };
 		4BB0906A2DC52B2900142DF9 /* AnswerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090692DC52B2900142DF9 /* AnswerButtonView.swift */; };
 		4BB0906C2DC52C2100142DF9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0906B2DC52C2100142DF9 /* TimerView.swift */; };
 /* End PBXBuildFile section */
@@ -100,12 +99,11 @@
 		4BB090392DBE379D00142DF9 /* StringArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringArrayTransformer.swift; sourceTree = "<group>"; };
 		4BB090562DC3EB9200142DF9 /* FavoritesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTabView.swift; sourceTree = "<group>"; };
 		4BB090592DC3EC0100142DF9 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
-		4BB0905C2DC51EA100142DF9 /* StartTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTestView.swift; sourceTree = "<group>"; };
+		4BB0905C2DC51EA100142DF9 /* TestTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabView.swift; sourceTree = "<group>"; };
 		4BB0905E2DC51F2700142DF9 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		4BB090612DC51FC100142DF9 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		4BB090632DC51FF300142DF9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		4BB090632DC51FF300142DF9 /* CurrentTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTestView.swift; sourceTree = "<group>"; };
 		4BB090652DC520A400142DF9 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
-		4BB090672DC5283800142DF9 /* TestNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigation.swift; sourceTree = "<group>"; };
 		4BB090692DC52B2900142DF9 /* AnswerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButtonView.swift; sourceTree = "<group>"; };
 		4BB0906B2DC52C2100142DF9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,8 +322,8 @@
 		4BB0905B2DC51E6200142DF9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4BB0905C2DC51EA100142DF9 /* StartTestView.swift */,
-				4BB090632DC51FF300142DF9 /* TestView.swift */,
+				4BB0905C2DC51EA100142DF9 /* TestTabView.swift */,
+				4BB090632DC51FF300142DF9 /* CurrentTestView.swift */,
 				4BB090652DC520A400142DF9 /* TestResultView.swift */,
 				4BB090692DC52B2900142DF9 /* AnswerButtonView.swift */,
 				4BB0906B2DC52C2100142DF9 /* TimerView.swift */,
@@ -337,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				4BB090612DC51FC100142DF9 /* Tests.swift */,
-				4BB090672DC5283800142DF9 /* TestNavigation.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -495,7 +492,7 @@
 				4B8F80CC2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift in Sources */,
 				4B8F80CA2DBC0BCC00512F5B /* TestResult+CoreDataClass.swift in Sources */,
 				4B8F80D42DBD266000512F5B /* QuestionListItem.swift in Sources */,
-				4BB090642DC51FF300142DF9 /* TestView.swift in Sources */,
+				4BB090642DC51FF300142DF9 /* CurrentTestView.swift in Sources */,
 				4B8F80BC2DBC038C00512F5B /* CodingUserInfoKey+Extensions.swift in Sources */,
 				4BB090192DBD4EF900142DF9 /* MainTabView.swift in Sources */,
 				4B8F80C02DBC071100512F5B /* Category+CoreDataProperties.swift in Sources */,
@@ -510,7 +507,7 @@
 				4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */,
 				4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */,
 				4BB090662DC520A400142DF9 /* TestResultView.swift in Sources */,
-				4BB0905D2DC51EA100142DF9 /* StartTestView.swift in Sources */,
+				4BB0905D2DC51EA100142DF9 /* TestTabView.swift in Sources */,
 				4BB090622DC51FC100142DF9 /* Tests.swift in Sources */,
 				4BB0906C2DC52C2100142DF9 /* TimerView.swift in Sources */,
 				4B8F80B72DBC020300512F5B /* AppLanguage+CoreDataClass.swift in Sources */,
@@ -521,7 +518,6 @@
 				4BB0901C2DBD50EB00142DF9 /* HomeTabView.swift in Sources */,
 				4BB0905F2DC51F2700142DF9 /* TestViewModel.swift in Sources */,
 				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
-				4BB090682DC5283800142DF9 /* TestNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
