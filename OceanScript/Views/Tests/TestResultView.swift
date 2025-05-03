@@ -81,21 +81,8 @@ struct TestResultView: View {
             print("🔍 TestResultView appeared with testTime: \(testTime)")
         }
         .sheet(isPresented: $showQuestionList) {
-            List {
-                ForEach(testResults, id: \.self) { result in
-                    if let question = result.question {
-                        HStack {
-                            Text(question.name)
-                                .font(.body)
-                            Spacer()
-                            Image(systemName: result.isAnsweredCorrectly ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                .foregroundColor(result.isAnsweredCorrectly ? .green : .red)
-                        }
-                    }
-                }
-            }
-            .padding()
-            .presentationDetents([.medium, .large])
+            AnsweredQuestionList(testResults: testResults)
+                .presentationDetents([.medium, .large])
         }
     }
     

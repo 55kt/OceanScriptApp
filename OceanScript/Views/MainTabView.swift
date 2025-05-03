@@ -53,6 +53,13 @@ struct MainTabView: View {
                         }
                 }
             }
+            
+            Tab("Search", systemImage: "magnifyingglass") {
+                NavigationStack {
+                    SearchTabView()
+                        .environment(\.managedObjectContext, viewContext)
+                }
+            }
         }
     }
 }
