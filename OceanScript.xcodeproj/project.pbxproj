@@ -47,6 +47,10 @@
 		4BB0906C2DC52C2100142DF9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0906B2DC52C2100142DF9 /* TimerView.swift */; };
 		4BB0906E2DC65FA500142DF9 /* AnsweredQuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0906D2DC65FA500142DF9 /* AnsweredQuestionList.swift */; };
 		4BB090712DC661E100142DF9 /* SearchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090702DC661E100142DF9 /* SearchTabView.swift */; };
+		4BB090732DC666CF00142DF9 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090722DC666CF00142DF9 /* ThemeManager.swift */; };
+		4BB090762DC6670F00142DF9 /* AppearanceSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */; };
+		4BB090782DC6674400142DF9 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090772DC6674400142DF9 /* SettingsTabView.swift */; };
+		4BB0907A2DC6689200142DF9 /* ThemeModeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090792DC6689200142DF9 /* ThemeModeButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +114,10 @@
 		4BB0906B2DC52C2100142DF9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		4BB0906D2DC65FA500142DF9 /* AnsweredQuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnsweredQuestionList.swift; sourceTree = "<group>"; };
 		4BB090702DC661E100142DF9 /* SearchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabView.swift; sourceTree = "<group>"; };
+		4BB090722DC666CF00142DF9 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSectionView.swift; sourceTree = "<group>"; };
+		4BB090772DC6674400142DF9 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		4BB090792DC6689200142DF9 /* ThemeModeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModeButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -252,6 +260,7 @@
 				4BB090552DC3EB7800142DF9 /* Favorites */,
 				4BB0905B2DC51E6200142DF9 /* Tests */,
 				4BB0906F2DC661CD00142DF9 /* Search */,
+				4BB090742DC666F400142DF9 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB0902B2DBD5F6200142DF9 /* JSONManager.swift */,
+				4BB090722DC666CF00142DF9 /* ThemeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -351,6 +361,16 @@
 				4BB090702DC661E100142DF9 /* SearchTabView.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		4BB090742DC666F400142DF9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */,
+				4BB090772DC6674400142DF9 /* SettingsTabView.swift */,
+				4BB090792DC6689200142DF9 /* ThemeModeButtonView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -522,6 +542,8 @@
 				4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */,
 				4BB090662DC520A400142DF9 /* TestResultView.swift in Sources */,
 				4BB0906E2DC65FA500142DF9 /* AnsweredQuestionList.swift in Sources */,
+				4BB0907A2DC6689200142DF9 /* ThemeModeButtonView.swift in Sources */,
+				4BB090732DC666CF00142DF9 /* ThemeManager.swift in Sources */,
 				4BB0905D2DC51EA100142DF9 /* TestTabView.swift in Sources */,
 				4BB090622DC51FC100142DF9 /* Tests.swift in Sources */,
 				4BB0906C2DC52C2100142DF9 /* TimerView.swift in Sources */,
@@ -534,6 +556,8 @@
 				4BB0901C2DBD50EB00142DF9 /* HomeTabView.swift in Sources */,
 				4BB0905F2DC51F2700142DF9 /* TestViewModel.swift in Sources */,
 				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
+				4BB090762DC6670F00142DF9 /* AppearanceSectionView.swift in Sources */,
+				4BB090782DC6674400142DF9 /* SettingsTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

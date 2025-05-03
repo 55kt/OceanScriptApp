@@ -11,6 +11,7 @@ import CoreData
 @main
 struct OceanScriptApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject private var themeManager = ThemeManager()
     
     @State private var hasSelectedLanguage: Bool
     
@@ -33,13 +34,18 @@ struct OceanScriptApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if hasSelectedLanguage {
-                MainTabView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            } else {
-                ProgrammingLanguageSelectionView(hasSelectedLanguage: $hasSelectedLanguage)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            Group {
+                if hasSelectedLanguage {
+                    MainTabView()
+                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                        .environmentObject(themeManager)
+                } else {
+                    ProgrammingLanguageSelectionView(hasSelectedLanguage: $hasSelectedLanguage)
+                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                        .environmentObject(themeManager)
+                }
             }
+            .preferredColorScheme(themeManager.themeMode.colorScheme)
         }
     }
 }

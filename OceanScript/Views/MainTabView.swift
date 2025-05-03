@@ -10,11 +10,10 @@ import SwiftUI
 struct MainTabView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var testPath = NavigationPath() // Путь навигации для вкладки Test
+    @State private var testPath = NavigationPath()
     
     var body: some View {
         TabView {
-            // Вкладка Home
             Tab("Home", systemImage: "house") {
                 NavigationStack {
                     HomeTabView()
@@ -22,7 +21,6 @@ struct MainTabView: View {
                 }
             }
             
-            // Вкладка Favorites
             Tab("Favorites", systemImage: "heart") {
                 NavigationStack {
                     FavoritesTabView()
@@ -30,7 +28,6 @@ struct MainTabView: View {
                 }
             }
             
-            // Вкладка Test
             Tab("Test", systemImage: "book") {
                 NavigationStack(path: $testPath) {
                     TestTabView(testPath: $testPath)
@@ -57,6 +54,13 @@ struct MainTabView: View {
             Tab("Search", systemImage: "magnifyingglass") {
                 NavigationStack {
                     SearchTabView()
+                        .environment(\.managedObjectContext, viewContext)
+                }
+            }
+            
+            Tab("Settings", systemImage: "gearshape") {
+                NavigationStack {
+                    SettingsTabView()
                         .environment(\.managedObjectContext, viewContext)
                 }
             }
