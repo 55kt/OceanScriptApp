@@ -14,6 +14,22 @@ struct SettingsTabView: View {
         NavigationStack {
             Form {
                 AppearanceSectionView()
+                
+                Section(header: Text("Language Selection")) {
+                    NavigationLink {
+                        LanguageSelectionView()
+                    } label : {
+                        HStack {
+                            Text("Current Language")
+                                .font(.headline)
+                            
+                            Spacer()
+                            
+                            Text("English")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)

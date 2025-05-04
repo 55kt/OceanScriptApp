@@ -51,6 +51,7 @@
 		4BB090762DC6670F00142DF9 /* AppearanceSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */; };
 		4BB090782DC6674400142DF9 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090772DC6674400142DF9 /* SettingsTabView.swift */; };
 		4BB0907A2DC6689200142DF9 /* ThemeModeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090792DC6689200142DF9 /* ThemeModeButtonView.swift */; };
+		4BB0909A2DC7BA0B00142DF9 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090992DC7BA0B00142DF9 /* LanguageSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSectionView.swift; sourceTree = "<group>"; };
 		4BB090772DC6674400142DF9 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
 		4BB090792DC6689200142DF9 /* ThemeModeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModeButtonView.swift; sourceTree = "<group>"; };
+		4BB090992DC7BA0B00142DF9 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -366,9 +368,10 @@
 		4BB090742DC666F400142DF9 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */,
 				4BB090772DC6674400142DF9 /* SettingsTabView.swift */,
+				4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */,
 				4BB090792DC6689200142DF9 /* ThemeModeButtonView.swift */,
+				4BB090992DC7BA0B00142DF9 /* LanguageSelectionView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				4B8F80D82DBD358B00512F5B /* QuestionsList.swift in Sources */,
 				4BB0903A2DBE379D00142DF9 /* StringArrayTransformer.swift in Sources */,
 				4BB0902C2DBD5F6200142DF9 /* JSONManager.swift in Sources */,
+				4BB0909A2DC7BA0B00142DF9 /* LanguageSelectionView.swift in Sources */,
 				4BB0906A2DC52B2900142DF9 /* AnswerButtonView.swift in Sources */,
 				4B8F80CC2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift in Sources */,
 				4B8F80CA2DBC0BCC00512F5B /* TestResult+CoreDataClass.swift in Sources */,
