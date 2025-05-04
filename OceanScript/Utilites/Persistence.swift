@@ -67,6 +67,14 @@ class PersistenceController: ObservableObject {
         return Locale(identifier: currentLanguage)
     }
     
+    func hasSelectedProgrammingLanguage() -> Bool {
+        let context = container.viewContext
+        guard let appLanguage = fetchOrCreateAppLanguage(from: context, errorMessage: "checking programming language selection") else {
+            return false
+        }
+        return !appLanguage.programmingLanguage.isEmpty
+    }
+    
     private func fetchLanguage(from context: NSManagedObjectContext) -> String? {
         guard let appLanguage = fetchOrCreateAppLanguage(from: context, errorMessage: "fetching language") else {
             return nil
