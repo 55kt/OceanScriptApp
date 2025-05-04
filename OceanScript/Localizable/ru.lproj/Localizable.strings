@@ -6,22 +6,68 @@
   
 */
 
-/* SettingsTabView */
-"Settings" = "Настройки";
-"Language Selection" = "Выбор языка";
-"Current Language" = "Текущий язык";
-
-/* LanguageSelectionView */
-"INTERFACE LANGUAGE" = "Язык интерфейса";
-"Language Selection" = "Выбор языка";
-
 /* MainTabView */
 "Home" = "Главная";
 "Favorites" = "Избранное";
 "Test" = "Тест";
 "Search" = "Поиск";
+"Settings" = "Настройки";
 
-/* ProgrammingLanguageSelectionView */
-"Select Programming Language" = "Выберите язык программирования";
-"Swift" = "Swift";
-"Python" = "Python";
+/* HomeTabView */
+"Select a category to view questions" = "Выберите категорию для просмотра вопросов";
+"Categories" = "Категории";
+
+/* FavoritesTabView */
+"No favorite questions yet" = "Пока нет избранных вопросов";
+"Favorites" = "Избранное";
+
+/* TestTabView */
+"Start a New Test" = "Начать новый тест";
+"Select the number of questions for your test" = "Выберите количество вопросов для теста";
+"Number of Questions" = "Количество вопросов";
+"questions" = "вопросов";
+"Start Test" = "Начать тест";
+
+/* CurrentTestView */
+"Question %lld/%lld" = "Вопрос %lld/%lld";
+"Loading question..." = "Загрузка вопроса...";
+"Test" = "Тест";
+"Stop Test?" = "Остановить тест?";
+"Cancel" = "Отмена";
+"Stop" = "Остановить";
+"All data will be lost. Are you sure?" = "Все данные будут потеряны. Вы уверены?";
+
+/* TimerView */
+"Time: %@" = "Время: %@";
+
+/* TestResultView */
+"Test Results" = "Результаты теста";
+"Time: %@" = "Время: %@";
+"Total Questions: %lld" = "Всего вопросов: %lld";
+"Correct Answers: %lld" = "Правильных ответов: %lld";
+"Incorrect Answers: %lld" = "Неправильных ответов: %lld";
+"View Question List" = "Посмотреть список вопросов";
+"Try Again" = "Попробовать снова";
+
+/* TestResultMessage */
+"Excellent! You're a pro! 🚀" = "Отлично! Ты профи! 🚀";
+"Good Job! Keep it up! 👍" = "Хорошая работа! Продолжай в том же духе! 👍";
+"Nice effort! Try again to improve! 😊" = "Хорошая попытка! Попробуй снова, чтобы улучшить результат! 😊";
+"Try Again! You'll get it next time! 💪" = "Попробуй снова! В следующий раз получится! 💪";
+
+/* SearchTabView */
+"Find Your Question" = "Найдите свой вопрос";
+"Search Questions" = "Поиск вопросов";
+"Search for a question" = "Искать вопрос";
+
+/* AppearanceSectionView */
+"Appearance" = "Внешний вид";
+
+/* SettingsTabView */
+"Language Selection" = "Выбор языка";
+"Current Language" = "Текущий язык";
+"Settings" = "Настройки";
+
+/* LanguageSelectionView */
+"INTERFACE LANGUAGE" = "Язык интерфейса";
+"Language Selection" = "Выбор языка";

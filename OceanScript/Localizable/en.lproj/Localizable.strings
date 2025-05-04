@@ -6,22 +6,68 @@
   
 */
 
-/* SettingsTabView */
-"Settings" = "Settings";
-"Language Selection" = "Language Selection";
-"Current Language" = "Current Language";
-
-/* LanguageSelectionView */
-"INTERFACE LANGUAGE" = "Interface Language";
-"Language Selection" = "Language Selection";
-
 /* MainTabView */
 "Home" = "Home";
 "Favorites" = "Favorites";
 "Test" = "Test";
 "Search" = "Search";
+"Settings" = "Settings";
 
-/* ProgrammingLanguageSelectionView */
-"Select Programming Language" = "Select Programming Language";
-"Swift" = "Swift";
-"Python" = "Python";
+/* HomeTabView */
+"Select a category to view questions" = "Select a category to view questions";
+"Categories" = "Categories";
+
+/* FavoritesTabView */
+"No favorite questions yet" = "No favorite questions yet";
+"Favorites" = "Favorites";
+
+/* TestTabView */
+"Start a New Test" = "Start a New Test";
+"Select the number of questions for your test" = "Select the number of questions for your test";
+"Number of Questions" = "Number of Questions";
+"questions" = "questions";
+"Start Test" = "Start Test";
+
+/* CurrentTestView */
+"Question %lld/%lld" = "Question %lld/%lld";
+"Loading question..." = "Loading question...";
+"Test" = "Test";
+"Stop Test?" = "Stop Test?";
+"Cancel" = "Cancel";
+"Stop" = "Stop";
+"All data will be lost. Are you sure?" = "All data will be lost. Are you sure?";
+
+/* TimerView */
+"Time: %@" = "Time: %@";
+
+/* TestResultView */
+"Test Results" = "Test Results";
+"Time: %@" = "Time: %@";
+"Total Questions: %lld" = "Total Questions: %lld";
+"Correct Answers: %lld" = "Correct Answers: %lld";
+"Incorrect Answers: %lld" = "Incorrect Answers: %lld";
+"View Question List" = "View Question List";
+"Try Again" = "Try Again";
+
+/* TestResultMessage */
+"Excellent! You're a pro! 🚀" = "Excellent! You're a pro! 🚀";
+"Good Job! Keep it up! 👍" = "Good Job! Keep it up! 👍";
+"Nice effort! Try again to improve! 😊" = "Nice effort! Try again to improve! 😊";
+"Try Again! You'll get it next time! 💪" = "Try Again! You'll get it next time! 💪";
+
+/* SearchTabView */
+"Find Your Question" = "Find Your Question";
+"Search Questions" = "Search Questions";
+"Search for a question" = "Search for a question";
+
+/* AppearanceSectionView */
+"Appearance" = "Appearance";
+
+/* SettingsTabView */
+"Language Selection" = "Language Selection";
+"Current Language" = "Current Language";
+"Settings" = "Settings";
+
+/* LanguageSelectionView */
+"INTERFACE LANGUAGE" = "Interface Language";
+"Language Selection" = "Language Selection";
