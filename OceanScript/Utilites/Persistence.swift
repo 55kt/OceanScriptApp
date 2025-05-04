@@ -111,7 +111,8 @@ class PersistenceController: ObservableObject {
                 return appLanguage
             } else {
                 let newLanguage = AppLanguage(context: context)
-                newLanguage.languageCode = "en"
+                let initialLanguage = defaultLanguage() // Use device language if supported
+                newLanguage.languageCode = initialLanguage
                 newLanguage.jsonFileName = ""
                 newLanguage.programmingLanguage = ""
                 try context.save()
