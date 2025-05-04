@@ -8,29 +8,45 @@
 import SwiftUI
 
 struct LanguageSelectionView: View {
-    
+    // MARK: - Properties
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var persistenceController: PersistenceController
+    @Environment(\.managedObjectContext) private var viewContext
     @State private var isLoading: Bool = false
     
+    // MARK: - Body
     var body: some View {
         ZStack {
             List {
-                ForEach(1...10, id: \.self) { text in
-                    Button {
-                        // action
-                    } label: {
-                        HStack {
-                            VStack {
-                                Text("English")
-                                    .font(.headline)
-                                Text("English")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
+                Section(header: Text(LocalizedStringKey("INTERFACE LANGUAGE"))) {
+                    ForEach(SupportedLanguage.allCases) { language in
+                        Button {
+                            isLoading = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                persistenceController.setLanguage(language.rawValue)
+                                isLoading = false
+                                dismiss()
                             }
-                            Spacer()
-                            Image(systemName: "checkmark")
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(language.englishName)
+                                        .font(.headline)
+                                    Text(language.nativeName)
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                if persistenceController.currentLanguage == language.rawValue {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.accentColor)
+                                }
+                            }
+                            .padding(.vertical, 6)
+                            .opacity(isLoading && persistenceController.currentLanguage != language.rawValue ? 0.7 : 1.0)
                         }
-                        .padding(.vertical, 6)
+                        .buttonStyle(.plain)
+                        .disabled(isLoading && persistenceController.currentLanguage != language.rawValue)
                     }
                 }
             }
@@ -47,7 +63,7 @@ struct LanguageSelectionView: View {
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Language Selection")
+            .navigationTitle(LocalizedStringKey("Language Selection"))
             .navigationBarTitleDisplayMode(.inline)
             .disabled(isLoading)
             
@@ -60,9 +76,15 @@ struct LanguageSelectionView: View {
                     .ignoresSafeArea()
             }
         }
+        .environment(\.locale, persistenceController.locale)
     }
 }
 
 #Preview {
-    LanguageSelectionView()
+    NavigationStack {
+        LanguageSelectionView()
+            .environmentObject(ThemeManager())
+            .environmentObject(PersistenceController.preview)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
 }

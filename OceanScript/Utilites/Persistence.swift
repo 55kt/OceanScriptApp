@@ -7,7 +7,7 @@
 
 import CoreData
 
-class PersistenceController {
+class PersistenceController: ObservableObject {
     static let shared = PersistenceController()
 
     @MainActor
@@ -24,7 +24,10 @@ class PersistenceController {
     }()
 
     let container: NSPersistentContainer
-
+    
+    // Property for managing interface language
+    @Published var currentLanguage: String
+    
     init(inMemory: Bool = false) {
         // Register a custom String Array Transformer for incorrectAnswers
         StringArrayTransformer.register()
@@ -44,7 +47,9 @@ class PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
         
         let context = container.viewContext
+        self.currentLanguage = "en" // Temporary value
         setupInitialLanguage(into: context)
+        self.currentLanguage = fetchLanguage(from: context) ?? defaultLanguage()
     }
     
     private func setupInitialLanguage(into context: NSManagedObjectContext) {
@@ -68,5 +73,69 @@ class PersistenceController {
     
     func loadCategoriesAndQuestions(into context: NSManagedObjectContext) {
         JSONManager.shared.loadCategoriesAndQuestions(into: context)
+    }
+    
+    // MARK: - Language Management
+    func setLanguage(_ language: String) {
+        currentLanguage = language
+        let context = container.viewContext
+        updateLanguageInCoreData(language: language, context: context)
+        updateAppLocale()
+    }
+    
+    var locale: Locale {
+        return Locale(identifier: currentLanguage)
+    }
+    
+    private func fetchLanguage(from context: NSManagedObjectContext) -> String? {
+        let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
+        do {
+            let languages = try context.fetch(fetchRequest)
+            if let appLanguage = languages.first {
+                return appLanguage.languageCode
+            }
+        } catch {
+            print("❌ Error fetching language: \(error)")
+        }
+        return nil
+    }
+    
+    private func updateLanguageInCoreData(language: String, context: NSManagedObjectContext) {
+        let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
+        do {
+            let languages = try context.fetch(fetchRequest)
+            if let appLanguage = languages.first {
+                appLanguage.languageCode = language
+                appLanguage.jsonFileName = "questions_\(appLanguage.programmingLanguage.lowercased())_\(language)"
+            } else {
+                let newLanguage = AppLanguage(context: context)
+                newLanguage.languageCode = language
+                newLanguage.jsonFileName = ""
+                newLanguage.programmingLanguage = ""
+            }
+            try context.save()
+            print("🔍 PersistenceController: Updated language to \(language)")
+        } catch {
+            print("❌ Error updating language: \(error)")
+        }
+    }
+    
+    private func defaultLanguage() -> String {
+        let deviceLanguage = Locale.current.language.languageCode?.identifier ?? "en"
+        let supportedLanguages = SupportedLanguage.allCases.map { $0.rawValue }
+        return supportedLanguages.contains(deviceLanguage) ? deviceLanguage : "en"
+    }
+    
+    private func updateAppLocale() {
+        // Update the app's locale through Bundle
+        Bundle.main.updateLocale(to: currentLanguage)
+    }
+}
+
+// MARK: - Bundle Locale Extension
+extension Bundle {
+    func updateLocale(to language: String) {
+        UserDefaults.standard.set(language, forKey: "AppLanguage")
+        UserDefaults.standard.synchronize()
     }
 }

@@ -72,5 +72,6 @@ struct MainTabView: View {
     NavigationStack {
         MainTabView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environmentObject(ThemeManager())
     }
 }

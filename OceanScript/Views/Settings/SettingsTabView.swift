@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SettingsTabView: View {
     @EnvironmentObject private var themeManager: ThemeManager
+    @EnvironmentObject private var persistenceController: PersistenceController
+    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
         NavigationStack {
@@ -18,6 +20,7 @@ struct SettingsTabView: View {
                 Section(header: Text("Language Selection")) {
                     NavigationLink {
                         LanguageSelectionView()
+                            .environment(\.managedObjectContext, viewContext)
                     } label : {
                         HStack {
                             Text("Current Language")
@@ -29,6 +32,7 @@ struct SettingsTabView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                    .environment(\.locale, persistenceController.locale)
                 }
             }
             .navigationTitle("Settings")
@@ -41,6 +45,7 @@ struct SettingsTabView: View {
     NavigationStack {
         SettingsTabView()
             .environmentObject(ThemeManager())
+            .environmentObject(PersistenceController.preview)
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

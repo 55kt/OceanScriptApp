@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  OceanScript
+
+  Created by Vlad on 4/5/25.
+  
+*/
+
+/* SettingsTabView */
+"Settings" = "Settings";
+"Language Selection" = "Language Selection";
+"Current Language" = "Current Language";
+
+/* LanguageSelectionView */
+"INTERFACE LANGUAGE" = "Interface Language";
+"Language Selection" = "Language Selection";
+
+/* MainTabView */
+"Home" = "Home";
+"Favorites" = "Favorites";
+"Test" = "Test";
+"Search" = "Search";
+
+/* ProgrammingLanguageSelectionView */
+"Select Programming Language" = "Select Programming Language";
+"Swift" = "Swift";
+"Python" = "Python";
