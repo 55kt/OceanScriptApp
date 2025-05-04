@@ -48,27 +48,7 @@ class PersistenceController: ObservableObject {
         
         let context = container.viewContext
         self.currentLanguage = "en" // Temporary value
-        setupInitialLanguage(into: context)
         self.currentLanguage = fetchLanguage(from: context) ?? defaultLanguage()
-    }
-    
-    private func setupInitialLanguage(into context: NSManagedObjectContext) {
-        let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
-        
-        do {
-            let languages = try context.fetch(fetchRequest)
-            if languages.isEmpty {
-                // Create an AppLanguage object with the default language
-                let defaultLanguage = AppLanguage(context: context)
-                defaultLanguage.languageCode = "en"
-                defaultLanguage.jsonFileName = ""
-                defaultLanguage.programmingLanguage = ""
-                try context.save()
-                print("🔍 Initial AppLanguage setup completed")
-            }
-        } catch {
-            print("💾 Error setting up initial language: \(error) 💾")
-        }
     }
     
     func loadCategoriesAndQuestions(into context: NSManagedObjectContext) {
@@ -88,36 +68,19 @@ class PersistenceController: ObservableObject {
     }
     
     private func fetchLanguage(from context: NSManagedObjectContext) -> String? {
-        let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
-        do {
-            let languages = try context.fetch(fetchRequest)
-            if let appLanguage = languages.first {
-                return appLanguage.languageCode
-            }
-        } catch {
-            print("❌ Error fetching language: \(error)")
+        guard let appLanguage = fetchOrCreateAppLanguage(from: context, errorMessage: "fetching language") else {
+            return nil
         }
-        return nil
+        return appLanguage.languageCode
     }
     
     private func updateLanguageInCoreData(language: String, context: NSManagedObjectContext) {
-        let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
-        do {
-            let languages = try context.fetch(fetchRequest)
-            if let appLanguage = languages.first {
-                appLanguage.languageCode = language
-                appLanguage.jsonFileName = "questions_\(appLanguage.programmingLanguage.lowercased())_\(language)"
-            } else {
-                let newLanguage = AppLanguage(context: context)
-                newLanguage.languageCode = language
-                newLanguage.jsonFileName = ""
-                newLanguage.programmingLanguage = ""
-            }
-            try context.save()
-            print("🔍 PersistenceController: Updated language to \(language)")
-        } catch {
-            print("❌ Error updating language: \(error)")
+        guard let appLanguage = fetchOrCreateAppLanguage(from: context, errorMessage: "updating language") else {
+            return
         }
+        appLanguage.languageCode = language
+        appLanguage.jsonFileName = "questions_\(appLanguage.programmingLanguage.lowercased())_\(language)"
+        saveContext(context: context, errorMessage: "updating language to \(language)")
     }
     
     private func defaultLanguage() -> String {
@@ -129,6 +92,37 @@ class PersistenceController: ObservableObject {
     private func updateAppLocale() {
         // Update the app's locale through Bundle
         Bundle.main.updateLocale(to: currentLanguage)
+    }
+    
+    // MARK: - Helper Methods
+    private func fetchOrCreateAppLanguage(from context: NSManagedObjectContext, errorMessage: String) -> AppLanguage? {
+        let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
+        do {
+            let languages = try context.fetch(fetchRequest)
+            if let appLanguage = languages.first {
+                return appLanguage
+            } else {
+                let newLanguage = AppLanguage(context: context)
+                newLanguage.languageCode = "en"
+                newLanguage.jsonFileName = ""
+                newLanguage.programmingLanguage = ""
+                try context.save()
+                print("🔍 PersistenceController: Created new AppLanguage with languageCode: \(newLanguage.languageCode ?? "nil")")
+                return newLanguage
+            }
+        } catch {
+            print("❌ Error \(errorMessage): \(error)")
+            return nil
+        }
+    }
+    
+    private func saveContext(context: NSManagedObjectContext, errorMessage: String) {
+        do {
+            try context.save()
+            print("🔍 PersistenceController: \(errorMessage)")
+        } catch {
+            print("❌ Error \(errorMessage): \(error)")
+        }
     }
 }
 
