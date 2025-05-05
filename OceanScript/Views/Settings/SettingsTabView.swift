@@ -12,6 +12,14 @@ struct SettingsTabView: View {
     @EnvironmentObject private var persistenceController: PersistenceController
     @Environment(\.managedObjectContext) private var viewContext
     
+    // Helper to get the localized language name
+    private var currentLanguageName: String {
+        if let language = SupportedLanguage(rawValue: persistenceController.currentLanguage) {
+            return language.nativeName // Use nativeName for display (e.g., "Русский", "English")
+        }
+        return "Unknown"
+    }
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -21,23 +29,24 @@ struct SettingsTabView: View {
                     NavigationLink {
                         LanguageSelectionView()
                             .environment(\.managedObjectContext, viewContext)
-                    } label : {
+                    } label: {
                         HStack {
                             Text("Current Language")
                                 .font(.headline)
                             
                             Spacer()
                             
-                            Text("English")
+                            // Display the current language name using SupportedLanguage
+                            Text(currentLanguageName)
                                 .foregroundStyle(.secondary)
                         }
                     }
-                    .environment(\.locale, persistenceController.locale)
                 }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .environment(\.locale, persistenceController.locale)
     }
 }
 
