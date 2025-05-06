@@ -25,11 +25,9 @@ class PersistenceController: ObservableObject {
 
     let container: NSPersistentContainer
     
-    // Property for managing interface language
     @Published var currentLanguage: String
     
     init(inMemory: Bool = false) {
-        // Register a custom String Array Transformer for incorrectAnswers
         StringArrayTransformer.register()
         
         container = NSPersistentContainer(name: "OceanScript")
@@ -47,24 +45,29 @@ class PersistenceController: ObservableObject {
         container.viewContext.automaticallyMergesChangesFromParent = true
         
         let context = container.viewContext
-        self.currentLanguage = "en" // Temporary value
+        self.currentLanguage = "en"
         self.currentLanguage = fetchLanguage(from: context) ?? defaultLanguage()
     }
     
     func loadCategoriesAndQuestions(into context: NSManagedObjectContext) {
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .dataLoadingStarted, object: nil)
+        }
         JSONManager.shared.loadCategoriesAndQuestions(into: context)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .dataLoadingFinished, object: nil)
+        }
     }
     
-    // MARK: - Language Management
     func setLanguage(_ language: String) {
         currentLanguage = language
         let context = container.viewContext
         updateLanguageInCoreData(language: language, context: context)
         updateAppLocale()
-        // Reload categories and questions after language change
         loadCategoriesAndQuestions(into: context)
-        // Refresh the context to trigger a @FetchRequest update
-        context.refreshAllObjects()
+        DispatchQueue.main.async {
+            context.refreshAllObjects()
+        }
     }
     
     var locale: Locale {
@@ -102,11 +105,9 @@ class PersistenceController: ObservableObject {
     }
     
     private func updateAppLocale() {
-        // Update the app's locale through Bundle
         Bundle.main.updateLocale(to: currentLanguage)
     }
     
-    // MARK: - Helper Methods
     private func fetchOrCreateAppLanguage(from context: NSManagedObjectContext, errorMessage: String) -> AppLanguage? {
         let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
         do {
@@ -115,7 +116,7 @@ class PersistenceController: ObservableObject {
                 return appLanguage
             } else {
                 let newLanguage = AppLanguage(context: context)
-                let initialLanguage = defaultLanguage() // Use device language if supported
+                let initialLanguage = defaultLanguage()
                 newLanguage.languageCode = initialLanguage
                 newLanguage.jsonFileName = ""
                 newLanguage.programmingLanguage = ""
@@ -139,10 +140,14 @@ class PersistenceController: ObservableObject {
     }
 }
 
-// MARK: - Bundle Locale Extension
 extension Bundle {
     func updateLocale(to language: String) {
         UserDefaults.standard.set(language, forKey: "AppLanguage")
         UserDefaults.standard.synchronize()
     }
+}
+
+extension Notification.Name {
+    static let dataLoadingStarted = Notification.Name("DataLoadingStarted")
+    static let dataLoadingFinished = Notification.Name("DataLoadingFinished")
 }

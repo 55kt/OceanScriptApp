@@ -11,7 +11,6 @@ struct MainTabView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject private var persistenceController: PersistenceController
     
-    // Dictionary to store NavigationPath for each tab
     @State private var tabPaths: [String: NavigationPath] = [
         "home": NavigationPath(),
         "favorites": NavigationPath(),
@@ -28,7 +27,6 @@ struct MainTabView: View {
                 NavigationStack(path: pathBinding(for: "home")) {
                     HomeTabView()
                         .environment(\.managedObjectContext, viewContext)
-                        .id(languageId)
                 }
             }
             
@@ -36,7 +34,6 @@ struct MainTabView: View {
                 NavigationStack(path: pathBinding(for: "favorites")) {
                     FavoritesTabView()
                         .environment(\.managedObjectContext, viewContext)
-                        .id(languageId)
                 }
             }
             
@@ -60,7 +57,6 @@ struct MainTabView: View {
                                 )
                             }
                         }
-                        .id(languageId)
                 }
             }
             
@@ -68,7 +64,6 @@ struct MainTabView: View {
                 NavigationStack(path: pathBinding(for: "search")) {
                     SearchTabView()
                         .environment(\.managedObjectContext, viewContext)
-                        .id(languageId)
                 }
             }
             
@@ -76,7 +71,6 @@ struct MainTabView: View {
                 NavigationStack(path: pathBinding(for: "settings")) {
                     SettingsTabView()
                         .environment(\.managedObjectContext, viewContext)
-                        .id(languageId)
                 }
             }
         }
@@ -86,7 +80,6 @@ struct MainTabView: View {
         }
     }
     
-    // Helper function to create a Binding<NavigationPath> for a given tab key
     private func pathBinding(for key: String) -> Binding<NavigationPath> {
         Binding<NavigationPath>(
             get: {

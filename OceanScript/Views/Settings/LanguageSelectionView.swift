@@ -8,25 +8,22 @@
 import SwiftUI
 
 struct LanguageSelectionView: View {
-    // MARK: - Properties
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var persistenceController: PersistenceController
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.locale) private var locale
     @State private var isLoading: Bool = false
+    @State private var showRestartAlert: Bool = false
+    @State private var selectedLanguage: SupportedLanguage? // Для хранения выбранного языка
     
-    // MARK: - Body
     var body: some View {
         ZStack {
             List {
                 Section(header: Text(LocalizedStringKey("INTERFACE LANGUAGE"))) {
                     ForEach(SupportedLanguage.allCases) { language in
                         Button {
-                            isLoading = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                persistenceController.setLanguage(language.rawValue)
-                                isLoading = false
-                                dismiss()
-                            }
+                            selectedLanguage = language
+                            showRestartAlert = true
                         } label: {
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
@@ -43,10 +40,10 @@ struct LanguageSelectionView: View {
                                 }
                             }
                             .padding(.vertical, 6)
-                            .opacity(isLoading && persistenceController.currentLanguage != language.rawValue ? 0.7 : 1.0)
+                            .opacity(isLoading || persistenceController.currentLanguage == language.rawValue ? 0.7 : 1.0)
                         }
                         .buttonStyle(.plain)
-                        .disabled(isLoading && persistenceController.currentLanguage != language.rawValue)
+                        .disabled(isLoading || persistenceController.currentLanguage == language.rawValue)
                     }
                 }
             }
@@ -66,14 +63,39 @@ struct LanguageSelectionView: View {
             .navigationTitle(LocalizedStringKey("Language Selection"))
             .navigationBarTitleDisplayMode(.inline)
             .disabled(isLoading)
+            .alert(isPresented: $showRestartAlert) {
+                Alert(
+                    title: Text(LocalizedStringKey("Language Change")),
+                    message: Text(LocalizedStringKey("To change the language, the app will be restarted.")),
+                    primaryButton: .default(Text(LocalizedStringKey("OK"))) {
+                        if let language = selectedLanguage {
+                            isLoading = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                persistenceController.setLanguage(language.rawValue)
+                                // Завершаем приложение для перезапуска
+                                exit(0)
+                            }
+                        }
+                    },
+                    secondaryButton: .cancel(Text(LocalizedStringKey("Cancel"))) {
+                        selectedLanguage = nil
+                        showRestartAlert = false
+                    }
+                )
+            }
             
             if isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .scaleEffect(2.0)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.gray.opacity(0.2))
-                    .ignoresSafeArea()
+                VStack(spacing: 10) {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(2.0)
+                    Text(LocalizedStringKey("Changing language in progress..."))
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.gray.opacity(0.2))
+                .ignoresSafeArea()
             }
         }
         .environment(\.locale, persistenceController.locale)
