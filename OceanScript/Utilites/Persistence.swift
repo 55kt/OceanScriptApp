@@ -61,6 +61,10 @@ class PersistenceController: ObservableObject {
         let context = container.viewContext
         updateLanguageInCoreData(language: language, context: context)
         updateAppLocale()
+        // Reload categories and questions after language change
+        loadCategoriesAndQuestions(into: context)
+        // Refresh the context to trigger a @FetchRequest update
+        context.refreshAllObjects()
     }
     
     var locale: Locale {
