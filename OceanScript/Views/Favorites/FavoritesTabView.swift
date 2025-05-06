@@ -8,8 +8,10 @@
 import SwiftUI
 import CoreData
 
+// MARK: - View
 struct FavoritesTabView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    // MARK: - Properties
+    @Environment(\.managedObjectContext) private var viewContext: NSManagedObjectContext
     
     @StateObject private var favoritesViewModel: FavoritesViewModel
     
@@ -19,10 +21,12 @@ struct FavoritesTabView: View {
         predicate: NSPredicate(format: "isFavorite == %@", NSNumber(value: true))
     ) private var favoriteQuestions: FetchedResults<Question>
     
+    // MARK: - Initializers
     init() {
         self._favoritesViewModel = StateObject(wrappedValue: FavoritesViewModel(context: PersistenceController.shared.container.viewContext))
     }
     
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             List {
@@ -31,6 +35,7 @@ struct FavoritesTabView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
                         .padding()
+                        .accessibilityLabel("No favorite questions yet")
                 } else {
                     ForEach(favoriteQuestions) { question in
                         NavigationLink(destination: QuestionDetailView(question: question)) {
@@ -39,28 +44,30 @@ struct FavoritesTabView: View {
                                 questionText: question.name,
                                 isFavorite: false
                             )
-                        }
+                        } // NavigationLink
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button(action: {
                                 favoritesViewModel.toggleFavorite(for: question)
                             }) {
                                 Image(systemName: "heart.slash.fill")
-                                    .foregroundColor(.white)
-                            }
+                            } // Button
                             .tint(.red)
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Favorites")
+                            .accessibilityLabel("Remove from favorites")
+                        } // swipeActions
+                        .accessibilityHint("View details of \(question.name ?? "question")")
+                    } // ForEach
+                } // if-else
+            } // List
+            .navigationTitle(Text(LocalizedStringKey("Favorites")))
             .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-}
+        } // NavigationStack
+    } // Body
+} // FavoritesTabView
 
+// MARK: - Preview
 #Preview {
     NavigationStack {
         FavoritesTabView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+    } // NavigationStack
+} // Preview

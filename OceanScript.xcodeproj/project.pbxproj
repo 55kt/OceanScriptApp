@@ -56,6 +56,7 @@
 		4BB090AC2DC7C6D600142DF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090AA2DC7C6D600142DF9 /* Localizable.strings */; };
 		4BB090B02DC7C70100142DF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090AE2DC7C70100142DF9 /* Localizable.strings */; };
 		4BB090B82DCA16E100142DF9 /* LanguageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090B72DCA16E100142DF9 /* LanguageButton.swift */; };
+		4BB090BA2DCA60C900142DF9 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090B92DCA60C900142DF9 /* PrimaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		4BB090AB2DC7C6D600142DF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		4BB090AF2DC7C70100142DF9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
 		4BB090B72DCA16E100142DF9 /* LanguageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageButton.swift; sourceTree = "<group>"; };
+		4BB090B92DCA60C900142DF9 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -245,6 +247,7 @@
 		4B8F80D02DBD251600512F5B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4BB090B92DCA60C900142DF9 /* PrimaryButton.swift */,
 				4B8F80D12DBD259800512F5B /* CategoryItem.swift */,
 				4B8F80D72DBD358B00512F5B /* QuestionsList.swift */,
 				4B8F80D32DBD266000512F5B /* QuestionListItem.swift */,
@@ -570,6 +573,7 @@
 				4B8F80CC2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift in Sources */,
 				4B8F80CA2DBC0BCC00512F5B /* TestResult+CoreDataClass.swift in Sources */,
 				4B8F80D42DBD266000512F5B /* QuestionListItem.swift in Sources */,
+				4BB090BA2DCA60C900142DF9 /* PrimaryButton.swift in Sources */,
 				4BB090642DC51FF300142DF9 /* CurrentTestView.swift in Sources */,
 				4B8F80BC2DBC038C00512F5B /* CodingUserInfoKey+Extensions.swift in Sources */,
 				4BB090192DBD4EF900142DF9 /* MainTabView.swift in Sources */,
