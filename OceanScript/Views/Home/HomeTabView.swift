@@ -20,7 +20,7 @@ struct HomeTabView: View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
-                    ForEach(categories) { category in
+                    ForEach(categories, id: \.objectID) { category in
                         NavigationLink(destination: QuestionsList(category: category)) {
                             CategoryItem(categoryName: category.name, categoryIcon: category.icon)
                         }
