@@ -55,6 +55,7 @@
 		4BB0909C2DC7C3C400142DF9 /* LocalLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0909B2DC7C3C400142DF9 /* LocalLanguage.swift */; };
 		4BB090AC2DC7C6D600142DF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090AA2DC7C6D600142DF9 /* Localizable.strings */; };
 		4BB090B02DC7C70100142DF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090AE2DC7C70100142DF9 /* Localizable.strings */; };
+		4BB090B82DCA16E100142DF9 /* LanguageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090B72DCA16E100142DF9 /* LanguageButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		4BB0909B2DC7C3C400142DF9 /* LocalLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLanguage.swift; sourceTree = "<group>"; };
 		4BB090AB2DC7C6D600142DF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		4BB090AF2DC7C70100142DF9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
+		4BB090B72DCA16E100142DF9 /* LanguageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -248,6 +250,7 @@
 				4B8F80D32DBD266000512F5B /* QuestionListItem.swift */,
 				4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */,
 				4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */,
+				4BB090B72DCA16E100142DF9 /* LanguageButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				4B8F80C82DBC0B5B00512F5B /* QuestionResult+CoreDataProperties.swift in Sources */,
 				4BB090712DC661E100142DF9 /* SearchTabView.swift in Sources */,
 				4BB0901C2DBD50EB00142DF9 /* HomeTabView.swift in Sources */,
+				4BB090B82DCA16E100142DF9 /* LanguageButton.swift in Sources */,
 				4BB0905F2DC51F2700142DF9 /* TestViewModel.swift in Sources */,
 				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
 				4BB090762DC6670F00142DF9 /* AppearanceSectionView.swift in Sources */,

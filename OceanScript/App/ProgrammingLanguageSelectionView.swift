@@ -8,79 +8,77 @@
 import SwiftUI
 import CoreData
 
+// MARK: - View
 struct ProgrammingLanguageSelectionView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
+    // MARK: - Properties
+    @Environment(\.managedObjectContext) private var viewContext: NSManagedObjectContext
     @Binding var hasSelectedLanguage: Bool
+    @State private var isSelecting: Bool = false
     
+    // MARK: - Body
     var body: some View {
         VStack(spacing: 20) {
             Text("Select Programming Language")
                 .font(.title)
                 .padding()
             
-            Button(action: {
-                selectProgrammingLanguage("Swift")
-            }) {
-                Text("Swift")
-                    .font(.title2)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue.opacity(0.2))
-                    .cornerRadius(10)
-            }
-            .padding(.horizontal)
+            LanguageButton(
+                title: "Swift",
+                backgroundColor: Color.blue.opacity(0.2),
+                action: { selectProgrammingLanguage("Swift") },
+                isDisabled: isSelecting
+            )
             
-            Button(action: {
-                selectProgrammingLanguage("Python")
-            }) {
-                Text("Python")
-                    .font(.title2)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green.opacity(0.2))
-                    .cornerRadius(10)
-            }
-            .padding(.horizontal)
+            LanguageButton(
+                title: "Python",
+                backgroundColor: Color.green.opacity(0.2),
+                action: { selectProgrammingLanguage("Python") },
+                isDisabled: isSelecting
+            )
             
             Spacer()
-        }
+        } // VStack
         .padding(.top, 50)
-    }
+    } // Body
     
+    // MARK: - Functions
+    /// Selects a programming language and updates the app state accordingly.
+    /// - Parameter language: The selected programming language
     private func selectProgrammingLanguage(_ language: String) {
+        isSelecting = true
         
-        // Update AppLanguage with the selected programming language
-        let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
-        do {
-            let languages = try viewContext.fetch(fetchRequest)
-            if let appLanguage = languages.first {
-                appLanguage.languageCode = "en" // default language
+        // Perform CoreData operations in a background thread
+        Task {
+            try await viewContext.perform {
+                // Update AppLanguage with the selected programming language
+                let fetchRequest: NSFetchRequest<AppLanguage> = AppLanguage.fetchRequest()
+                let languages = try viewContext.fetch(fetchRequest)
+                
+                let appLanguage: AppLanguage = languages.first ?? AppLanguage(context: viewContext)
+                appLanguage.languageCode = "en" // Default language
                 appLanguage.jsonFileName = "questions_\(language.lowercased())_en"
                 appLanguage.programmingLanguage = language
-            } else {
-                let newLanguage = AppLanguage(context: viewContext)
-                newLanguage.languageCode = "en"
-                newLanguage.jsonFileName = "questions_\(language.lowercased())_en"
-                newLanguage.programmingLanguage = language
+                
+                try viewContext.save()
+                
+                // Load data from JSON
+                let persistenceController = PersistenceController.shared
+                persistenceController.loadCategoriesAndQuestions(into: viewContext)
+                
+                // Update the context to trigger a @FetchRequest update
+                viewContext.refreshAllObjects()
             }
-            try viewContext.save()
             
-            // Loading data from JSON
-            let persistenceController = PersistenceController.shared
-            persistenceController.loadCategoriesAndQuestions(into: viewContext)
-            
-            // Update the context to trigger a @FetchRequest update
-            viewContext.refreshAllObjects()
-            
-            // Switch to MainTabView
-            hasSelectedLanguage = true
-        } catch {
-            print("💾 Error saving AppLanguage: \(error) 💾")
-        }
-    }
-}
+            // Update UI on the main thread
+            await MainActor.run {
+                hasSelectedLanguage = true
+                isSelecting = false
+            }
+        }// Task
+    } // Function: selectProgrammingLanguage
+} // ProgrammingLanguageSelectionView
 
+// MARK: - Preview
 #Preview {
     ProgrammingLanguageSelectionView(hasSelectedLanguage: .constant(false))
-}
+} // Preview
