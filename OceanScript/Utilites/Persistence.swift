@@ -45,18 +45,30 @@ class PersistenceController: ObservableObject {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
         
-        let context = container.viewContext
+        // Temporarily initialize currentLanguage
         currentLanguage = "en"
-        currentLanguage = fetchLanguage(from: context) ?? defaultLanguage()
         
+        // Load persistent stores before using the context
+        var loadStoreError: Error?
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
+                loadStoreError = error
                 self.logError("Error loading persistent stores: \(error), \(error.userInfo)")
             } else {
                 self.logInfo("Persistent stores loaded successfully")
             }
         }
         container.viewContext.automaticallyMergesChangesFromParent = true
+        
+        // Check if stores loaded successfully before proceeding
+        if let error = loadStoreError {
+            logError("Failed to load persistent stores, cannot initialize language: \(error)")
+            return
+        }
+        
+        // Now that stores are loaded, we can safely use the context
+        let context = container.viewContext
+        currentLanguage = fetchLanguage(from: context) ?? defaultLanguage()
     }
     
     // MARK: - Methods

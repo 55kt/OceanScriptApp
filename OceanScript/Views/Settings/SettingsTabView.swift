@@ -20,6 +20,12 @@ struct SettingsTabView: View {
         SupportedLanguage(rawValue: persistenceController.currentLanguage)?.nativeName ?? "Unknown"
     }
     
+    @State private var showErrorAlert: Bool = false
+    @State private var errorMessage: String = ""
+    
+    private let supportMailManager = SupportMailManager()
+    private let supportEmail = "support@oceanscript.com" // Replace with actual support email
+    
     // MARK: - Body
     var body: some View {
         NavigationStack { // NavigationStack
@@ -47,10 +53,47 @@ struct SettingsTabView: View {
                     .accessibilityHint("Tap to change the language")
                     .accessibilityValue(currentLanguageName)
                 } // Section
+                
+                Section { // Section
+                    Button(action: {
+                        supportMailManager.sendSupportEmail(
+                            message: "Please describe your issue or feedback here.",
+                            recipient: supportEmail
+                        ) { result in
+                            switch result {
+                            case .success:
+                                break // Email sent successfully
+                            case .failure(let error):
+                                // Show alert only for specific errors, not for cancellation
+                                if (error as? SupportMailError) != .userSavedDraft {
+                                    errorMessage = error.localizedDescription
+                                    showErrorAlert = true
+                                }
+                            }
+                        }
+                    }) {
+                        HStack { // HStack
+                            Spacer()
+                            Text(LocalizedStringKey("OceanScript Support"))
+                                .foregroundStyle(.blue)
+                                .font(.footnote)
+                            Spacer()
+                        } // HStack
+                    }
+                    .accessibilityLabel("OceanScript support button")
+                    .accessibilityHint("Tap to contact support via email")
+                } // Section
             } // Form
             .navigationTitle(Text(LocalizedStringKey("Settings")))
             .navigationBarTitleDisplayMode(.inline)
             .accessibilityLabel("Settings screen")
+            .alert(isPresented: $showErrorAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         } // NavigationStack
         .environment(\.locale, persistenceController.locale)
     } // Body

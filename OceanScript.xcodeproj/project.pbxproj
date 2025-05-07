@@ -58,6 +58,7 @@
 		4BB090BA2DCA60C900142DF9 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090B92DCA60C900142DF9 /* PrimaryButton.swift */; };
 		4BB090C22DCB345000142DF9 /* View+FavoriteSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */; };
 		4BB090C42DCB3AA500142DF9 /* LanguageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */; };
+		4BB090CC2DCBB30400142DF9 /* SupportMailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090CB2DCBB30400142DF9 /* SupportMailManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		4BB090B92DCA60C900142DF9 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+FavoriteSwipeAction.swift"; sourceTree = "<group>"; };
 		4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageItemView.swift; sourceTree = "<group>"; };
+		4BB090CB2DCBB30400142DF9 /* SupportMailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMailManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -330,6 +332,7 @@
 			children = (
 				4BB0902B2DBD5F6200142DF9 /* JSONManager.swift */,
 				4BB090722DC666CF00142DF9 /* ThemeManager.swift */,
+				4BB090CB2DCBB30400142DF9 /* SupportMailManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				4BB090292DBD5CD400142DF9 /* ProgrammingLanguageSelectionView.swift in Sources */,
 				4B8F80BE2DBC06D200512F5B /* Category+CoreDataClass.swift in Sources */,
 				4B8F80C62DBC0B2C00512F5B /* QuestionResult+CoreDataClass.swift in Sources */,
+				4BB090CC2DCBB30400142DF9 /* SupportMailManager.swift in Sources */,
 				4BB0905A2DC3EC0100142DF9 /* FavoritesViewModel.swift in Sources */,
 				4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */,
 				4B8F80C42DBC091100512F5B /* Question+CoreDataProperties.swift in Sources */,

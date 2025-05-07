@@ -122,7 +122,7 @@ struct CurrentTestView: View {
         }
         .onDisappear {
             if !showStopAlert {
-                viewModel.stopTest()
+                _ = viewModel.stopTest()
             }
         }
     } // Body
