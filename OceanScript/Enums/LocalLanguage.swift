@@ -7,24 +7,32 @@
 
 import Foundation
 
-// Supported languages for the app's interface
+// MARK: - Enums
+
+/// Represents the supported languages for the app's interface.
 enum SupportedLanguage: String, CaseIterable, Identifiable {
-    case en = "en"
-    case ru = "ru"
+    // MARK: - Cases
+    case en = "en" // English
+    case ru = "ru" // Russian
     
-    var id: String { self.rawValue }
+    // MARK: - Properties
     
+    /// The identifier of the language, based on its raw value.
+    var id: String { rawValue }
+    
+    /// A private dictionary mapping language codes to their English and native names.
+    private static let languageNames: [String: (englishName: String, nativeName: String)] = [
+        "en": ("English", "English"),
+        "ru": ("Russian", "Русский")
+    ]
+    
+    /// The name of the language in English.
     var englishName: String {
-        switch self {
-        case .en: return "English"
-        case .ru: return "Russian"
-        }
+        Self.languageNames[rawValue]?.englishName ?? "Unknown"
     }
     
+    /// The name of the language in its native form.
     var nativeName: String {
-        switch self {
-        case .en: return "English"
-        case .ru: return "Русский"
-        }
+        Self.languageNames[rawValue]?.nativeName ?? "Unknown"
     }
-}
+} // SupportedLanguage

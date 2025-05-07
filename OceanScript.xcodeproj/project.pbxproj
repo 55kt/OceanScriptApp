@@ -55,8 +55,9 @@
 		4BB0909C2DC7C3C400142DF9 /* LocalLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0909B2DC7C3C400142DF9 /* LocalLanguage.swift */; };
 		4BB090AC2DC7C6D600142DF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090AA2DC7C6D600142DF9 /* Localizable.strings */; };
 		4BB090B02DC7C70100142DF9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BB090AE2DC7C70100142DF9 /* Localizable.strings */; };
-		4BB090B82DCA16E100142DF9 /* LanguageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090B72DCA16E100142DF9 /* LanguageButton.swift */; };
 		4BB090BA2DCA60C900142DF9 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090B92DCA60C900142DF9 /* PrimaryButton.swift */; };
+		4BB090C22DCB345000142DF9 /* View+FavoriteSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */; };
+		4BB090C42DCB3AA500142DF9 /* LanguageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,8 +129,9 @@
 		4BB0909B2DC7C3C400142DF9 /* LocalLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLanguage.swift; sourceTree = "<group>"; };
 		4BB090AB2DC7C6D600142DF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		4BB090AF2DC7C70100142DF9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
-		4BB090B72DCA16E100142DF9 /* LanguageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageButton.swift; sourceTree = "<group>"; };
 		4BB090B92DCA60C900142DF9 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+FavoriteSwipeAction.swift"; sourceTree = "<group>"; };
+		4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				4B8F80BB2DBC038C00512F5B /* CodingUserInfoKey+Extensions.swift */,
+				4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,7 +256,6 @@
 				4B8F80D32DBD266000512F5B /* QuestionListItem.swift */,
 				4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */,
 				4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */,
-				4BB090B72DCA16E100142DF9 /* LanguageButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -382,10 +384,11 @@
 		4BB090742DC666F400142DF9 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				4BB090772DC6674400142DF9 /* SettingsTabView.swift */,
 				4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */,
 				4BB090792DC6689200142DF9 /* ThemeModeButtonView.swift */,
-				4BB090772DC6674400142DF9 /* SettingsTabView.swift */,
 				4BB090992DC7BA0B00142DF9 /* LanguageSelectionView.swift */,
+				4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */,
 				4B8F80DA2DBD384000512F5B /* PreviewPlaceholder.swift in Sources */,
 				4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */,
+				4BB090C42DCB3AA500142DF9 /* LanguageItemView.swift in Sources */,
 				4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */,
 				4BB090662DC520A400142DF9 /* TestResultView.swift in Sources */,
 				4BB0906E2DC65FA500142DF9 /* AnsweredQuestionList.swift in Sources */,
@@ -597,12 +601,12 @@
 				4BB0906C2DC52C2100142DF9 /* TimerView.swift in Sources */,
 				4B8F80B72DBC020300512F5B /* AppLanguage+CoreDataClass.swift in Sources */,
 				4BB090572DC3EB9200142DF9 /* FavoritesTabView.swift in Sources */,
+				4BB090C22DCB345000142DF9 /* View+FavoriteSwipeAction.swift in Sources */,
 				4B8F80B92DBC023400512F5B /* AppLanguage+CoreDataProperties.swift in Sources */,
 				4B8F80C22DBC08E700512F5B /* Question+CoreDataClass.swift in Sources */,
 				4B8F80C82DBC0B5B00512F5B /* QuestionResult+CoreDataProperties.swift in Sources */,
 				4BB090712DC661E100142DF9 /* SearchTabView.swift in Sources */,
 				4BB0901C2DBD50EB00142DF9 /* HomeTabView.swift in Sources */,
-				4BB090B82DCA16E100142DF9 /* LanguageButton.swift in Sources */,
 				4BB0905F2DC51F2700142DF9 /* TestViewModel.swift in Sources */,
 				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
 				4BB090762DC6670F00142DF9 /* AppearanceSectionView.swift in Sources */,

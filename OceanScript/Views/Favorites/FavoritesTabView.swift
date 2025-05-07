@@ -54,7 +54,7 @@ struct FavoritesTabView: View {
                             .tint(.red)
                             .accessibilityLabel("Remove from favorites")
                         } // swipeActions
-                        .accessibilityHint("View details of \(question.name ?? "question")")
+                        .accessibilityHint("View details of \(question.name)")
                     } // ForEach
                 } // if-else
             } // List

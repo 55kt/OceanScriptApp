@@ -7,52 +7,43 @@
 
 import SwiftUI
 
-// MARK: - Theme Mode Enum
-// Defines the possible theme modes for the app
+// MARK: - Enums
+
+/// Represents the possible theme modes for the app.
 enum ThemeMode: String, CaseIterable {
+    // MARK: - Cases
     case light = "Light"
     case dark = "Dark"
     case system = "System"
     
-    // Returns the corresponding color scheme for the theme mode
+    // MARK: - Properties
+    
+    /// The corresponding color scheme for the theme mode.
     var colorScheme: ColorScheme? {
-        switch self {
-        case .light:
-            return .light
-        case .dark:
-            return .dark
-        case .system:
-            return nil // System mode uses the device's appearance settings
-        }
+        self == .light ? .light : self == .dark ? .dark : nil
     }
     
-    // Returns the icon name for the theme mode
+    /// The icon name associated with the theme mode.
     var iconName: String {
-        switch self {
-        case .light:
-            return "sun.max.fill"
-        case .dark:
-            return "moon.fill"
-        case .system:
-            return "gearshape.fill"
-        }
+        self == .light ? "sun.max.fill" : self == .dark ? "moon.fill" : "gearshape.fill"
     }
-}
+} // ThemeMode
 
-// MARK: - Theme Manager
-// Manages the app's theme mode and persists it using AppStorage
+// MARK: - Class
+/// Manages the app's theme mode and persists it using AppStorage.
 class ThemeManager: ObservableObject {
     // MARK: - Properties
     @AppStorage("AppThemeMode") private var themeModeRaw: String = ThemeMode.system.rawValue
+    
     @Published var themeMode: ThemeMode {
         didSet {
             themeModeRaw = themeMode.rawValue
-            print("🔍 ThemeManager: Updated themeMode to \(themeMode.rawValue)") // Debug output
+            logInfo("Updated themeMode to \(themeMode.rawValue)")
         }
     }
     
-    // MARK: - Initialization
-    // Initializes the theme manager with the stored theme mode or defaults to system
+    // MARK: - Initializers
+    /// Initializes the theme manager with the stored theme mode or defaults to system.
     init() {
         // Temporarily initialize themeMode to avoid accessing self before initialization
         self.themeMode = .system
@@ -62,16 +53,42 @@ class ThemeManager: ObservableObject {
             self.themeMode = storedMode
         }
         
-        print("🔍 ThemeManager: Initialized with themeMode \(themeMode.rawValue)") // Debug output
+        logInfo("Initialized with themeMode \(themeMode.rawValue)")
     }
     
     // MARK: - Methods
-    // Applies the theme mode to the given window scene
+    
+    /// Applies the theme mode to the given window scene.
+    /// - Parameter windowScene: The window scene to apply the theme to.
     func applyTheme(to windowScene: UIWindowScene?) {
-        guard let windowScene = windowScene else { return }
-        windowScene.windows.forEach { window in
-            window.overrideUserInterfaceStyle = themeMode == .system ? .unspecified : (themeMode == .light ? .light : .dark)
+        guard let windowScene else {
+            logWarning("No window scene provided for applying theme")
+            return
         }
-        print("🔍 ThemeManager: Applied theme \(themeMode.rawValue) to window scene") // Debug output
+        
+        let userInterfaceStyle: UIUserInterfaceStyle = themeMode == .system ? .unspecified : (themeMode == .light ? .light : .dark)
+        windowScene.windows.forEach { window in
+            window.overrideUserInterfaceStyle = userInterfaceStyle
+        }
+        
+        logInfo("Applied theme \(themeMode.rawValue) to window scene")
     }
-}
+    
+    // MARK: - Logging Helpers
+    
+    /// Logs an informational message.
+    /// - Parameter message: The message to log.
+    private func logInfo(_ message: String) {
+        #if DEBUG
+        print("ℹ️ ThemeManager: \(message)")
+        #endif
+    }
+    
+    /// Logs a warning message.
+    /// - Parameter message: The warning message to log.
+    private func logWarning(_ message: String) {
+        #if DEBUG
+        print("⚠️ ThemeManager: \(message)")
+        #endif
+    }
+} // ThemeManager

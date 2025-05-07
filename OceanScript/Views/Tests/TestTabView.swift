@@ -42,7 +42,7 @@ struct TestTabView: View {
             Spacer()
             
             PrimaryButton(
-                title: "Start Test",
+                title: "Start Test", backgroundColor: .blue,
                 action: {
                     testPath.append(TestNavigation.test(numberOfQuestions: numberOfQuestions))
                 },

@@ -7,63 +7,53 @@
 
 import SwiftUI
 
+// MARK: - View
 struct LanguageSelectionView: View {
+    // MARK: - Properties
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var persistenceController: PersistenceController
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.locale) private var locale
     @State private var isLoading: Bool = false
     @State private var showRestartAlert: Bool = false
-    @State private var selectedLanguage: SupportedLanguage? // Для хранения выбранного языка
+    @State private var selectedLanguage: SupportedLanguage?
     
+    // MARK: - Body
     var body: some View {
-        ZStack {
-            List {
-                Section(header: Text(LocalizedStringKey("INTERFACE LANGUAGE"))) {
-                    ForEach(SupportedLanguage.allCases) { language in
-                        Button {
-                            selectedLanguage = language
-                            showRestartAlert = true
-                        } label: {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(language.englishName)
-                                        .font(.headline)
-                                    Text(language.nativeName)
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                if persistenceController.currentLanguage == language.rawValue {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.accentColor)
-                                }
+        ZStack { // ZStack
+            List { // List
+                Section(header: Text(LocalizedStringKey("INTERFACE LANGUAGE"))) { // Section
+                    ForEach(SupportedLanguage.allCases) { language in // ForEach
+                        LanguageItemView(
+                            language: language,
+                            isSelected: persistenceController.currentLanguage == language.rawValue,
+                            isLoading: isLoading,
+                            action: {
+                                selectedLanguage = language
+                                showRestartAlert = true
                             }
-                            .padding(.vertical, 6)
-                            .opacity(isLoading || persistenceController.currentLanguage == language.rawValue ? 0.7 : 1.0)
-                        }
-                        .buttonStyle(.plain)
-                        .disabled(isLoading || persistenceController.currentLanguage == language.rawValue)
-                    }
-                }
-            }
+                        )
+                    } // ForEach
+                } // Section
+            } // List
             .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
+            .toolbar { // toolbar
+                ToolbarItem(placement: .navigationBarLeading) { // ToolbarItem
+                    Button { // Button
                         dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
                             .font(.title2)
                             .bold()
-                    }
-                }
-            }
+                    } // Button
+                    .accessibilityLabel("Go back")
+                } // ToolbarItem
+            } // toolbar
             .listStyle(InsetGroupedListStyle())
             .navigationTitle(LocalizedStringKey("Language Selection"))
             .navigationBarTitleDisplayMode(.inline)
             .disabled(isLoading)
-            .alert(isPresented: $showRestartAlert) {
+            .alert(isPresented: $showRestartAlert) { // alert
                 Alert(
                     title: Text(LocalizedStringKey("Language Change")),
                     message: Text(LocalizedStringKey("To change the language, the app will be restarted.")),
@@ -82,31 +72,35 @@ struct LanguageSelectionView: View {
                         showRestartAlert = false
                     }
                 )
-            }
+            } // alert
             
             if isLoading {
-                VStack(spacing: 10) {
+                VStack(spacing: 10) { // VStack
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                         .scaleEffect(2.0)
+                        .accessibilityLabel("Loading indicator")
                     Text(LocalizedStringKey("Changing language in progress..."))
                         .font(.caption)
-                        .foregroundColor(.gray)
-                }
+                        .foregroundStyle(.gray)
+                        .accessibilityLabel("Changing language in progress message")
+                } // VStack
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.gray.opacity(0.2))
                 .ignoresSafeArea()
-            }
-        }
+            } // if
+        } // ZStack
         .environment(\.locale, persistenceController.locale)
-    }
-}
+        .accessibilityLabel("Language selection screen")
+    } // Body
+} // LanguageSelectionView
 
+// MARK: - Preview
 #Preview {
-    NavigationStack {
+    NavigationStack { // NavigationStack
         LanguageSelectionView()
             .environmentObject(ThemeManager())
             .environmentObject(PersistenceController.preview)
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+    } // NavigationStack
+} // Preview

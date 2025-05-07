@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+// MARK: - View
 struct TestResultView: View {
+    // MARK: - Properties
     let testTime: TimeInterval
     let totalQuestions: Int
     let correctAnswers: Int
@@ -17,82 +19,78 @@ struct TestResultView: View {
     
     @State private var showQuestionList: Bool = false
     
+    // MARK: - Body
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Test Results")
+        VStack(spacing: 20) { // VStack
+            Text(LocalizedStringKey("Test Results"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .accessibilityLabel("Test results")
             
             Text("Time: \(formatTime(testTime))")
                 .font(.title2)
-                .foregroundColor(.gray)
+                .foregroundStyle(.gray)
+                .accessibilityLabel("Test time: \(formatTime(testTime))")
             
-            VStack(spacing: 10) {
+            VStack(spacing: 10) { // VStack
                 Text("Total Questions: \(totalQuestions)")
                     .font(.title3)
+                    .accessibilityLabel("Total questions: \(totalQuestions)")
                 Text("Correct Answers: \(correctAnswers)")
                     .font(.title3)
-                    .foregroundColor(.green)
+                    .foregroundStyle(.green)
+                    .accessibilityLabel("Correct answers: \(correctAnswers)")
                 Text("Incorrect Answers: \(incorrectAnswers)")
                     .font(.title3)
-                    .foregroundColor(.red)
-            }
+                    .foregroundStyle(.red)
+                    .accessibilityLabel("Incorrect answers: \(incorrectAnswers)")
+            } // VStack
             
             let percentage = totalQuestions > 0 ? Double(correctAnswers) / Double(totalQuestions) * 100 : 0
             Text(TestResultMessage.message(forCorrectPercentage: percentage).rawValue)
                 .font(.title2)
                 .fontWeight(.semibold)
-                .foregroundColor(.blue)
+                .foregroundStyle(.blue)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
+                .accessibilityLabel("Result message: \(TestResultMessage.message(forCorrectPercentage: percentage).rawValue)")
+                .accessibilityValue("\(String(format: "%.0f", percentage))% correct")
             
-            Button(action: {
-                showQuestionList = true
-            }) {
-                Text("View Question List")
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-            }
+            PrimaryButton(
+                title: "View Question List", backgroundColor: .blue,
+                action: { showQuestionList = true },
+                isDisabled: false
+            )
             
-            Button(action: {
-                testPath.removeLast(testPath.count)
-            }) {
-                Text("Try Again")
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-            }
+            PrimaryButton(
+                title: "Try Again", backgroundColor: .blue,
+                action: { testPath.removeLast(testPath.count) },
+                isDisabled: false
+            )
             
             Spacer()
-        }
+        } // VStack
         .padding(.vertical)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .onAppear {
             print("🔍 TestResultView appeared with testTime: \(testTime)")
         }
-        .sheet(isPresented: $showQuestionList) {
+        .sheet(isPresented: $showQuestionList) { // sheet
             AnsweredQuestionList(testResults: testResults)
                 .presentationDetents([.medium, .large])
-        }
-    }
+        } // sheet
+    } // Body
     
+    // MARK: - Private Methods
     private func formatTime(_ time: TimeInterval) -> String {
         let minutes = Int(time) / 60
         let seconds = Int(time) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
-}
+} // TestResultView
 
+// MARK: - Preview
 #Preview {
     TestResultView(
         testTime: 123,
@@ -102,4 +100,4 @@ struct TestResultView: View {
         testResults: [],
         testPath: .constant(NavigationPath())
     )
-}
+} // Preview

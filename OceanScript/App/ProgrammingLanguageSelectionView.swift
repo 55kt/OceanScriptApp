@@ -22,16 +22,14 @@ struct ProgrammingLanguageSelectionView: View {
                 .font(.title)
                 .padding()
             
-            LanguageButton(
-                title: "Swift",
-                backgroundColor: Color.blue.opacity(0.2),
+            PrimaryButton(
+                title: "Swift", backgroundColor: .orange.opacity(0.6),
                 action: { selectProgrammingLanguage("Swift") },
                 isDisabled: isSelecting
             )
             
-            LanguageButton(
-                title: "Python",
-                backgroundColor: Color.green.opacity(0.2),
+            PrimaryButton(
+                title: "Python", backgroundColor: .blue.opacity(0.6),
                 action: { selectProgrammingLanguage("Python") },
                 isDisabled: isSelecting
             )

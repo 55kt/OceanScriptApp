@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+// MARK: - View
 struct AnsweredQuestionList: View {
+    // MARK: - Properties
     let testResults: [QuestionResult]
     @Environment(\.managedObjectContext) private var viewContext
     @StateObject private var favoritesViewModel: FavoritesViewModel
@@ -15,6 +17,7 @@ struct AnsweredQuestionList: View {
     // Fetch questions using FetchRequest
     @FetchRequest private var questions: FetchedResults<Question>
     
+    // MARK: - Initializers
     init(testResults: [QuestionResult]) {
         self.testResults = testResults
         
@@ -31,14 +34,15 @@ struct AnsweredQuestionList: View {
         self._favoritesViewModel = StateObject(wrappedValue: FavoritesViewModel(context: PersistenceController.shared.container.viewContext))
     }
     
+    // MARK: - Body
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(testResults, id: \.self) { result in
+        NavigationStack { // NavigationStack
+            List { // List
+                ForEach(testResults, id: \.self) { result in // ForEach
                     if let questionID = result.question?.id,
                        let question = questions.first(where: { $0.id == questionID }) {
-                        NavigationLink(destination: QuestionDetailView(question: question)) {
-                            HStack {
+                        NavigationLink(destination: QuestionDetailView(question: question)) { // NavigationLink
+                            HStack { // HStack
                                 QuestionListItem(
                                     questionIcon: question.icon,
                                     questionText: question.name,
@@ -47,30 +51,25 @@ struct AnsweredQuestionList: View {
                                 
                                 // Indicator of correct/incorrect answer
                                 Image(systemName: result.isAnsweredCorrectly ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                    .foregroundColor(result.isAnsweredCorrectly ? .green : .red)
+                                    .foregroundStyle(result.isAnsweredCorrectly ? .green : .red)
                                     .frame(width: 20, height: 20)
-                            }
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                            Button(action: {
-                                favoritesViewModel.toggleFavorite(for: question)
-                            }) {
-                                Image(systemName: question.isFavorite ? "heart.slash.fill" : "heart.fill")
-                                    .foregroundColor(.white)
-                            }
-                            .tint(.red)
-                        }
+                                    .accessibilityLabel(result.isAnsweredCorrectly ? "Correct answer" : "Incorrect answer")
+                                    .accessibilityValue(result.isAnsweredCorrectly ? "Correct" : "Incorrect")
+                            } // HStack
+                        } // NavigationLink
+                        .favoriteSwipeAction(for: question, viewModel: favoritesViewModel)
                     }
-                }
-            }
-            .navigationTitle("Test Questions")
+                } // ForEach
+            } // List
+            .navigationTitle(Text(LocalizedStringKey("Test Questions")))
             .navigationBarTitleDisplayMode(.inline)
             .padding()
-        }
-    }
-}
+        } // NavigationStack
+    } // Body
+} // AnsweredQuestionList
 
+// MARK: - Preview
 #Preview {
     AnsweredQuestionList(testResults: [])
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}
+} // Preview

@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+// MARK: - View
 struct SearchTabView: View {
+    // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
     
     // Fetch all questions from CoreData
@@ -22,69 +24,62 @@ struct SearchTabView: View {
     // State for FavoritesViewModel
     @StateObject private var favoritesViewModel: FavoritesViewModel
     
+    // MARK: - Initializers
     init() {
         self._favoritesViewModel = StateObject(wrappedValue: FavoritesViewModel(context: PersistenceController.shared.container.viewContext))
     }
     
+    // MARK: - Private Properties
     // Filtered questions based on search text
     private var filteredQuestions: [Question] {
-        if searchText.isEmpty {
-            return []
-        } else {
-            return questions.filter { question in
-                question.name.lowercased().contains(searchText.lowercased())
-            }
-        }
+        searchText.isEmpty ? [] : questions.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
     
+    // MARK: - Body
     var body: some View {
-        NavigationStack {
-            VStack {
+        NavigationStack { // NavigationStack
+            VStack { // VStack
+                // Show placeholder or list based on search text
                 if searchText.isEmpty {
-                    // Show placeholder text when search is empty
-                    Spacer()
-                    Text("Find Your Question")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                    Spacer()
+                    VStack { // VStack
+                        Spacer()
+                        Text(LocalizedStringKey("Find Your Question"))
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.gray)
+                            .multilineTextAlignment(.center)
+                            .accessibilityLabel("Find your question placeholder")
+                        Spacer()
+                    } // VStack
                 } else {
-                    // Show filtered questions when search text is not empty
-                    List {
-                        ForEach(filteredQuestions) { question in
-                            NavigationLink(destination: QuestionDetailView(question: question)) {
+                    List { // List
+                        ForEach(filteredQuestions) { question in // ForEach
+                            NavigationLink(destination: QuestionDetailView(question: question)) { // NavigationLink
                                 QuestionListItem(
                                     questionIcon: question.icon,
                                     questionText: question.name,
                                     isFavorite: question.isFavorite
                                 )
-                            }
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(action: {
-                                    favoritesViewModel.toggleFavorite(for: question)
-                                }) {
-                                    Image(systemName: question.isFavorite ? "heart.slash.fill" : "heart.fill")
-                                        .foregroundColor(.white)
-                                }
-                                .tint(.red)
-                            }
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Search Questions")
+                            } // NavigationLink
+                            .favoriteSwipeAction(for: question, viewModel: favoritesViewModel)
+                        } // ForEach
+                    } // List
+                } // if-else
+            } // VStack
+            .navigationTitle(Text(LocalizedStringKey("Search Questions")))
             .navigationBarTitleDisplayMode(.inline)
-            .searchable(text: $searchText, prompt: "Search for a question")
+            .searchable(text: $searchText, prompt: Text(LocalizedStringKey("Search for a question")))
             // Add animation to the transition between placeholder and list
             .animation(.easeInOut(duration: 0.3), value: searchText)
-        }
-    }
-}
+            .accessibilityLabel("Search questions screen")
+        } // NavigationStack
+    } // Body
+} // SearchTabView
 
+// MARK: - Preview
 #Preview {
-    NavigationStack {
+    NavigationStack { // NavigationStack
         SearchTabView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+    } // NavigationStack
+} // Preview

@@ -7,15 +7,16 @@
 
 import SwiftUI
 
+// MARK: - View
 struct AppearanceSectionView: View {
     // MARK: - Properties
     @EnvironmentObject private var themeManager: ThemeManager
     
-    // MARK: - body
+    // MARK: - Body
     var body: some View {
-        Section(header: Text("Appearance")) {
-            HStack(spacing: 0) {
-                ForEach(ThemeMode.allCases, id: \.self) { mode in
+        Section(header: Text(LocalizedStringKey("Appearance"))) { // Section
+            HStack(spacing: 0) { // HStack
+                ForEach(ThemeMode.allCases, id: \.self) { mode in // ForEach
                     ThemeModeButtonView(
                         mode: mode,
                         isSelected: themeManager.themeMode == mode,
@@ -25,17 +26,19 @@ struct AppearanceSectionView: View {
                             }
                         }
                     )
-                }
-            }
-        }
-    }
-}
+                } // ForEach
+            } // HStack
+        } // Section
+        .accessibilityLabel("Appearance settings section")
+    } // Body
+} // AppearanceSectionView
 
+// MARK: - Preview
 #Preview {
-    NavigationStack {
-        Form {
+    NavigationStack { // NavigationStack
+        Form { // Form
             AppearanceSectionView()
                 .environmentObject(ThemeManager())
-        }
-    }
-}
+        } // Form
+    } // NavigationStack
+} // Preview

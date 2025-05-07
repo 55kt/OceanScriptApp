@@ -7,17 +7,20 @@
 
 import SwiftUI
 
+// MARK: - View
 struct AnswerButtonView: View {
+    // MARK: - Properties
     let option: AnswerOption
     let isSelected: Bool
     let isAnswerSelected: Bool
     let action: () -> Void
     
+    // MARK: - Body
     var body: some View {
-        Button(action: action) {
+        Button(action: action) { // Button
             Text(option.text)
                 .font(.body)
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(buttonColor)
@@ -29,26 +32,24 @@ struct AnswerButtonView: View {
                     y: 3
                 )
                 .overlay(
-                    isSelected ?
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.white, lineWidth: 2) :
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.clear, lineWidth: 0)
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(isSelected ? Color.white : Color.clear, lineWidth: 2)
                 )
                 .padding(.horizontal)
-        }
+        } // Button
         .disabled(isAnswerSelected)
-    }
+        .accessibilityLabel("Answer: \(option.text)")
+        .accessibilityHint(isSelected ? "Selected answer" : "Select this answer")
+        .accessibilityValue(isSelected ? "Selected" : "Not selected")
+    } // Body
     
+    // MARK: - Private Methods
     private var buttonColor: Color {
-        guard isAnswerSelected else {
-            return .blue
-        }
-        
-        return option.isCorrect ? .green : .red
+        isAnswerSelected ? (option.isCorrect ? .green : .red) : .blue
     }
-}
+} // AnswerButtonView
 
+// MARK: - Preview
 #Preview {
     AnswerButtonView(
         option: .correct("A programming language"),
@@ -56,4 +57,4 @@ struct AnswerButtonView: View {
         isAnswerSelected: true,
         action: {}
     )
-}
+} // Preview

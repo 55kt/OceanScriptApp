@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+// MARK: - View
 struct CurrentTestView: View {
+    // MARK: - Properties
     @StateObject private var viewModel: TestViewModel
     @Environment(\.dismiss) private var dismiss
     @Binding var testPath: NavigationPath
@@ -20,15 +22,16 @@ struct CurrentTestView: View {
     
     let numberOfQuestions: Int
     
+    // MARK: - Initializers
     init(numberOfQuestions: Int, testPath: Binding<NavigationPath>) {
         self.numberOfQuestions = numberOfQuestions
         self._testPath = testPath
         self._viewModel = StateObject(wrappedValue: TestViewModel(context: PersistenceController.shared.container.viewContext))
     }
     
+    // MARK: - Body
     var body: some View {
-        VStack(spacing: 20) {
-            
+        VStack(spacing: 20) { // VStack
             // MARK: - Timer
             TimerView(formattedTime: viewModel.formattedTime())
             
@@ -39,7 +42,7 @@ struct CurrentTestView: View {
             
             // MARK: - Current Question
             if let question = viewModel.getCurrentQuestion() {
-                VStack(spacing: 10) {
+                VStack(spacing: 10) { // VStack
                     Image(systemName: question.icon)
                         .resizable()
                         .scaledToFit()
@@ -51,10 +54,10 @@ struct CurrentTestView: View {
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
-                }
+                } // VStack
                 
                 // MARK: - Answer Options
-                ForEach(viewModel.answerOptions, id: \.text) { option in
+                ForEach(viewModel.answerOptions, id: \.text) { option in // ForEach
                     AnswerButtonView(
                         option: option,
                         isSelected: viewModel.selectedAnswer == option,
@@ -83,36 +86,37 @@ struct CurrentTestView: View {
                             }
                         }
                     )
-                }
+                } // ForEach
             } else {
                 Text("Loading question...")
                     .font(.caption)
                     .foregroundColor(.gray)
-            }
+            } // if-else
+            
             Spacer()
-        }
+        } // VStack
         .padding(.vertical)
         .navigationTitle("Test")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+        .toolbar { // toolbar
+            ToolbarItem(placement: .navigationBarTrailing) { // ToolbarItem
                 Button(action: {
                     showStopAlert = true
-                }) {
+                }) { // Button
                     Image(systemName: "stop.circle")
                         .foregroundColor(.red)
-                }
-            }
-        }
-        .alert("Stop Test?", isPresented: $showStopAlert) {
-            Button("Cancel", role: .cancel) { }
-            Button("Stop", role: .destructive) {
+                } // Button
+            } // ToolbarItem
+        } // toolbar
+        .alert("Stop Test?", isPresented: $showStopAlert) { // alert
+            Button("Cancel", role: .cancel) { } // Button
+            Button("Stop", role: .destructive) { // Button
                 testPath.removeLast(testPath.count)
-            }
+            } // Button
         } message: {
             Text("All data will be lost. Are you sure?")
-        }
+        } // alert
         .onAppear {
             viewModel.startTest(numberOfQuestions: numberOfQuestions)
         }
@@ -121,12 +125,13 @@ struct CurrentTestView: View {
                 viewModel.stopTest()
             }
         }
-    }
-}
+    } // Body
+} // CurrentTestView
 
+// MARK: - Preview
 #Preview {
-    NavigationStack {
+    NavigationStack { // NavigationStack
         CurrentTestView(numberOfQuestions: 10, testPath: .constant(NavigationPath()))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+    } // NavigationStack
+} // Preview

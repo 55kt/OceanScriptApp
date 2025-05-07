@@ -8,76 +8,80 @@
 import Foundation
 import CoreData
 
+// MARK: - Class
+/// A view model managing the logic and state of a test session.
 class TestViewModel: ObservableObject {
-    
     // MARK: - Published Properties
     @Published var testQuestions: [Question] = []
     @Published var currentQuestionIndex: Int = 0
-    @Published var selectedAnswer: AnswerOption? = nil
-    @Published var answerOptions: [AnswerOption] = [] // Варианты ответа для текущего вопроса
+    @Published var selectedAnswer: AnswerOption?
+    @Published var answerOptions: [AnswerOption] = [] // Options for the current question
     @Published var elapsedTime: TimeInterval = 0
     @Published var correctAnswers: Int = 0
     @Published var incorrectAnswers: Int = 0
     
     // MARK: - Private Properties
     private let context: NSManagedObjectContext
-    private var timer: Timer?
+    private var timerTask: Task<Void, Never>?
     private var startTime: Date?
     private var testResults: [QuestionResult] = []
     
     // MARK: - Initialization
+    /// Initializes the view model with a managed object context.
+    /// - Parameter context: The Core Data managed object context for persisting test results.
     init(context: NSManagedObjectContext) {
         self.context = context
     }
     
     // MARK: - Public Methods
     
-    /// Runs a test with a given number of questions
+    /// Starts a test with the specified number of questions.
+    /// - Parameter numberOfQuestions: The number of questions to include in the test.
     func startTest(numberOfQuestions: Int) {
         resetTest()
         
-        // Загружаем вопросы
+        // Load questions for the test
         loadRandomQuestions(numberOfQuestions: numberOfQuestions)
         
-        // Устанавливаем варианты ответа для первого вопроса
+        // Update answer options for the first question
         updateAnswerOptions()
         
-        // Запускаем таймер
+        // Start tracking elapsed time
         startTime = Date()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            guard let self = self, let startTime = self.startTime else { return }
-            self.elapsedTime = Date().timeIntervalSince(startTime)
-        }
+        startTimer()
     }
     
-    /// Останавливает тест и возвращает результаты
+    /// Stops the test and returns its results.
+    /// - Returns: A tuple containing the test duration, number of correct answers, and number of incorrect answers.
     func stopTest() -> (time: TimeInterval, correct: Int, incorrect: Int) {
-        timer?.invalidate()
-        timer = nil
+        stopTimer()
         let duration = elapsedTime
         let correct = correctAnswers
         let incorrect = incorrectAnswers
         
-        // Сохраняем результаты в CoreData
-        saveTestResult(duration: duration)
+        // Persist test results to Core Data
+        Task {
+            await saveTestResult(duration: duration)
+        }
         
         return (duration, correct, incorrect)
     }
     
-    /// Выбирает ответ для текущего вопроса
+    /// Selects an answer for the current question and updates the test state.
+    /// - Parameter answer: The selected answer option.
     func selectAnswer(_ answer: AnswerOption) {
         selectedAnswer = answer
         
         let currentQuestion = testQuestions[currentQuestionIndex]
         let isCorrect = answer == .correct(currentQuestion.correctAnswer)
         
-        // Создаём QuestionResult
+        // Record the question result
         let questionResult = QuestionResult(context: context)
         questionResult.isAnsweredCorrectly = isCorrect
         questionResult.question = currentQuestion
         testResults.append(questionResult)
         
-        // Обновляем счётчик
+        // Update answer counters
         if isCorrect {
             correctAnswers += 1
         } else {
@@ -85,39 +89,43 @@ class TestViewModel: ObservableObject {
         }
     }
     
-    /// Переходит к следующему вопросу
+    /// Moves to the next question in the test.
+    /// - Returns: A boolean indicating whether there are more questions to answer.
     func moveToNextQuestion() -> Bool {
         selectedAnswer = nil
         currentQuestionIndex += 1
         
-        // Обновляем варианты ответа для следующего вопроса
+        // Update answer options for the next question
         updateAnswerOptions()
         
-        // Проверяем, остались ли вопросы
+        // Check if there are more questions
         return currentQuestionIndex < testQuestions.count
     }
     
-    /// Возвращает текущий вопрос
+    /// Retrieves the current question in the test.
+    /// - Returns: The current question, or nil if there are no more questions.
     func getCurrentQuestion() -> Question? {
         guard currentQuestionIndex < testQuestions.count else { return nil }
         return testQuestions[currentQuestionIndex]
     }
     
-    /// Форматирует время в MM:SS
+    /// Formats the elapsed time as a string in MM:SS format.
+    /// - Returns: A formatted string representing the elapsed time.
     func formattedTime() -> String {
         let minutes = Int(elapsedTime) / 60
         let seconds = Int(elapsedTime) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
-    /// Возвращает результаты теста (для TestResultView)
+    /// Retrieves the test results for display in TestResultView.
+    /// - Returns: An array of QuestionResult objects representing the test results.
     func getTestResults() -> [QuestionResult] {
-        return testResults
+        testResults
     }
     
     // MARK: - Private Methods
     
-    /// Сбрасывает состояние теста
+    /// Resets the test state to its initial values.
     private func resetTest() {
         testQuestions = []
         currentQuestionIndex = 0
@@ -127,29 +135,29 @@ class TestViewModel: ObservableObject {
         correctAnswers = 0
         incorrectAnswers = 0
         testResults = []
-        timer?.invalidate()
-        timer = nil
+        stopTimer()
         startTime = nil
     }
     
-    /// Загружает случайные вопросы для теста
+    /// Loads a random selection of questions for the test.
+    /// - Parameter numberOfQuestions: The number of questions to load.
     private func loadRandomQuestions(numberOfQuestions: Int) {
-        // Загружаем все категории
+        // Fetch all categories from Core Data
         let categoryFetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
         let categories: [Category]
         do {
             categories = try context.fetch(categoryFetchRequest)
         } catch {
-            print("💾 Error fetching categories: \(error) 💾")
+            logError("Failed to fetch categories: \(error)")
             return
         }
         
         guard !categories.isEmpty else {
-            print("🔍 No categories found")
+            logWarning("No categories found")
             return
         }
         
-        // Загружаем все вопросы
+        // Collect all questions from categories
         var allQuestions: [Question] = []
         for category in categories {
             if let questions = category.questions as? Set<Question> {
@@ -157,17 +165,15 @@ class TestViewModel: ObservableObject {
             }
         }
         
-        // Перемешиваем вопросы
+        // Shuffle questions and select the requested number
         allQuestions.shuffle()
-        
-        // Выбираем запрошенное количество вопросов (или все, если их меньше)
         let questionsToSelect = min(numberOfQuestions, allQuestions.count)
         testQuestions = Array(allQuestions.prefix(questionsToSelect))
         
-        print("🔍 Loaded \(testQuestions.count) random questions for test")
+        logInfo("Loaded \(testQuestions.count) random questions for test")
     }
     
-    /// Обновляет варианты ответа для текущего вопроса
+    /// Updates the answer options for the current question.
     private func updateAnswerOptions() {
         guard currentQuestionIndex < testQuestions.count else {
             answerOptions = []
@@ -177,42 +183,92 @@ class TestViewModel: ObservableObject {
         let question = testQuestions[currentQuestionIndex]
         var options: [AnswerOption] = []
         
-        // Добавляем правильный ответ
+        // Add the correct answer
         options.append(.correct(question.correctAnswer))
         
-        // Проверяем и добавляем неправильные ответы
-        if let incorrectAnswers = question.incorrectAnswers, incorrectAnswers.count >= 2 {
-            options.append(.incorrect(incorrectAnswers[0]))
-            options.append(.incorrect(incorrectAnswers[1]))
-        } else {
-            options.append(.incorrect("Incorrect Option 1"))
-            options.append(.incorrect("Incorrect Option 2"))
-            print("⚠️ Warning: Question \(question.name) has fewer than 2 incorrect answers. Using fallback options.")
+        // Add incorrect answers, with fallback if not enough are provided
+        let incorrectAnswers = question.incorrectAnswers ?? []
+        let firstIncorrect = incorrectAnswers.indices.contains(0) ? incorrectAnswers[0] : "Incorrect Option 1"
+        let secondIncorrect = incorrectAnswers.indices.contains(1) ? incorrectAnswers[1] : "Incorrect Option 2"
+        options.append(.incorrect(firstIncorrect))
+        options.append(.incorrect(secondIncorrect))
+        
+        if incorrectAnswers.count < 2 {
+            logWarning("Question '\(question.name)' has fewer than 2 incorrect answers. Using fallback options.")
         }
         
-        // Перемешиваем варианты ответа
+        // Shuffle answer options
         answerOptions = options.shuffled()
     }
     
-    /// Сохраняет результаты теста в CoreData
-    private func saveTestResult(duration: TimeInterval) {
-        let testResult = TestResult(context: context)
-        testResult.id = UUID()
-        testResult.date = Date()
-        testResult.totalQuestions = Int32(testQuestions.count)
-        testResult.correctAnswers = Int32(correctAnswers)
-        testResult.duration = formattedTime()
-        
-        // Связываем QuestionResult с TestResult
-        for questionResult in testResults {
-            questionResult.testResult = testResult
-        }
-        
-        do {
-            try context.save()
-            print("🔍 Saved TestResult: totalQuestions=\(testQuestions.count), correctAnswers=\(correctAnswers), duration=\(testResult.duration)")
-        } catch {
-            print("💾 Error saving test result: \(error) 💾")
+    /// Saves the test result to Core Data.
+    /// - Parameter duration: The duration of the test.
+    private func saveTestResult(duration: TimeInterval) async {
+        await context.perform {
+            let testResult = TestResult(context: self.context)
+            testResult.id = UUID()
+            testResult.date = Date()
+            testResult.totalQuestions = Int32(self.testQuestions.count)
+            testResult.correctAnswers = Int32(self.correctAnswers)
+            testResult.duration = self.formattedTime()
+            
+            // Link question results to the test result
+            for questionResult in self.testResults {
+                questionResult.testResult = testResult
+            }
+            
+            do {
+                try self.context.save()
+                self.logInfo("Saved TestResult: totalQuestions=\(self.testQuestions.count), correctAnswers=\(self.correctAnswers), duration=\(testResult.duration)")
+            } catch {
+                self.logError("Failed to save test result: \(error)")
+            }
         }
     }
-}
+    
+    /// Starts a timer to track the elapsed time of the test.
+    private func startTimer() {
+        timerTask?.cancel()
+        timerTask = Task { [weak self] in
+            while !Task.isCancelled {
+                try? await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+                guard let self = self, let startTime = self.startTime else { return }
+                await MainActor.run {
+                    self.elapsedTime = Date().timeIntervalSince(startTime)
+                }
+            }
+        }
+    }
+    
+    /// Stops the timer tracking the elapsed time.
+    private func stopTimer() {
+        timerTask?.cancel()
+        timerTask = nil
+    }
+    
+    // MARK: - Logging Helpers
+    
+    /// Logs an informational message.
+    /// - Parameter message: The message to log.
+    private func logInfo(_ message: String) {
+        #if DEBUG
+        print("ℹ️ TestViewModel: \(message)")
+        #endif
+    }
+    
+    /// Logs a warning message.
+    /// - Parameter message: The warning to log.
+    private func logWarning(_ message: String) {
+        #if DEBUG
+        print("⚠️ TestViewModel: \(message)")
+        #endif
+    }
+    
+    /// Logs an error message.
+    /// - Parameter message: The error message to log.
+    private func logError(_ message: String) {
+        #if DEBUG
+        print("❌ TestViewModel: \(message)")
+        #endif
+    }
+} // TestViewModel
