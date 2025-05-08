@@ -20,10 +20,10 @@ struct LanguageSelectionView: View {
     
     // MARK: - Body
     var body: some View {
-        ZStack { // ZStack
-            List { // List
-                Section(header: Text(LocalizedStringKey("INTERFACE LANGUAGE"))) { // Section
-                    ForEach(SupportedLanguage.allCases) { language in // ForEach
+        ZStack {
+            List {
+                Section(header: Text(LocalizedStringKey("Interface Language"))) {
+                    ForEach(SupportedLanguage.allCases) { language in
                         LanguageItemView(
                             language: language,
                             isSelected: persistenceController.currentLanguage == language.rawValue,
@@ -37,9 +37,9 @@ struct LanguageSelectionView: View {
                 } // Section
             } // List
             .navigationBarBackButtonHidden(true)
-            .toolbar { // toolbar
-                ToolbarItem(placement: .navigationBarLeading) { // ToolbarItem
-                    Button { // Button
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
                         dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
@@ -53,7 +53,7 @@ struct LanguageSelectionView: View {
             .navigationTitle(LocalizedStringKey("Language Selection"))
             .navigationBarTitleDisplayMode(.inline)
             .disabled(isLoading)
-            .alert(isPresented: $showRestartAlert) { // alert
+            .alert(isPresented: $showRestartAlert) {
                 Alert(
                     title: Text(LocalizedStringKey("Language Change")),
                     message: Text(LocalizedStringKey("To change the language, the app will be restarted.")),
@@ -62,7 +62,6 @@ struct LanguageSelectionView: View {
                             isLoading = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 persistenceController.setLanguage(language.rawValue)
-                                // Завершаем приложение для перезапуска
                                 exit(0)
                             }
                         }
@@ -75,7 +74,7 @@ struct LanguageSelectionView: View {
             } // alert
             
             if isLoading {
-                VStack(spacing: 10) { // VStack
+                VStack(spacing: 10) {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                         .scaleEffect(2.0)
@@ -97,7 +96,7 @@ struct LanguageSelectionView: View {
 
 // MARK: - Preview
 #Preview {
-    NavigationStack { // NavigationStack
+    NavigationStack {
         LanguageSelectionView()
             .environmentObject(ThemeManager())
             .environmentObject(PersistenceController.preview)

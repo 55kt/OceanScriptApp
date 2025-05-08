@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B3E4C2A2DCC8FDD004F2152 /* RightsAndSupportSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C292DCC8FDD004F2152 /* RightsAndSupportSection.swift */; };
+		4B3E4C2C2DCC92A2004F2152 /* LanguageSelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C2B2DCC92A2004F2152 /* LanguageSelectionSection.swift */; };
+		4B3E4C2E2DCC92DB004F2152 /* SupportSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */; };
 		4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */; };
 		4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */; };
 		4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80892DBBD5A500512F5B /* Persistence.swift */; };
@@ -59,6 +62,8 @@
 		4BB090C22DCB345000142DF9 /* View+FavoriteSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */; };
 		4BB090C42DCB3AA500142DF9 /* LanguageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */; };
 		4BB090CC2DCBB30400142DF9 /* SupportMailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090CB2DCBB30400142DF9 /* SupportMailManager.swift */; };
+		4BBBA0502DCC809100C253C5 /* PrivacyAndPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBA04F2DCC809100C253C5 /* PrivacyAndPolicyView.swift */; };
+		4BBBA0522DCC830B00C253C5 /* CopyrightSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBA0512DCC830B00C253C5 /* CopyrightSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +84,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B3E4C292DCC8FDD004F2152 /* RightsAndSupportSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightsAndSupportSection.swift; sourceTree = "<group>"; };
+		4B3E4C2B2DCC92A2004F2152 /* LanguageSelectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionSection.swift; sourceTree = "<group>"; };
+		4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportSection.swift; sourceTree = "<group>"; };
 		4B8F80562DBBD57F00512F5B /* OceanScript.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanScript.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80682DBBD58100512F5B /* OceanScriptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80722DBBD58100512F5B /* OceanScriptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +142,8 @@
 		4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+FavoriteSwipeAction.swift"; sourceTree = "<group>"; };
 		4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageItemView.swift; sourceTree = "<group>"; };
 		4BB090CB2DCBB30400142DF9 /* SupportMailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMailManager.swift; sourceTree = "<group>"; };
+		4BBBA04F2DCC809100C253C5 /* PrivacyAndPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAndPolicyView.swift; sourceTree = "<group>"; };
+		4BBBA0512DCC830B00C253C5 /* CopyrightSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -174,6 +184,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B3E4C2F2DCC9399004F2152 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */,
+				4B3E4C2B2DCC92A2004F2152 /* LanguageSelectionSection.swift */,
+				4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */,
+				4B3E4C292DCC8FDD004F2152 /* RightsAndSupportSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		4B3E4C302DCC93C4004F2152 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4BB090772DC6674400142DF9 /* SettingsTabView.swift */,
+				4BB090992DC7BA0B00142DF9 /* LanguageSelectionView.swift */,
+				4BBBA04F2DCC809100C253C5 /* PrivacyAndPolicyView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		4B8F804D2DBBD57F00512F5B = {
 			isa = PBXGroup;
 			children = (
@@ -387,11 +418,11 @@
 		4BB090742DC666F400142DF9 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				4BB090772DC6674400142DF9 /* SettingsTabView.swift */,
-				4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */,
+				4B3E4C302DCC93C4004F2152 /* Screens */,
+				4B3E4C2F2DCC9399004F2152 /* Sections */,
 				4BB090792DC6689200142DF9 /* ThemeModeButtonView.swift */,
-				4BB090992DC7BA0B00142DF9 /* LanguageSelectionView.swift */,
 				4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */,
+				4BBBA0512DCC830B00C253C5 /* CopyrightSection.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -581,6 +612,7 @@
 				4B8F80D42DBD266000512F5B /* QuestionListItem.swift in Sources */,
 				4BB090BA2DCA60C900142DF9 /* PrimaryButton.swift in Sources */,
 				4BB090642DC51FF300142DF9 /* CurrentTestView.swift in Sources */,
+				4BBBA0502DCC809100C253C5 /* PrivacyAndPolicyView.swift in Sources */,
 				4B8F80BC2DBC038C00512F5B /* CodingUserInfoKey+Extensions.swift in Sources */,
 				4BB090192DBD4EF900142DF9 /* MainTabView.swift in Sources */,
 				4B8F80C02DBC071100512F5B /* Category+CoreDataProperties.swift in Sources */,
@@ -596,6 +628,7 @@
 				4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */,
 				4BB090C42DCB3AA500142DF9 /* LanguageItemView.swift in Sources */,
 				4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */,
+				4B3E4C2E2DCC92DB004F2152 /* SupportSection.swift in Sources */,
 				4BB090662DC520A400142DF9 /* TestResultView.swift in Sources */,
 				4BB0906E2DC65FA500142DF9 /* AnsweredQuestionList.swift in Sources */,
 				4BB0907A2DC6689200142DF9 /* ThemeModeButtonView.swift in Sources */,
@@ -615,6 +648,9 @@
 				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
 				4BB090762DC6670F00142DF9 /* AppearanceSectionView.swift in Sources */,
 				4BB090782DC6674400142DF9 /* SettingsTabView.swift in Sources */,
+				4B3E4C2A2DCC8FDD004F2152 /* RightsAndSupportSection.swift in Sources */,
+				4B3E4C2C2DCC92A2004F2152 /* LanguageSelectionSection.swift in Sources */,
+				4BBBA0522DCC830B00C253C5 /* CopyrightSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
