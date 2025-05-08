@@ -183,16 +183,24 @@ class PersistenceController: ObservableObject {
         }
     }
     
-    /// Saves the specified Core Data context.
+    /// Saves the specified Core Data context on a background thread.
     /// - Parameters:
     ///   - context: The Core Data managed object context to save.
     ///   - errorMessage: The error message to log if an error occurs.
     private func saveContext(context: NSManagedObjectContext, errorMessage: String) {
-        do {
-            try context.save()
-            logInfo(errorMessage)
-        } catch {
-            logError("Error \(errorMessage): \(error)")
+        context.perform {
+            do {
+                try context.save()
+                // Log on the main thread since logging may involve UI updates
+                DispatchQueue.main.async {
+                    self.logInfo(errorMessage)
+                }
+            } catch {
+                // Log on the main thread
+                DispatchQueue.main.async {
+                    self.logError("Error \(errorMessage): \(error)")
+                }
+            }
         }
     }
     
