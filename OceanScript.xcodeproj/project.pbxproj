@@ -10,6 +10,8 @@
 		4B3E4C2A2DCC8FDD004F2152 /* RightsAndSupportSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C292DCC8FDD004F2152 /* RightsAndSupportSection.swift */; };
 		4B3E4C2C2DCC92A2004F2152 /* LanguageSelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C2B2DCC92A2004F2152 /* LanguageSelectionSection.swift */; };
 		4B3E4C2E2DCC92DB004F2152 /* SupportSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */; };
+		4B3E4C612DCCD1CE004F2152 /* privacy_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B3E4C602DCCD1CE004F2152 /* privacy_en.json */; };
+		4B3E4C632DCCD228004F2152 /* privacy_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B3E4C622DCCD228004F2152 /* privacy_ru.json */; };
 		4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */; };
 		4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */; };
 		4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80892DBBD5A500512F5B /* Persistence.swift */; };
@@ -87,6 +89,8 @@
 		4B3E4C292DCC8FDD004F2152 /* RightsAndSupportSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightsAndSupportSection.swift; sourceTree = "<group>"; };
 		4B3E4C2B2DCC92A2004F2152 /* LanguageSelectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionSection.swift; sourceTree = "<group>"; };
 		4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportSection.swift; sourceTree = "<group>"; };
+		4B3E4C602DCCD1CE004F2152 /* privacy_en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = privacy_en.json; sourceTree = "<group>"; };
+		4B3E4C622DCCD228004F2152 /* privacy_ru.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = privacy_ru.json; sourceTree = "<group>"; };
 		4B8F80562DBBD57F00512F5B /* OceanScript.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanScript.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80682DBBD58100512F5B /* OceanScriptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80722DBBD58100512F5B /* OceanScriptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +207,15 @@
 				4BBBA04F2DCC809100C253C5 /* PrivacyAndPolicyView.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		4B3E4C5F2DCCD191004F2152 /* PrivacyAndPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				4B3E4C602DCCD1CE004F2152 /* privacy_en.json */,
+				4B3E4C622DCCD228004F2152 /* privacy_ru.json */,
+			);
+			path = PrivacyAndPolicy;
 			sourceTree = "<group>";
 		};
 		4B8F804D2DBBD57F00512F5B = {
@@ -334,6 +347,7 @@
 		4BB0901D2DBD57CC00142DF9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4B3E4C5F2DCCD191004F2152 /* PrivacyAndPolicy */,
 				4BB090222DBD58A000142DF9 /* Swift */,
 				4BB090232DBD58B900142DF9 /* Python */,
 			);
@@ -574,9 +588,11 @@
 				4BB090AC2DC7C6D600142DF9 /* Localizable.strings in Resources */,
 				4BB090212DBD587000142DF9 /* questions_swift_ru.json in Resources */,
 				4BB090B02DC7C70100142DF9 /* Localizable.strings in Resources */,
+				4B3E4C632DCCD228004F2152 /* privacy_ru.json in Resources */,
 				4BB090252DBD591100142DF9 /* questions_python_en.json in Resources */,
 				4BB090272DBD5A0000142DF9 /* questions_python_ru.json in Resources */,
 				4B8F80902DBBD5A500512F5B /* Assets.xcassets in Resources */,
+				4B3E4C612DCCD1CE004F2152 /* privacy_en.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
