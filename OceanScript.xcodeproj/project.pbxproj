@@ -12,10 +12,10 @@
 		4B3E4C2E2DCC92DB004F2152 /* SupportSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */; };
 		4B3E4C612DCCD1CE004F2152 /* privacy_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B3E4C602DCCD1CE004F2152 /* privacy_en.json */; };
 		4B3E4C632DCCD228004F2152 /* privacy_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B3E4C622DCCD228004F2152 /* privacy_ru.json */; };
-		4B3E4C952DCDD132004F2152 /* SubscriptionPlansSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C942DCDD132004F2152 /* SubscriptionPlansSection.swift */; };
 		4B3E4C972DCDD42E004F2152 /* SubscriptionPlansView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C962DCDD42E004F2152 /* SubscriptionPlansView.swift */; };
 		4B5253622DCE5CEB00B729DA /* AlertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5253612DCE5CEB00B729DA /* AlertTypes.swift */; };
-		4B5253642DCE5D4800B729DA /* SubscriptionPlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5253632DCE5D4800B729DA /* SubscriptionPlanCard.swift */; };
+		4B52536A2DCE702F00B729DA /* SubscriptionPlansSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5253692DCE702F00B729DA /* SubscriptionPlansSection.swift */; };
+		4B52536E2DCE89F300B729DA /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B52536D2DCE89F300B729DA /* StoreKitManager.swift */; };
 		4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */; };
 		4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */; };
 		4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80892DBBD5A500512F5B /* Persistence.swift */; };
@@ -95,10 +95,11 @@
 		4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportSection.swift; sourceTree = "<group>"; };
 		4B3E4C602DCCD1CE004F2152 /* privacy_en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = privacy_en.json; sourceTree = "<group>"; };
 		4B3E4C622DCCD228004F2152 /* privacy_ru.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = privacy_ru.json; sourceTree = "<group>"; };
-		4B3E4C942DCDD132004F2152 /* SubscriptionPlansSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansSection.swift; sourceTree = "<group>"; };
 		4B3E4C962DCDD42E004F2152 /* SubscriptionPlansView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansView.swift; sourceTree = "<group>"; };
 		4B5253612DCE5CEB00B729DA /* AlertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypes.swift; sourceTree = "<group>"; };
-		4B5253632DCE5D4800B729DA /* SubscriptionPlanCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanCard.swift; sourceTree = "<group>"; };
+		4B5253692DCE702F00B729DA /* SubscriptionPlansSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansSection.swift; sourceTree = "<group>"; };
+		4B52536B2DCE72E600B729DA /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = OceanScript/Products.storekit; sourceTree = "<group>"; };
+		4B52536D2DCE89F300B729DA /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		4B8F80562DBBD57F00512F5B /* OceanScript.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanScript.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80682DBBD58100512F5B /* OceanScriptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80722DBBD58100512F5B /* OceanScriptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,11 +200,11 @@
 		4B3E4C2F2DCC9399004F2152 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				4B5253692DCE702F00B729DA /* SubscriptionPlansSection.swift */,
 				4BB090752DC6670F00142DF9 /* AppearanceSectionView.swift */,
 				4B3E4C2B2DCC92A2004F2152 /* LanguageSelectionSection.swift */,
 				4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */,
 				4B3E4C292DCC8FDD004F2152 /* RightsAndPrivacySection.swift */,
-				4B3E4C942DCDD132004F2152 /* SubscriptionPlansSection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -215,7 +216,6 @@
 				4BB090992DC7BA0B00142DF9 /* LanguageSelectionView.swift */,
 				4BBBA04F2DCC809100C253C5 /* PrivacyAndPolicyView.swift */,
 				4B3E4C962DCDD42E004F2152 /* SubscriptionPlansView.swift */,
-				4B5253632DCE5D4800B729DA /* SubscriptionPlanCard.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -232,6 +232,7 @@
 		4B8F804D2DBBD57F00512F5B = {
 			isa = PBXGroup;
 			children = (
+				4B52536B2DCE72E600B729DA /* Products.storekit */,
 				4B8F808A2DBBD5A500512F5B /* OceanScript */,
 				4B8F806B2DBBD58100512F5B /* OceanScriptTests */,
 				4B8F80752DBBD58100512F5B /* OceanScriptUITests */,
@@ -389,6 +390,7 @@
 				4BB0902B2DBD5F6200142DF9 /* JSONManager.swift */,
 				4BB090722DC666CF00142DF9 /* ThemeManager.swift */,
 				4BB090CB2DCBB30400142DF9 /* SupportMailManager.swift */,
+				4B52536D2DCE89F300B729DA /* StoreKitManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -635,13 +637,13 @@
 				4BB0909A2DC7BA0B00142DF9 /* LanguageSelectionView.swift in Sources */,
 				4BB0906A2DC52B2900142DF9 /* AnswerButtonView.swift in Sources */,
 				4BB0909C2DC7C3C400142DF9 /* LocalLanguage.swift in Sources */,
-				4B5253642DCE5D4800B729DA /* SubscriptionPlanCard.swift in Sources */,
 				4B8F80CC2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift in Sources */,
 				4B8F80CA2DBC0BCC00512F5B /* TestResult+CoreDataClass.swift in Sources */,
 				4B8F80D42DBD266000512F5B /* QuestionListItem.swift in Sources */,
 				4BB090BA2DCA60C900142DF9 /* PrimaryButton.swift in Sources */,
 				4BB090642DC51FF300142DF9 /* CurrentTestView.swift in Sources */,
 				4BBBA0502DCC809100C253C5 /* PrivacyAndPolicyView.swift in Sources */,
+				4B52536A2DCE702F00B729DA /* SubscriptionPlansSection.swift in Sources */,
 				4B8F80BC2DBC038C00512F5B /* CodingUserInfoKey+Extensions.swift in Sources */,
 				4BB090192DBD4EF900142DF9 /* MainTabView.swift in Sources */,
 				4B8F80C02DBC071100512F5B /* Category+CoreDataProperties.swift in Sources */,
@@ -657,9 +659,9 @@
 				4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */,
 				4BB090C42DCB3AA500142DF9 /* LanguageItemView.swift in Sources */,
 				4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */,
-				4B3E4C952DCDD132004F2152 /* SubscriptionPlansSection.swift in Sources */,
 				4B3E4C2E2DCC92DB004F2152 /* SupportSection.swift in Sources */,
 				4B3E4C972DCDD42E004F2152 /* SubscriptionPlansView.swift in Sources */,
+				4B52536E2DCE89F300B729DA /* StoreKitManager.swift in Sources */,
 				4BB090662DC520A400142DF9 /* TestResultView.swift in Sources */,
 				4BB0906E2DC65FA500142DF9 /* AnsweredQuestionList.swift in Sources */,
 				4BB0907A2DC6689200142DF9 /* ThemeModeButtonView.swift in Sources */,
