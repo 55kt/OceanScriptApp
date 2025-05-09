@@ -12,7 +12,6 @@ struct SettingsTabView: View {
     // MARK: - Properties
     @EnvironmentObject private var themeManager: ThemeManager
     @EnvironmentObject private var persistenceController: PersistenceController
-    @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.managedObjectContext) private var viewContext
     
     // MARK: - Private Properties
@@ -42,7 +41,6 @@ struct SettingsTabView: View {
                 SupportSection(supportEmail: supportEmail)
                 
                 SubscriptionPlansSection()
-                                    .environmentObject(subscriptionManager)
                 
                 RightsAndPrivacySection(privacyPolicySheet: $privacyPolicySheet)
             } // Form
@@ -64,7 +62,6 @@ struct SettingsTabView: View {
         SettingsTabView()
             .environmentObject(ThemeManager())
             .environmentObject(PersistenceController.preview)
-            .environmentObject(SubscriptionManager())
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

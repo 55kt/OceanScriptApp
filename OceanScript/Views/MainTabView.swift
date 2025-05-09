@@ -13,7 +13,6 @@ struct MainTabView: View {
     // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext: NSManagedObjectContext
     @EnvironmentObject private var persistenceController: PersistenceController
-    @EnvironmentObject private var subscriptionManager: SubscriptionManager
     
     @State private var tabPaths: [String: NavigationPath] = [
         "home": NavigationPath(),
@@ -78,17 +77,6 @@ struct MainTabView: View {
         } // TabView
         .environment(\.locale, persistenceController.locale)
         .environment(\.managedObjectContext, viewContext)
-        .environmentObject(subscriptionManager)
-        .onAppear {
-            updateSubscriptionPrompt()
-        }
-        .onChange(of: subscriptionManager.currentSubscription) {oldValue, _ in
-            updateSubscriptionPrompt()
-        }
-        .sheet(isPresented: $showSubscriptionPrompt) {
-            SubscriptionPlansView(currentSubscription: subscriptionManager.currentSubscription)
-                .environmentObject(subscriptionManager)
-        }
     } // Body
     
     // MARK: - Functions
@@ -101,11 +89,6 @@ struct MainTabView: View {
             set: { tabPaths[key] = $0 }
         ) // Binding
     } // Function: pathBinding
-    
-    /// Updates the subscription prompt visibility.
-    private func updateSubscriptionPrompt() {
-        showSubscriptionPrompt = subscriptionManager.shouldPromptForSubscription()
-    }
 } // MainTabView
 
 // MARK: - Preview
@@ -115,6 +98,5 @@ struct MainTabView: View {
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             .environmentObject(ThemeManager())
             .environmentObject(PersistenceController.preview)
-            .environmentObject(SubscriptionManager())
     } // NavigationStack
 } // Preview
