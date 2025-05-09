@@ -12,6 +12,7 @@ struct SettingsTabView: View {
     // MARK: - Properties
     @EnvironmentObject private var themeManager: ThemeManager
     @EnvironmentObject private var persistenceController: PersistenceController
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.managedObjectContext) private var viewContext
     
     // MARK: - Private Properties
@@ -24,6 +25,12 @@ struct SettingsTabView: View {
     
     private let supportEmail = "support@oceanscript.com" // Replace with actual support email
     
+    // Test data for current subscription (will be replaced with real data later)
+    private var currentSubscription: String {
+        // Placeholder: In a real app, this would be fetched from StoreKit or a backend
+        return "No active subscription"
+    }
+    
     // MARK: - Body
     var body: some View {
         NavigationStack {
@@ -34,13 +41,17 @@ struct SettingsTabView: View {
                 
                 SupportSection(supportEmail: supportEmail)
                 
-                RightsAndSupportSection(privacyPolicySheet: $privacyPolicySheet)
+                SubscriptionPlansSection()
+                                    .environmentObject(subscriptionManager)
+                
+                RightsAndPrivacySection(privacyPolicySheet: $privacyPolicySheet)
             } // Form
             .navigationTitle(Text(LocalizedStringKey("Settings")))
             .navigationBarTitleDisplayMode(.inline)
             .accessibilityLabel("Settings screen")
             .sheet(isPresented: $privacyPolicySheet) {
                 PrivacyAndPolicyView()
+                    .environmentObject(persistenceController)
             }
         } // NavigationStack
         .environment(\.locale, persistenceController.locale)
@@ -49,10 +60,11 @@ struct SettingsTabView: View {
 
 // MARK: - Preview
 #Preview {
-    NavigationStack { // NavigationStack
+    NavigationStack {
         SettingsTabView()
             .environmentObject(ThemeManager())
             .environmentObject(PersistenceController.preview)
+            .environmentObject(SubscriptionManager())
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    } // NavigationStack
-} // Preview
+    }
+}

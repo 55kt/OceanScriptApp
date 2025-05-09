@@ -14,6 +14,7 @@ struct OceanScriptApp: App {
     // MARK: - Properties
     private let persistenceController: PersistenceController = .shared
     @StateObject private var themeManager: ThemeManager = ThemeManager()
+    @StateObject private var subscriptionManager: SubscriptionManager = SubscriptionManager()
     @State private var hasSelectedLanguage: Bool
     
     // MARK: - Initializers
@@ -34,6 +35,7 @@ struct OceanScriptApp: App {
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
             .environmentObject(themeManager)
             .environmentObject(persistenceController)
+            .environmentObject(subscriptionManager)
             .environment(\.locale, persistenceController.locale)
             .preferredColorScheme(themeManager.themeMode.colorScheme)
         } // WindowGroup

@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - View
 /// A view displaying the rights and support section with Privacy and Policy and Copyright information.
-struct RightsAndSupportSection: View {
+struct RightsAndPrivacySection: View {
     // MARK: - Properties
     @Binding var privacyPolicySheet: Bool
     
@@ -38,5 +38,5 @@ struct RightsAndSupportSection: View {
 
 // MARK: - Preview
 #Preview {
-    RightsAndSupportSection(privacyPolicySheet: .constant(false))
+    RightsAndPrivacySection(privacyPolicySheet: .constant(false))
 }
