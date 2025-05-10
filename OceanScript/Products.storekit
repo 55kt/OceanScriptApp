@@ -97,6 +97,11 @@
               "description" : "monthly",
               "displayName" : "Monthly",
               "locale" : "en_US"
+            },
+            {
+              "description" : "месячная",
+              "displayName" : "Месячная",
+              "locale" : "ru"
             }
           ],
           "productID" : "com.oceanscript.monthly",
@@ -125,6 +130,11 @@
               "description" : "yearly",
               "displayName" : "Yearly",
               "locale" : "en_US"
+            },
+            {
+              "description" : "годовая",
+              "displayName" : "Годовая",
+              "locale" : "ru"
             }
           ],
           "productID" : "com.oceanscript.yearly",

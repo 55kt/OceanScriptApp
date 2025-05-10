@@ -13,9 +13,9 @@
 		4B3E4C612DCCD1CE004F2152 /* privacy_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B3E4C602DCCD1CE004F2152 /* privacy_en.json */; };
 		4B3E4C632DCCD228004F2152 /* privacy_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B3E4C622DCCD228004F2152 /* privacy_ru.json */; };
 		4B3E4C972DCDD42E004F2152 /* SubscriptionPlansView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E4C962DCDD42E004F2152 /* SubscriptionPlansView.swift */; };
-		4B5253622DCE5CEB00B729DA /* AlertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5253612DCE5CEB00B729DA /* AlertTypes.swift */; };
 		4B52536A2DCE702F00B729DA /* SubscriptionPlansSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5253692DCE702F00B729DA /* SubscriptionPlansSection.swift */; };
 		4B52536E2DCE89F300B729DA /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B52536D2DCE89F300B729DA /* StoreKitManager.swift */; };
+		4B5253722DCF554800B729DA /* SubscriptionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5253712DCF554800B729DA /* SubscriptionStatus.swift */; };
 		4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80872DBBD5A500512F5B /* OceanScript.xcdatamodeld */; };
 		4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80882DBBD5A500512F5B /* OceanScriptApp.swift */; };
 		4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80892DBBD5A500512F5B /* Persistence.swift */; };
@@ -35,7 +35,6 @@
 		4B8F80D42DBD266000512F5B /* QuestionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D32DBD266000512F5B /* QuestionListItem.swift */; };
 		4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */; };
 		4B8F80D82DBD358B00512F5B /* QuestionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D72DBD358B00512F5B /* QuestionsList.swift */; };
-		4B8F80DA2DBD384000512F5B /* PreviewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */; };
 		4BB090192DBD4EF900142DF9 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090182DBD4EF900142DF9 /* MainTabView.swift */; };
 		4BB0901C2DBD50EB00142DF9 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB0901B2DBD50EB00142DF9 /* HomeTabView.swift */; };
 		4BB0901F2DBD581000142DF9 /* questions_swift_en.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BB0901E2DBD581000142DF9 /* questions_swift_en.json */; };
@@ -96,10 +95,10 @@
 		4B3E4C602DCCD1CE004F2152 /* privacy_en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = privacy_en.json; sourceTree = "<group>"; };
 		4B3E4C622DCCD228004F2152 /* privacy_ru.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = privacy_ru.json; sourceTree = "<group>"; };
 		4B3E4C962DCDD42E004F2152 /* SubscriptionPlansView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansView.swift; sourceTree = "<group>"; };
-		4B5253612DCE5CEB00B729DA /* AlertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypes.swift; sourceTree = "<group>"; };
 		4B5253692DCE702F00B729DA /* SubscriptionPlansSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansSection.swift; sourceTree = "<group>"; };
 		4B52536B2DCE72E600B729DA /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = OceanScript/Products.storekit; sourceTree = "<group>"; };
 		4B52536D2DCE89F300B729DA /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
+		4B5253712DCF554800B729DA /* SubscriptionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStatus.swift; sourceTree = "<group>"; };
 		4B8F80562DBBD57F00512F5B /* OceanScript.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanScript.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80682DBBD58100512F5B /* OceanScriptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8F80722DBBD58100512F5B /* OceanScriptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OceanScriptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +121,6 @@
 		4B8F80D32DBD266000512F5B /* QuestionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListItem.swift; sourceTree = "<group>"; };
 		4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailView.swift; sourceTree = "<group>"; };
 		4B8F80D72DBD358B00512F5B /* QuestionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsList.swift; sourceTree = "<group>"; };
-		4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPlaceholder.swift; sourceTree = "<group>"; };
 		4BB090182DBD4EF900142DF9 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		4BB0901B2DBD50EB00142DF9 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		4BB0901E2DBD581000142DF9 /* questions_swift_en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = questions_swift_en.json; sourceTree = "<group>"; };
@@ -313,7 +311,6 @@
 				4B8F80D72DBD358B00512F5B /* QuestionsList.swift */,
 				4B8F80D32DBD266000512F5B /* QuestionListItem.swift */,
 				4B8F80D52DBD30BF00512F5B /* QuestionDetailView.swift */,
-				4B8F80D92DBD384000512F5B /* PreviewPlaceholder.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -430,7 +427,7 @@
 			children = (
 				4BB090612DC51FC100142DF9 /* Tests.swift */,
 				4BB0909B2DC7C3C400142DF9 /* LocalLanguage.swift */,
-				4B5253612DCE5CEB00B729DA /* AlertTypes.swift */,
+				4B5253712DCF554800B729DA /* SubscriptionStatus.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -635,6 +632,7 @@
 				4BB0903A2DBE379D00142DF9 /* StringArrayTransformer.swift in Sources */,
 				4BB0902C2DBD5F6200142DF9 /* JSONManager.swift in Sources */,
 				4BB0909A2DC7BA0B00142DF9 /* LanguageSelectionView.swift in Sources */,
+				4B5253722DCF554800B729DA /* SubscriptionStatus.swift in Sources */,
 				4BB0906A2DC52B2900142DF9 /* AnswerButtonView.swift in Sources */,
 				4BB0909C2DC7C3C400142DF9 /* LocalLanguage.swift in Sources */,
 				4B8F80CC2DBC0BF400512F5B /* TestResult+CoreDataProperties.swift in Sources */,
@@ -655,7 +653,6 @@
 				4B8F808D2DBBD5A500512F5B /* OceanScript.xcdatamodeld in Sources */,
 				4B8F80C42DBC091100512F5B /* Question+CoreDataProperties.swift in Sources */,
 				4B8F808E2DBBD5A500512F5B /* OceanScriptApp.swift in Sources */,
-				4B8F80DA2DBD384000512F5B /* PreviewPlaceholder.swift in Sources */,
 				4B8F808F2DBBD5A500512F5B /* Persistence.swift in Sources */,
 				4BB090C42DCB3AA500142DF9 /* LanguageItemView.swift in Sources */,
 				4B8F80D22DBD259800512F5B /* CategoryItem.swift in Sources */,
@@ -680,7 +677,6 @@
 				4BB0905F2DC51F2700142DF9 /* TestViewModel.swift in Sources */,
 				4B8F80D62DBD30BF00512F5B /* QuestionDetailView.swift in Sources */,
 				4BB090762DC6670F00142DF9 /* AppearanceSectionView.swift in Sources */,
-				4B5253622DCE5CEB00B729DA /* AlertTypes.swift in Sources */,
 				4BB090782DC6674400142DF9 /* SettingsTabView.swift in Sources */,
 				4B3E4C2A2DCC8FDD004F2152 /* RightsAndPrivacySection.swift in Sources */,
 				4B3E4C2C2DCC92A2004F2152 /* LanguageSelectionSection.swift in Sources */,

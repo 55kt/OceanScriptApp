@@ -13,6 +13,7 @@ struct SettingsTabView: View {
     @EnvironmentObject private var themeManager: ThemeManager
     @EnvironmentObject private var persistenceController: PersistenceController
     @Environment(\.managedObjectContext) private var viewContext
+    @StateObject private var storeKit = StoreKitManager()
     
     // MARK: - Private Properties
     // Helper to get the localized language name
@@ -53,6 +54,7 @@ struct SettingsTabView: View {
             }
         } // NavigationStack
         .environment(\.locale, persistenceController.locale)
+        .environmentObject(storeKit)
     } // Body
 } // SettingsTabView
 
@@ -63,5 +65,6 @@ struct SettingsTabView: View {
             .environmentObject(ThemeManager())
             .environmentObject(PersistenceController.preview)
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environmentObject(StoreKitManager())
     }
 }

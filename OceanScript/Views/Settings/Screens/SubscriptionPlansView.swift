@@ -9,16 +9,34 @@ import SwiftUI
 import StoreKit
 
 // MARK: - View
-/// A static view displaying the subscription plans UI using SubscriptionStoreView (placeholder).
+/// A view displaying the subscription plans UI using SubscriptionStoreView.
 struct SubscriptionPlansView: View {
     // MARK: - Properties
-    @StateObject private var storeKit = StoreKitManager()
+    @EnvironmentObject private var storeKit: StoreKitManager
+    @State private var manageSubscriptionsSheet: Bool = false
     
     // MARK: - Body
     var body: some View {
         NavigationStack {
-            // Placeholder group ID for SubscriptionStoreView
             SubscriptionStoreView(groupID: storeKit.groupId)
+                .storeButton(.hidden, for: .cancellation)
+            
+            // Manage subscriptions button
+            Button("Manage Subscription") {
+                manageSubscriptionsSheet = true
+            }
+            .manageSubscriptionsSheet(isPresented: $manageSubscriptionsSheet, subscriptionGroupID: storeKit.groupId)
+            .onChange(of: manageSubscriptionsSheet) {oldValue, newValue in
+                if !newValue {
+                    // Sheet was dismissed, update subscription status
+                    Task {
+                        await storeKit.updateCustomerSubscriptionStatus()
+                    }
+                }
+            }
+        }
+        .onAppear {
+            print("SubscriptionPlansView: Using StoreKitManager with groupId: \(storeKit.groupId)")
         }
     }
 }
@@ -27,5 +45,6 @@ struct SubscriptionPlansView: View {
 #Preview {
     NavigationStack {
         SubscriptionPlansView()
+            .environmentObject(StoreKitManager())
     }
 }
