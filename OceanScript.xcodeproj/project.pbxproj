@@ -67,6 +67,7 @@
 		4BB090C22DCB345000142DF9 /* View+FavoriteSwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */; };
 		4BB090C42DCB3AA500142DF9 /* LanguageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */; };
 		4BB090CC2DCBB30400142DF9 /* SupportMailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB090CB2DCBB30400142DF9 /* SupportMailManager.swift */; };
+		4BB097642DD3B9E40055B4FA /* ProgrammingLanguageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB097632DD3B9E40055B4FA /* ProgrammingLanguageSection.swift */; };
 		4BBBA0502DCC809100C253C5 /* PrivacyAndPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBA04F2DCC809100C253C5 /* PrivacyAndPolicyView.swift */; };
 		4BBBA0522DCC830B00C253C5 /* CopyrightSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBA0512DCC830B00C253C5 /* CopyrightSection.swift */; };
 /* End PBXBuildFile section */
@@ -153,6 +154,7 @@
 		4BB090C12DCB345000142DF9 /* View+FavoriteSwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+FavoriteSwipeAction.swift"; sourceTree = "<group>"; };
 		4BB090C32DCB3AA500142DF9 /* LanguageItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageItemView.swift; sourceTree = "<group>"; };
 		4BB090CB2DCBB30400142DF9 /* SupportMailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMailManager.swift; sourceTree = "<group>"; };
+		4BB097632DD3B9E40055B4FA /* ProgrammingLanguageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingLanguageSection.swift; sourceTree = "<group>"; };
 		4BBBA04F2DCC809100C253C5 /* PrivacyAndPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAndPolicyView.swift; sourceTree = "<group>"; };
 		4BBBA0512DCC830B00C253C5 /* CopyrightSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +205,7 @@
 				4B3E4C2B2DCC92A2004F2152 /* LanguageSelectionSection.swift */,
 				4B3E4C2D2DCC92DB004F2152 /* SupportSection.swift */,
 				4B3E4C292DCC8FDD004F2152 /* RightsAndPrivacySection.swift */,
+				4BB097632DD3B9E40055B4FA /* ProgrammingLanguageSection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				4BB090C22DCB345000142DF9 /* View+FavoriteSwipeAction.swift in Sources */,
 				4B8F80B92DBC023400512F5B /* AppLanguage+CoreDataProperties.swift in Sources */,
 				4B8F80C22DBC08E700512F5B /* Question+CoreDataClass.swift in Sources */,
+				4BB097642DD3B9E40055B4FA /* ProgrammingLanguageSection.swift in Sources */,
 				4B8F80C82DBC0B5B00512F5B /* QuestionResult+CoreDataProperties.swift in Sources */,
 				4BB090712DC661E100142DF9 /* SearchTabView.swift in Sources */,
 				4BB0901C2DBD50EB00142DF9 /* HomeTabView.swift in Sources */,
